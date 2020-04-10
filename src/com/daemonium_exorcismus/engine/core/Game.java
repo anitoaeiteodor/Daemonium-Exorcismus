@@ -1,10 +1,16 @@
 package com.daemonium_exorcismus.engine.core;
 
+import com.daemonium_exorcismus.ecs.Entity;
+import com.daemonium_exorcismus.ecs.components.RenderComponent;
+import com.daemonium_exorcismus.ecs.systems.ISystem;
+import com.daemonium_exorcismus.ecs.systems.RenderSystem;
 import com.daemonium_exorcismus.engine.core.GameWindow;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 import com.daemonium_exorcismus.engine.graphics.*;
 
@@ -13,17 +19,14 @@ public class Game implements Runnable
     private GameWindow      wnd;
     private boolean         runState;
     private Thread          gameThread;
-    private BufferStrategy  bs;
 
     private String          title;
     private int             width;
     private int             height;
 
-    private Graphics        g;
+    private HashMap<String, Entity> entities = new HashMap<>();
+    private ArrayList<ISystem> systems = new ArrayList<>();
 
-    // temporary fields under this
-    private SpriteSheet cobble;
-    private SpriteSheet carpet;
 
 
 //    private Tile tile; /*!< variabila membra temporara. Este folosita in aceasta etapa doar pentru a desena ceva pe ecran.*/
@@ -41,11 +44,16 @@ public class Game implements Runnable
     {
         wnd = new GameWindow(title, width, height);
         wnd.BuildGameWindow();
-        /// Se incarca toate elementele grafice (dale)
-//        Assets.Init();
+        AssetManager.InitAssets();
+        RenderManager.InitRenderManager(wnd);
 
-        cobble = new SpriteSheet(ImageLoader.LoadImage("D:/dev/Daemonium-Exorcismus/assets/tiles/environment/cobblestone64x64.png"));
-        carpet = new SpriteSheet(ImageLoader.LoadImage("D:/dev/Daemonium-Exorcismus/assets/tiles/environment/carpet.png"));
+        // temporary code here
+        Entity player = new Entity();
+        player.AddComponent(new RenderComponent(true, AssetManager.assets.get(Assets.COBBLE)));
+        entities.put(player.getId(), player);
+
+        ISystem render = new RenderSystem();
+        systems.add(render);
     }
 
     public void run()
@@ -63,7 +71,6 @@ public class Game implements Runnable
             if((curentTime - oldTime) > timeFrame)
             {
                 Update();
-                Draw();
                 oldTime = curentTime;
             }
         }
@@ -100,52 +107,10 @@ public class Game implements Runnable
 
     private void Update()
     {
-
-    }
-
-    private void Draw()
-    {
-        bs = wnd.GetCanvas().getBufferStrategy();
-        if(bs == null)
-        {
-            try
-            {
-                wnd.GetCanvas().createBufferStrategy(3);
-                return;
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
+        for(ISystem system : systems) {
+            system.UpdateSystem(entities);
         }
-
-        g = bs.getDrawGraphics();
-        g.clearRect(0, 0, wnd.GetWndWidth(), wnd.GetWndHeight());
-
-        /// operatie de desenare
-        // ...............
-//        Tile.grassTile.Draw(g, 0 * Tile.TILE_WIDTH, 0);
-//        Tile.soilTile.Draw(g, 1 * Tile.TILE_WIDTH, 0);
-//        Tile.waterTile.Draw(g, 2 * Tile.TILE_WIDTH, 0);
-//        Tile.mountainTile.Draw(g, 3 * Tile.TILE_WIDTH, 0);
-//        Tile.treeTile.Draw(g, 4 * Tile.TILE_WIDTH, 0);
-//
-//        g.drawRect(1 * Tile.TILE_WIDTH, 1 * Tile.TILE_HEIGHT, Tile.TILE_WIDTH, Tile.TILE_HEIGHT);
-
-        for (int i = 0; i * 32 < wnd.GetWndWidth(); i++)
-            for(int j = 0; j * 32 < wnd.GetWndHeight(); j++)
-                g.drawImage(cobble.crop((i + j) % 2, (i + j) % 2), i * 32, j * 32, null);
-
-        for (int i = 0; i * 32 < wnd.GetWndWidth(); i++)
-            g.drawImage(carpet.crop(0, 0), i * 32, wnd.GetWndHeight() / 2, null);
-
-        // end operatie de desenare
-        /// Se afiseaza pe ecran
-        bs.show();
-
-        /// Elibereaza resursele de memorie aferente contextului grafic curent (zonele de memorie ocupate de
-        /// elementele grafice ce au fost desenate pe canvas).
-        g.dispose();
     }
+
 }
 

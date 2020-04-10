@@ -1,12 +1,16 @@
 package com.daemonium_exorcismus.engine.graphics;
 
+import com.daemonium_exorcismus.engine.utils.Vec2D;
+
+import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.IOException;
 
 public class SpriteSheet
 {
     private BufferedImage       spriteSheet;              /*!< Referinta catre obiectul BufferedImage ce contine sprite sheet-ul.*/
-    private static final int    tileWidth   = 32;   /*!< Latimea unei dale din sprite sheet.*/
-    private static final int    tileHeight  = 32;   /*!< Inaltime unei dale din sprite sheet.*/
+    private final Vec2D size = new Vec2D(32, 32);
 
     public SpriteSheet(BufferedImage buffImg)
     {
@@ -17,9 +21,9 @@ public class SpriteSheet
 
     public BufferedImage crop(int x, int y)
     {
-        /// Subimaginea (dala) este regasita in sprite sheet specificad coltul stanga sus
-        /// al imaginii si apoi latimea si inaltimea (totul in pixeli). Coltul din stanga sus al imaginii
-        /// se obtine inmultind numarul de ordine al dalei cu dimensiunea in pixeli a unei dale.
+        int tileWidth = (int)size.getPosX();
+        int tileHeight = (int)size.getPosY();
         return spriteSheet.getSubimage(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
     }
+
 }
