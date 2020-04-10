@@ -6,9 +6,6 @@ import com.daemonium_exorcismus.ecs.systems.ISystem;
 import com.daemonium_exorcismus.ecs.systems.RenderSystem;
 import com.daemonium_exorcismus.engine.core.GameWindow;
 
-import java.awt.*;
-import java.awt.image.BufferStrategy;
-import java.awt.image.BufferedImage;
 import java.util.ArrayList;
 import java.util.HashMap;
 

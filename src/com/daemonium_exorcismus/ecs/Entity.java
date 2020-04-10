@@ -1,7 +1,6 @@
 package com.daemonium_exorcismus.ecs;
 
 import com.daemonium_exorcismus.ecs.components.Component;
-import com.daemonium_exorcismus.ecs.components.ComponentNames;
 
 import java.util.HashMap;
 

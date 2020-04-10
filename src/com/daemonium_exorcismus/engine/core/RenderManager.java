@@ -1,7 +1,6 @@
 package com.daemonium_exorcismus.engine.core;
 
 import com.daemonium_exorcismus.ecs.Entity;
-import com.daemonium_exorcismus.ecs.components.Component;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
 import com.daemonium_exorcismus.ecs.components.RenderComponent;
 

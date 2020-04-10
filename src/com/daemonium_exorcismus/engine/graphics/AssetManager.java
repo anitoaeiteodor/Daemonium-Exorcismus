@@ -7,7 +7,7 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class AssetManager {
-    public static HashMap<Assets, SpriteSheet> assets = new HashMap<>();
+    public static final HashMap<Assets, SpriteSheet> assets = new HashMap<>();
 
     public static void InitAssets() {
         System.out.println("Initializing assets");
