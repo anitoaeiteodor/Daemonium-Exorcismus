@@ -13,20 +13,20 @@ public class Entity {
         id = String.format("%f", Math.random());
     }
 
-    public void AddComponent(Component component) {
-        if (components.containsKey(component.GetName())) {
+    public void addComponent(Component component) {
+        if (components.containsKey(component.getName())) {
             System.out.println("Component already attached to entity " + id);
             return;
         }
-        components.put(component.GetName(), component);
+        components.put(component.getName(), component);
     }
 
-    public void RemoveComponent(Component component) {
-        if (!components.containsKey(component.GetName())) {
+    public void removeComponent(Component component) {
+        if (!components.containsKey(component.getName())) {
             System.out.println("Component not attached to entity " + id);
             return;
         }
-        components.remove(component.GetName());
+        components.remove(component.getName());
     }
 
     public boolean hasComponent(String name) {
@@ -37,7 +37,7 @@ public class Entity {
         return id;
     }
 
-    public HashMap<String, Component> GetComponents() {
-        return components;
+    public Component getComponent(String name) {
+        return components.getOrDefault(name, null);
     }
 }

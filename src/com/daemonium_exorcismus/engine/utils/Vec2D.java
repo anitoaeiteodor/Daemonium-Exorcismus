@@ -9,19 +9,19 @@ public class Vec2D {
         this.posY = posY;
     }
 
-    public Vec2D Add(Vec2D other) {
+    public Vec2D add(Vec2D other) {
         return new Vec2D(posX + other.posX, posY + other.posY);
     }
 
-    public Vec2D Sub(Vec2D other) {
+    public Vec2D sub(Vec2D other) {
         return new Vec2D(posX - other.posX, posY - other.posY);
     }
 
-    public double DotProduct(Vec2D other) {
+    public double dotProduct(Vec2D other) {
         return posX * other.posX + posY * other.posY;
     }
 
-    public double Norm() {
+    public double norm() {
         return Math.sqrt(posX * posX + posY * posY);
     }
 

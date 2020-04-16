@@ -13,20 +13,20 @@ public class RenderComponent extends Component {
         this.sprite = sprite;
     }
 
-    public boolean GetVisibilityStatus() {
+    public boolean getVisibilityStatus() {
         return isVisible;
     }
 
-    public void SetVisibilityStatus(boolean value) {
+    public void getVisibilityStatus(boolean value) {
         isVisible = value;
     }
 
-    public SpriteSheet GetSpriteSheet() {
+    public SpriteSheet getSpriteSheet() {
         return sprite;
     }
 
     @Override
-    public String GetName() {
+    public String getName() {
         return name;
     }
 }

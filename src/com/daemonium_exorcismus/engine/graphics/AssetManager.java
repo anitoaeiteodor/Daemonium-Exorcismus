@@ -13,6 +13,7 @@ public class AssetManager {
         System.out.println("Initializing assets");
         assets.put(Assets.COBBLE, new SpriteSheet(LoadImage("assets\\tiles\\environment\\cobblestone.png")));
         assets.put(Assets.CARPET, new SpriteSheet(LoadImage("assets\\tiles\\environment\\carpet.png")));
+        assets.put(Assets.PLAYER_IDLE, new SpriteSheet(LoadImage("assets\\chars\\priest\\priest_idle.png")));
     }
 
     private static BufferedImage LoadImage(String path)

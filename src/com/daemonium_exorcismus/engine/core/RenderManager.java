@@ -2,7 +2,9 @@ package com.daemonium_exorcismus.engine.core;
 
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
+import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
 import com.daemonium_exorcismus.ecs.components.RenderComponent;
+import com.daemonium_exorcismus.ecs.components.RigidBodyComponent;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -29,15 +31,15 @@ public class RenderManager {
         }
     }
 
-    public void Draw(ArrayList<Entity> entities)
+    public void draw(ArrayList<Entity> entities)
     {
-        BufferStrategy bs = wnd.GetCanvas().getBufferStrategy();
+        BufferStrategy bs = wnd.getCanvas().getBufferStrategy();
 
         if(bs == null)
         {
             try
             {
-                wnd.GetCanvas().createBufferStrategy(3);
+                wnd.getCanvas().createBufferStrategy(3);
                 return;
             }
             catch (Exception e)
@@ -48,11 +50,17 @@ public class RenderManager {
 
         assert bs != null;
         Graphics g = bs.getDrawGraphics();
-        g.clearRect(0, 0, wnd.GetWndWidth(), wnd.GetWndHeight());
+        g.clearRect(0, 0, wnd.getWndWidth(), wnd.getWndHeight());
 
         for (Entity entity : entities) {
-            RenderComponent render = (RenderComponent) entity.GetComponents().get(ComponentNames.RENDER);
-            g.drawImage(render.GetSpriteSheet().crop(0, 0), 100, 100, null);
+            RenderComponent render = (RenderComponent) entity.getComponent(ComponentNames.RENDER);
+            RigidBodyComponent body = (RigidBodyComponent) entity.getComponent(ComponentNames.RIGID_BODY);
+            body = (KinematicBodyComponent) entity.getComponent(ComponentNames.KINEMATIC_BODY);
+
+            if(render != null && body != null) {
+                g.drawImage(render.getSpriteSheet().crop(0, 0), (int)body.getPos().getPosX(),
+                        (int) body.getPos().getPosY(), null);
+            }
         }
 
 //        for (int i = 0; i * 32 < wnd.GetWndWidth(); i++)

@@ -2,6 +2,7 @@ package com.daemonium_exorcismus.engine.core;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
 
 /*! \class GameWindow
     \brief Implementeaza notiunea de fereastra a jocului.
@@ -26,7 +27,7 @@ public class GameWindow
         wndFrame    = null;     /*!< Fereastra nu este construita.*/
     }
 
-    public void BuildGameWindow()
+    public void buildGameWindow()
     {
         if(wndFrame != null)
         {
@@ -48,10 +49,15 @@ public class GameWindow
         wndFrame.pack();
     }
 
+    public void addListener(KeyAdapter adapter) {
+        System.out.println("Added adapter: " + adapter);
+        canvas.addKeyListener(adapter);
+    }
+
     /*! \fn public int GetWndWidth()
         \brief Returneaza latimea ferestrei.
      */
-    public int GetWndWidth()
+    public int getWndWidth()
     {
         return wndWidth;
     }
@@ -59,7 +65,7 @@ public class GameWindow
     /*! \fn public int GetWndWidth()
         \brief Returneaza inaltimea ferestrei.
      */
-    public int GetWndHeight()
+    public int getWndHeight()
     {
         return wndHeight;
     }
@@ -67,7 +73,7 @@ public class GameWindow
     /*! \fn public int GetCanvas()
         \brief Returneaza referinta catre canvas-ul din fereastra pe care se poate desena.
      */
-    public Canvas GetCanvas() {
+    public Canvas getCanvas() {
         return canvas;
     }
 }
