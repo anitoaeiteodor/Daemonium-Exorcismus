@@ -4,6 +4,8 @@ public class Vec2D {
     private double posX;
     private double posY;
 
+    public static final Vec2D ZERO = new Vec2D(0, 0);
+
     public Vec2D(double posX, double posY) {
         this.posX = posX;
         this.posY = posY;

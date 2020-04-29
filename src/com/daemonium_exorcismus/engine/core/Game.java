@@ -1,9 +1,7 @@
 package com.daemonium_exorcismus.engine.core;
 
 import com.daemonium_exorcismus.ecs.Entity;
-import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
-import com.daemonium_exorcismus.ecs.components.PlayerControlledComponent;
-import com.daemonium_exorcismus.ecs.components.RenderComponent;
+import com.daemonium_exorcismus.ecs.components.*;
 import com.daemonium_exorcismus.ecs.systems.PhysicsSystem;
 import com.daemonium_exorcismus.ecs.systems.PlayerInputSystem;
 import com.daemonium_exorcismus.ecs.systems.RenderSystem;
@@ -54,12 +52,20 @@ public class Game implements Runnable
 
         // temporary code here
         Entity player = new Entity();
-        player.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.COBBLE)));
+        player.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.PLAYER_IDLE), false));
         player.addComponent(new KinematicBodyComponent(new Vec2D(100, 100),
-                new Vec2D(50, 50), new Vec2D(0, 0)));
+                new Vec2D(32, 32), new Vec2D(0, 0)));
         player.addComponent(new PlayerControlledComponent(true));
+        player.addComponent(new ColliderComponent(true, new Vec2D(10, 5), new Vec2D(15, 10)));
+
+        Entity cobble = new Entity();
+        cobble.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.COBBLE), false));
+        cobble.addComponent(new RigidBodyComponent(new Vec2D(300, 200),
+                new Vec2D(32, 32)));
+        cobble.addComponent(new ColliderComponent(true, Vec2D.ZERO, Vec2D.ZERO));
 
         entities.put(player.getId(), player);
+        entities.put(cobble.getId(), cobble);
 
         SystemBase physics = new PhysicsSystem();
         SystemBase render = new RenderSystem();

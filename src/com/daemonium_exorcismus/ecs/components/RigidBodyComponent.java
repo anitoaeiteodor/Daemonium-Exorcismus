@@ -9,6 +9,7 @@ public class RigidBodyComponent extends Component {
     public RigidBodyComponent(Vec2D pos, Vec2D size) {
         this.pos = pos;
         this.size = size;
+        this.name = ComponentNames.RIGID_BODY;
     }
 
     public Vec2D getPos() {

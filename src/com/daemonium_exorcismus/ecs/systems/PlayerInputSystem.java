@@ -3,11 +3,11 @@ package com.daemonium_exorcismus.ecs.systems;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
 import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
+import com.daemonium_exorcismus.ecs.components.RenderComponent;
 import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.engine.core.InputManager;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
-import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -63,6 +63,11 @@ public class PlayerInputSystem extends SystemBase {
             System.err.println("Player does not have kinematic body component!");
         } else {
             ((KinematicBodyComponent) player.getComponent(ComponentNames.KINEMATIC_BODY)).setVelocity(velocity);
+            if (velocity.getPosX() < 0) {
+                ((RenderComponent) player.getComponent(ComponentNames.RENDER)).setFlipped(true);
+            } else if (velocity.getPosX() > 0) {
+                ((RenderComponent) player.getComponent(ComponentNames.RENDER)).setFlipped(false);
+            }
         }
     }
 }

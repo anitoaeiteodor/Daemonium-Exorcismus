@@ -1,6 +1,7 @@
 package com.daemonium_exorcismus.engine.core;
 
 import com.daemonium_exorcismus.ecs.Entity;
+import com.daemonium_exorcismus.ecs.components.Component;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
 import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
 import com.daemonium_exorcismus.ecs.components.RenderComponent;
@@ -54,12 +55,23 @@ public class RenderManager {
 
         for (Entity entity : entities) {
             RenderComponent render = (RenderComponent) entity.getComponent(ComponentNames.RENDER);
-            RigidBodyComponent body = (RigidBodyComponent) entity.getComponent(ComponentNames.RIGID_BODY);
-            body = (KinematicBodyComponent) entity.getComponent(ComponentNames.KINEMATIC_BODY);
+            RigidBodyComponent body = (KinematicBodyComponent) entity.getComponent(ComponentNames.KINEMATIC_BODY);
+            if (body == null) {
+                body = (RigidBodyComponent) entity.getComponent(ComponentNames.RIGID_BODY);
+            }
 
             if(render != null && body != null) {
-                g.drawImage(render.getSpriteSheet().crop(0, 0), (int)body.getPos().getPosX(),
-                        (int) body.getPos().getPosY(), null);
+                if (render.isFlipped()) {
+                    g.drawImage(render.getSpriteSheet().crop(0, 0),
+                            (int) body.getPos().getPosX() + (int) body.getSize().getPosX(),
+                            (int) body.getPos().getPosY(),
+                            -(int) body.getSize().getPosX(),
+                            (int) body.getSize().getPosY(),
+                            null);
+                } else {
+                    g.drawImage(render.getSpriteSheet().crop(0, 0), (int) body.getPos().getPosX(),
+                            (int) body.getPos().getPosY(), null);
+                }
             }
         }
 
