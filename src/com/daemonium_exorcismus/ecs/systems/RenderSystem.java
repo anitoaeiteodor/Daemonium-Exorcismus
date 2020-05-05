@@ -1,6 +1,8 @@
 package com.daemonium_exorcismus.ecs.systems;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 
 import com.daemonium_exorcismus.ecs.Entity;
@@ -22,11 +24,22 @@ public class RenderSystem extends SystemBase {
 
         for(String key : entityList.keySet()) {
             RenderComponent component = (RenderComponent) entityList.get(key).getComponent(ComponentNames.RENDER);
-            if (component != null && component.getVisibilityStatus()) {
+            if (component != null && component.isVisible()) {
                 toRender.add(entityList.get(key));
             }
         }
-
+        toRender.sort(new SortByLayer());
         RenderManager.GetInstance().draw(toRender);
+    }
+
+    static class SortByLayer implements Comparator<Entity> {
+
+        @Override
+        public int compare(Entity e1, Entity e2) {
+            RenderComponent c1 = (RenderComponent) e1.getComponent(ComponentNames.RENDER);
+            RenderComponent c2 = (RenderComponent) e2.getComponent(ComponentNames.RENDER);
+
+            return c1.getLayer() - c2.getLayer();
+        }
     }
 }

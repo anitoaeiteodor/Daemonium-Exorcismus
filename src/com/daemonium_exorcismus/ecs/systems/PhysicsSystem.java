@@ -90,11 +90,17 @@ public class PhysicsSystem extends SystemBase {
             System.err.println("[ERROR]: A physics entity does not have implement the collider component!");
             return Rectangle2D.EMPTY;
         }
+        int sizeX = (int)entityComponent.getSize().getPosX();
+        int sizeY = (int)entityComponent.getSize().getPosY();
+        int posX = (int)entityComponent.getPos().getPosX();
+        int posY = (int)entityComponent.getPos().getPosY();
 
-        return new Rectangle2D(entityComponent.getPos().getPosX() + collisionComponent.getOffsetFirst().getPosX(),
-                    entityComponent.getPos().getPosY() + collisionComponent.getOffsetFirst().getPosY(),
-                    entityComponent.getSize().getPosX() - collisionComponent.getOffsetSecond().getPosX(),
-                    entityComponent.getSize().getPosY() - collisionComponent.getOffsetSecond().getPosY());
+        return new Rectangle2D(posX + collisionComponent.getOffsetFirst().getPosX() * sizeX,
+                               posY + collisionComponent.getOffsetFirst().getPosY() * sizeY,
+                            sizeX - collisionComponent.getOffsetSecond().getPosX() * sizeX
+                                        - collisionComponent.getOffsetFirst().getPosX() * sizeX,
+                            sizeY - collisionComponent.getOffsetSecond().getPosY() * sizeY
+                                        - collisionComponent.getOffsetFirst().getPosY() * sizeY);
 
     }
 }

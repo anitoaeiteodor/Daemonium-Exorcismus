@@ -7,13 +7,17 @@ import java.io.IOException;
 import java.util.HashMap;
 
 public class AssetManager {
-    public static final HashMap<Assets, SpriteSheet> assets = new HashMap<>();
+    public static final HashMap<Assets, BufferedImage> assets = new HashMap<>();
+    private static SpriteSheet resources = new SpriteSheet(LoadImage("assets/0x72_16x16DungeonTileset.v4.png"),
+                            16, 16);
+    private static BufferedImage map = LoadImage("assets/map.png");
 
     public static void InitAssets() {
         System.out.println("Initializing assets");
-        assets.put(Assets.COBBLE, new SpriteSheet(LoadImage("assets\\tiles\\environment\\cobblestone.png")));
-        assets.put(Assets.CARPET, new SpriteSheet(LoadImage("assets\\tiles\\environment\\carpet.png")));
-        assets.put(Assets.PLAYER_IDLE, new SpriteSheet(LoadImage("assets\\chars\\priest\\priest_idle.png")));
+
+        assets.put(Assets.PLAYER, resources.crop(8, 14, 1, 1));
+        assets.put(Assets.SMALL_ENEMY, resources.crop(0, 11, 1, 1));
+        assets.put(Assets.MAP, map);
     }
 
     private static BufferedImage LoadImage(String path)

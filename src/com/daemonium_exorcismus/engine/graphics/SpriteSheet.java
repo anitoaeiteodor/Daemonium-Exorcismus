@@ -6,21 +6,21 @@ import java.awt.image.BufferedImage;
 
 public class SpriteSheet
 {
-    private BufferedImage       spriteSheet;              /*!< Referinta catre obiectul BufferedImage ce contine sprite sheet-ul.*/
-    private final Vec2D size = new Vec2D(32, 32);
+    private BufferedImage spriteSheet;
+    private Vec2D size;
 
-    public SpriteSheet(BufferedImage buffImg)
+    public SpriteSheet(BufferedImage buffImg, int spriteSizeX, int spriteSizeY)
     {
-        /// Retine referinta catre BufferedImage object.
         spriteSheet = buffImg;
+        size = new Vec2D(spriteSizeX, spriteSizeY);
     }
 
-
-    public BufferedImage crop(int x, int y)
+    public BufferedImage crop(int x, int y, int width, int height)
     {
         int tileWidth = (int)size.getPosX();
         int tileHeight = (int)size.getPosY();
-        return spriteSheet.getSubimage(x * tileWidth, y * tileHeight, tileWidth, tileHeight);
+        return spriteSheet.getSubimage(x * tileWidth, y * tileHeight,
+                            width * tileWidth, height * tileHeight);
     }
 
 }

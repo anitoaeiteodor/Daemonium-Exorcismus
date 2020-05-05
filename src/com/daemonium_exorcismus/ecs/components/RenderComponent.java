@@ -1,18 +1,28 @@
 package com.daemonium_exorcismus.ecs.components;
 
-import com.daemonium_exorcismus.engine.graphics.SpriteSheet;
+import java.awt.image.BufferedImage;
 
 public class RenderComponent extends Component {
 
     private boolean isVisible;
     private boolean isFlipped;
-    private SpriteSheet sprite;
+    private BufferedImage sprite;
+    private int layer;
 
-    public RenderComponent(boolean isVisible, SpriteSheet sprite, boolean isFlipped) {
+    public RenderComponent(boolean isVisible, BufferedImage sprite, boolean isFlipped, int layer) {
         this.name = ComponentNames.RENDER;
         this.isVisible = isVisible;
         this.sprite = sprite;
         this.isFlipped = isFlipped;
+        this.layer = layer;
+    }
+
+    public int getLayer() {
+        return layer;
+    }
+
+    public void setLayer(int layer) {
+        this.layer = layer;
     }
 
     public boolean isFlipped() {
@@ -27,11 +37,11 @@ public class RenderComponent extends Component {
         isVisible = visible;
     }
 
-    public boolean getVisibilityStatus() {
+    public boolean isVisible() {
         return isVisible;
     }
 
-    public SpriteSheet getSpriteSheet() {
+    public BufferedImage getSprite() {
         return sprite;
     }
 

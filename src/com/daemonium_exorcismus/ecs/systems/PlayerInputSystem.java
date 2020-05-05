@@ -14,6 +14,8 @@ import java.util.HashSet;
 
 public class PlayerInputSystem extends SystemBase {
 
+    private static final int SPEED = 10;
+
     public PlayerInputSystem() {
         name = SystemNames.PLAYER_INPUT;
         oldTime = 0;
@@ -43,16 +45,16 @@ public class PlayerInputSystem extends SystemBase {
         for (Integer key : input) {
             switch (key) {
                 case KeyEvent.VK_W:
-                    velY -= 10;
+                    velY -= SPEED;
                     break;
                 case KeyEvent.VK_S:
-                    velY += 10;
+                    velY += SPEED;
                     break;
                 case KeyEvent.VK_D:
-                    velX += 10;
+                    velX += SPEED;
                     break;
                 case KeyEvent.VK_A:
-                    velX -= 10;
+                    velX -= SPEED;
                     break;
             }
         }

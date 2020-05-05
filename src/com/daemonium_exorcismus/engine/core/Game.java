@@ -52,20 +52,31 @@ public class Game implements Runnable
 
         // temporary code here
         Entity player = new Entity();
-        player.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.PLAYER_IDLE), false));
-        player.addComponent(new KinematicBodyComponent(new Vec2D(100, 100),
-                new Vec2D(32, 32), new Vec2D(0, 0)));
+        player.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.PLAYER),
+                false, 1));
+        player.addComponent(new KinematicBodyComponent(new Vec2D(200, 200),
+                new Vec2D(64, 64), new Vec2D(0, 0)));
         player.addComponent(new PlayerControlledComponent(true));
-        player.addComponent(new ColliderComponent(true, new Vec2D(10, 5), new Vec2D(15, 10)));
+        player.addComponent(new ColliderComponent(true, new Vec2D(0.18, 0.18),
+                new Vec2D(0.18, 0)));
 
-        Entity cobble = new Entity();
-        cobble.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.COBBLE), false));
-        cobble.addComponent(new RigidBodyComponent(new Vec2D(300, 200),
-                new Vec2D(32, 32)));
-        cobble.addComponent(new ColliderComponent(true, Vec2D.ZERO, Vec2D.ZERO));
+        Entity map = new Entity();
+        map.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.MAP),
+                false, 0));
+        map.addComponent(new RigidBodyComponent(new Vec2D(0, 0),
+                new Vec2D(wnd.getWndWidth(), wnd.getWndHeight())));
+
+        Entity enemy = new Entity();
+        enemy.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.SMALL_ENEMY),
+                false, 1));
+        enemy.addComponent(new KinematicBodyComponent(new Vec2D(400, 200),
+                new Vec2D(64, 64), new Vec2D(0, 0)));
+        enemy.addComponent(new ColliderComponent(true, new Vec2D(0.18, 0.25),
+                new Vec2D(0.18, 0)));
 
         entities.put(player.getId(), player);
-        entities.put(cobble.getId(), cobble);
+        entities.put(map.getId(), map);
+        entities.put(enemy.getId(), enemy);
 
         SystemBase physics = new PhysicsSystem();
         SystemBase render = new RenderSystem();

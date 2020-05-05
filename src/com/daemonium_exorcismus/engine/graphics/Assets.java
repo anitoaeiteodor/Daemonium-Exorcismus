@@ -1,6 +1,9 @@
 package com.daemonium_exorcismus.engine.graphics;
 
 public enum Assets {
-    COBBLE, CARPET,
-    PLAYER_IDLE
+    PLAYER,
+    CRATE,
+    COLUMN,
+    SMALL_ENEMY,
+    MAP
 }

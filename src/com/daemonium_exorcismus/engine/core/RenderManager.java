@@ -1,11 +1,8 @@
 package com.daemonium_exorcismus.engine.core;
 
 import com.daemonium_exorcismus.ecs.Entity;
-import com.daemonium_exorcismus.ecs.components.Component;
-import com.daemonium_exorcismus.ecs.components.ComponentNames;
-import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
-import com.daemonium_exorcismus.ecs.components.RenderComponent;
-import com.daemonium_exorcismus.ecs.components.RigidBodyComponent;
+import com.daemonium_exorcismus.ecs.components.*;
+import com.daemonium_exorcismus.engine.utils.Vec2D;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;
@@ -62,15 +59,33 @@ public class RenderManager {
 
             if(render != null && body != null) {
                 if (render.isFlipped()) {
-                    g.drawImage(render.getSpriteSheet().crop(0, 0),
-                            (int) body.getPos().getPosX() + (int) body.getSize().getPosX(),
+                    g.drawImage(render.getSprite(),
+                            (int) (body.getPos().getPosX() + body.getSize().getPosX()),
                             (int) body.getPos().getPosY(),
                             -(int) body.getSize().getPosX(),
                             (int) body.getSize().getPosY(),
                             null);
                 } else {
-                    g.drawImage(render.getSpriteSheet().crop(0, 0), (int) body.getPos().getPosX(),
-                            (int) body.getPos().getPosY(), null);
+                    g.drawImage(render.getSprite(),
+                            (int) body.getPos().getPosX(),
+                            (int) body.getPos().getPosY(),
+                            (int) body.getSize().getPosX(),
+                            (int) body.getSize().getPosY(),
+                            null);
+                }
+
+                // debug info for collision
+                ColliderComponent collider = (ColliderComponent) entity.getComponent(ComponentNames.COLLIDER);
+                if (collider != null) {
+                    g.setColor(Color.YELLOW);
+                    int sizeX = (int)body.getSize().getPosX();
+                    int sizeY = (int)body.getSize().getPosY();
+                    g.drawRect((int)(body.getPos().getPosX() + collider.getOffsetFirst().getPosX() * sizeX),
+                            (int)(body.getPos().getPosY() + collider.getOffsetFirst().getPosY() * sizeY),
+                            (int)(sizeX - collider.getOffsetSecond().getPosX() * sizeX
+                                    - collider.getOffsetFirst().getPosX() * sizeX),
+                            (int)(sizeY - collider.getOffsetSecond().getPosY() * sizeY
+                                    - collider.getOffsetFirst().getPosY() * sizeY));
                 }
             }
         }
