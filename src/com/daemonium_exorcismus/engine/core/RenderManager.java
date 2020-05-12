@@ -12,6 +12,9 @@ public class RenderManager {
     private GameWindow wnd;
     private static RenderManager instance;
 
+    private boolean fadeToBlack;
+    private int alpha;
+
     private RenderManager(GameWindow window) {
         this.wnd = window;
     }
@@ -90,14 +93,25 @@ public class RenderManager {
             }
         }
 
-//        for (int i = 0; i * 32 < wnd.GetWndWidth(); i++)
-//            for(int j = 0; j * 32 < wnd.GetWndHeight(); j++)
-//                g.drawImage(cobble.crop((i + j) % 2, (i + j) % 2), i * 32, j * 32, null);
-//
-//        for (int i = 0; i * 32 < wnd.GetWndWidth(); i++)
-//            g.drawImage(carpet.crop(0, 0), i * 32, wnd.GetWndHeight() / 2, null);
+        if (fadeToBlack && alpha < 2550) {
+            alpha += 1;
+        } else if (!fadeToBlack && alpha > 0) {
+            alpha -= 1;
+        }
+
+        Color color = new Color(0, 0, 0, alpha / 10);
+        g.setColor(color);
+        g.fillRect(0, 0, wnd.getWndWidth(), wnd.getWndHeight());
 
         bs.show();
         g.dispose();
+    }
+
+    public boolean isFadeToBlack() {
+        return fadeToBlack;
+    }
+
+    public void setFadeToBlack(boolean fadeToBlack) {
+        this.fadeToBlack = fadeToBlack;
     }
 }

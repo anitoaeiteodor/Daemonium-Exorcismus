@@ -8,6 +8,7 @@ import java.util.HashMap;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
 import com.daemonium_exorcismus.ecs.components.RenderComponent;
+import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.engine.core.RenderManager;
 
 public class RenderSystem extends SystemBase {
@@ -16,6 +17,8 @@ public class RenderSystem extends SystemBase {
         this.name = SystemNames.RENDER;
         oldTime = 0;
     }
+
+    private boolean isFading;
 
     @Override
     public void updateSystem(HashMap<String, Entity> entityList, long newTime) {
@@ -29,7 +32,13 @@ public class RenderSystem extends SystemBase {
             }
         }
         toRender.sort(new SortByLayer());
+
+        RenderManager.GetInstance().setFadeToBlack(isFading);
         RenderManager.GetInstance().draw(toRender);
+    }
+
+    public void setFading(boolean fading) {
+        isFading = fading;
     }
 
     static class SortByLayer implements Comparator<Entity> {

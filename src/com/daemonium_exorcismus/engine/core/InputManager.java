@@ -23,6 +23,9 @@ public class InputManager extends KeyAdapter {
             case KeyEvent.VK_D:
                 keysPressed.add(KeyEvent.VK_D);
                 break;
+            case KeyEvent.VK_F:
+                keysPressed.add(KeyEvent.VK_F);
+                break;
         }
     }
 
@@ -40,6 +43,10 @@ public class InputManager extends KeyAdapter {
                 break;
             case KeyEvent.VK_D:
                 keysPressed.remove(KeyEvent.VK_D);
+                break;
+            case KeyEvent.VK_F:
+                keysPressed.remove(KeyEvent.VK_F);
+                break;
         }
     }
 }

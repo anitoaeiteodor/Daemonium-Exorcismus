@@ -7,10 +7,12 @@ import java.util.HashMap;
 public class Entity {
 
     private String id;
+    private EntityType type;
     private HashMap<String, Component> components = new HashMap<>();
 
-    public Entity() {
+    public Entity(EntityType type) {
         id = String.format("%f", Math.random());
+        this.type = type;
     }
 
     public void addComponent(Component component) {
@@ -35,6 +37,10 @@ public class Entity {
 
     public String getId() {
         return id;
+    }
+
+    public EntityType getType() {
+        return type;
     }
 
     public Component getComponent(String name) {

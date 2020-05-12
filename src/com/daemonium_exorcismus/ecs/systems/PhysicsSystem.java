@@ -68,7 +68,6 @@ public class PhysicsSystem extends SystemBase {
         if (comp == null) {
             return;
         }
-
         comp.setPos(comp.getPos().add(comp.getVelocity()));
     }
 
