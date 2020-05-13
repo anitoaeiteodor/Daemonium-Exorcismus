@@ -34,7 +34,6 @@ public class PhysicsSystem extends SystemBase {
             }
         }
 
-
         for (Entity entity : physicsObjects) {
             applyVelocity(entity);
         }

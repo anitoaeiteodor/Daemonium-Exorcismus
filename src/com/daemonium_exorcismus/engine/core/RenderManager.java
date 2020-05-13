@@ -78,18 +78,18 @@ public class RenderManager {
                 }
 
                 // debug info for collision
-                ColliderComponent collider = (ColliderComponent) entity.getComponent(ComponentNames.COLLIDER);
-                if (collider != null) {
-                    g.setColor(Color.YELLOW);
-                    int sizeX = (int)body.getSize().getPosX();
-                    int sizeY = (int)body.getSize().getPosY();
-                    g.drawRect((int)(body.getPos().getPosX() + collider.getOffsetFirst().getPosX() * sizeX),
-                            (int)(body.getPos().getPosY() + collider.getOffsetFirst().getPosY() * sizeY),
-                            (int)(sizeX - collider.getOffsetSecond().getPosX() * sizeX
-                                    - collider.getOffsetFirst().getPosX() * sizeX),
-                            (int)(sizeY - collider.getOffsetSecond().getPosY() * sizeY
-                                    - collider.getOffsetFirst().getPosY() * sizeY));
-                }
+//                ColliderComponent collider = (ColliderComponent) entity.getComponent(ComponentNames.COLLIDER);
+//                if (collider != null) {
+//                    g.setColor(Color.YELLOW);
+//                    int sizeX = (int)body.getSize().getPosX();
+//                    int sizeY = (int)body.getSize().getPosY();
+//                    g.drawRect((int)(body.getPos().getPosX() + collider.getOffsetFirst().getPosX() * sizeX),
+//                            (int)(body.getPos().getPosY() + collider.getOffsetFirst().getPosY() * sizeY),
+//                            (int)(sizeX - collider.getOffsetSecond().getPosX() * sizeX
+//                                    - collider.getOffsetFirst().getPosX() * sizeX),
+//                            (int)(sizeY - collider.getOffsetSecond().getPosY() * sizeY
+//                                    - collider.getOffsetFirst().getPosY() * sizeY));
+//                }
             }
         }
 

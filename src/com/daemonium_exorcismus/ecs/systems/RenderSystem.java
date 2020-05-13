@@ -7,7 +7,9 @@ import java.util.HashMap;
 
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
+import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
 import com.daemonium_exorcismus.ecs.components.RenderComponent;
+import com.daemonium_exorcismus.ecs.components.RigidBodyComponent;
 import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.engine.core.RenderManager;
 
@@ -48,6 +50,20 @@ public class RenderSystem extends SystemBase {
             RenderComponent c1 = (RenderComponent) e1.getComponent(ComponentNames.RENDER);
             RenderComponent c2 = (RenderComponent) e2.getComponent(ComponentNames.RENDER);
 
+            if (c1.getLayer() == c2.getLayer()) {
+                RigidBodyComponent r1 = (KinematicBodyComponent) e1.getComponent(ComponentNames.KINEMATIC_BODY);
+                if (r1 == null) {
+                    r1 = (RigidBodyComponent) e1.getComponent(ComponentNames.RIGID_BODY);
+                }
+
+                RigidBodyComponent r2 = (KinematicBodyComponent) e2.getComponent(ComponentNames.KINEMATIC_BODY);
+                if (r2 == null) {
+                    r2 = (RigidBodyComponent) e2.getComponent(ComponentNames.RIGID_BODY);
+                }
+
+                return (int)(r1.getPos().getPosY() + r1.getSize().getPosY())
+                        - (int)(r2.getPos().getPosY() + r2.getSize().getPosY());
+            }
             return c1.getLayer() - c2.getLayer();
         }
     }

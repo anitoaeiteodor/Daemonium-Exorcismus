@@ -17,6 +17,9 @@ public class AssetManager {
 
         assets.put(Assets.PLAYER, resources.crop(8, 14, 1, 1));
         assets.put(Assets.SMALL_ENEMY, resources.crop(0, 11, 1, 1));
+        assets.put(Assets.SKULL, resources.crop(1, 3, 1, 1));
+        assets.put(Assets.CRATE, resources.crop(5, 6,1, 2));
+        assets.put(Assets.COLUMN, resources.crop(13, 11, 1, 2));
         assets.put(Assets.MAP, map);
     }
 

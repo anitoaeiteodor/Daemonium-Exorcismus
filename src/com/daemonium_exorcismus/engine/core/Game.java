@@ -3,6 +3,7 @@ package com.daemonium_exorcismus.engine.core;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.*;
+import com.daemonium_exorcismus.ecs.factory.EntityFactory;
 import com.daemonium_exorcismus.ecs.systems.PhysicsSystem;
 import com.daemonium_exorcismus.ecs.systems.PlayerInputSystem;
 import com.daemonium_exorcismus.ecs.systems.RenderSystem;
@@ -55,62 +56,19 @@ public class Game implements Runnable
 
         map = new Map(entities, systems, wnd);
 
-        Entity player = new Entity(EntityType.PLAYER);
-        player.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.PLAYER),
-                false, 1));
-        player.addComponent(new KinematicBodyComponent(new Vec2D(200, 200),
-                new Vec2D(64, 64), new Vec2D(0, 0)));
-        player.addComponent(new PlayerControlledComponent(true));
-        player.addComponent(new ColliderComponent(true, new Vec2D(0.18, 0.18),
-                new Vec2D(0.18, 0)));
+        EntityFactory factory = new EntityFactory();
 
-        Entity map = new Entity(EntityType.MAP);
-        map.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.MAP),
-                false, 0));
-        map.addComponent(new RigidBodyComponent(new Vec2D(0, 0),
-                new Vec2D(wnd.getWndWidth(), wnd.getWndHeight())));
-
-        Entity enemy = new Entity(EntityType.ENEMY);
-        enemy.addComponent(new RenderComponent(true, AssetManager.assets.get(Assets.SMALL_ENEMY),
-                false, 1));
-        enemy.addComponent(new KinematicBodyComponent(new Vec2D(400, 200),
-                new Vec2D(64, 64), new Vec2D(0, 0)));
-        enemy.addComponent(new ColliderComponent(true, new Vec2D(0.18, 0.25),
-                new Vec2D(0.18, 0)));
-
-        Entity upperBound = new Entity(EntityType.WALL);
-        upperBound.addComponent(new RigidBodyComponent(new Vec2D(0, 0),
-                new Vec2D(wnd.getWndWidth(), 0.15 * wnd.getWndHeight())));
-        upperBound.addComponent(new ColliderComponent(true, new Vec2D(0, 0),
-                new Vec2D(0, 0)));
-        upperBound.addComponent(new RenderComponent(true, null, false, 1));
-
-        Entity lowerBound = new Entity(EntityType.WALL);
-        lowerBound.addComponent(new RigidBodyComponent(new Vec2D(0, wnd.getWndHeight()),
-                new Vec2D(wnd.getWndWidth(), 0.05 * wnd.getWndHeight())));
-        lowerBound.addComponent(new ColliderComponent(true, new Vec2D(0, 0),
-                new Vec2D(0, 0)));
-        lowerBound.addComponent(new RenderComponent(true, null, false, 1));
-
-        Entity leftBound = new Entity(EntityType.WALL);
-        leftBound.addComponent(new RigidBodyComponent(new Vec2D(0, 0),
-                new Vec2D(wnd.getWndWidth() * 0.01, wnd.getWndHeight())));
-        leftBound.addComponent(new ColliderComponent(true, Vec2D.ZERO, Vec2D.ZERO));
-        leftBound.addComponent(new RenderComponent(true, null, false, 1));
-
-        Entity rightBound = new Entity(EntityType.WALL);
-        rightBound.addComponent(new RigidBodyComponent(new Vec2D(wnd.getWndWidth() * 0.99, 0),
-                new Vec2D(wnd.getWndWidth() * 0.01, wnd.getWndHeight())));
-        rightBound.addComponent(new ColliderComponent(true, Vec2D.ZERO, Vec2D.ZERO));
-        rightBound.addComponent(new RenderComponent(true, null, false, 1));
+        Entity player = factory.getEntity(EntityType.PLAYER, new Vec2D(200, 200), true);
+        Entity enemy = factory.getEntity(EntityType.ENEMY, new Vec2D(400, 200), true);
+        Entity skull = factory.getEntity(EntityType.SKULL, new Vec2D(200, 250), true);
+        Entity crate = factory.getEntity(EntityType.CRATE, new Vec2D(400, 450), true);
+        Entity column = factory.getEntity(EntityType.COLUMN, new Vec2D(200, 470), true);
 
         entities.put(player.getId(), player);
-        entities.put(map.getId(), map);
         entities.put(enemy.getId(), enemy);
-        entities.put(upperBound.getId(), upperBound);
-        entities.put(lowerBound.getId(), lowerBound);
-        entities.put(leftBound.getId(), leftBound);
-        entities.put(rightBound.getId(), rightBound);
+        entities.put(skull.getId(), skull);
+        entities.put(crate.getId(), crate);
+        entities.put(column.getId(), column);
 
         SystemBase physics = new PhysicsSystem();
         SystemBase render = new RenderSystem();

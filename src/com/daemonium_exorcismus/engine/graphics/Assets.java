@@ -5,5 +5,6 @@ public enum Assets {
     CRATE,
     COLUMN,
     SMALL_ENEMY,
-    MAP
+    MAP,
+    SKULL,
 }
