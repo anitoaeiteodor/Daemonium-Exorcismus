@@ -60,7 +60,7 @@ public class RenderManager {
                 body = (RigidBodyComponent) entity.getComponent(ComponentNames.RIGID_BODY);
             }
 
-            if(render != null && body != null) {
+            if(render != null && body != null && render.isVisible()) {
                 if (render.isFlipped()) {
                     g.drawImage(render.getSprite(),
                             (int) (body.getPos().getPosX() + body.getSize().getPosX()),

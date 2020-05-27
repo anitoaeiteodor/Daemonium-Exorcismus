@@ -20,6 +20,7 @@ public class AssetManager {
         assets.put(Assets.SKULL, resources.crop(1, 3, 1, 1));
         assets.put(Assets.CRATE, resources.crop(5, 6,1, 2));
         assets.put(Assets.COLUMN, resources.crop(13, 11, 1, 2));
+        assets.put(Assets.PLAYER_PROJ, resources.crop(5, 8, 1, 1));
         assets.put(Assets.MAP, map);
     }
 

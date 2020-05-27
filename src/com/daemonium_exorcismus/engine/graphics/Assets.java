@@ -7,4 +7,6 @@ public enum Assets {
     SMALL_ENEMY,
     MAP,
     SKULL,
+    PLAYER_PROJ,
+
 }

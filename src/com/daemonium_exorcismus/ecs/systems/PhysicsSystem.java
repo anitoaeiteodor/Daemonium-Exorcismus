@@ -1,17 +1,20 @@
 package com.daemonium_exorcismus.ecs.systems;
 
 import com.daemonium_exorcismus.ecs.Entity;
-import com.daemonium_exorcismus.ecs.components.ColliderComponent;
-import com.daemonium_exorcismus.ecs.components.ComponentNames;
-import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
-import com.daemonium_exorcismus.ecs.components.RigidBodyComponent;
+import com.daemonium_exorcismus.ecs.EntityType;
+import com.daemonium_exorcismus.ecs.components.*;
+import com.daemonium_exorcismus.ecs.components.Component;
 import com.daemonium_exorcismus.engine.core.Game;
+import com.daemonium_exorcismus.engine.utils.Vec2D;
 import javafx.geometry.Rectangle2D;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PhysicsSystem extends SystemBase {
+
+    private double deltaTime;
 
     public PhysicsSystem() {
         this.name = SystemNames.PHYSICS;
@@ -23,6 +26,7 @@ public class PhysicsSystem extends SystemBase {
         if(newTime - oldTime < Game.timeFrame)
             return;
 
+        deltaTime = (newTime - oldTime) / 1000000000.;
         oldTime = newTime;
 
         ArrayList<Entity> physicsObjects = new ArrayList<>();
@@ -38,19 +42,111 @@ public class PhysicsSystem extends SystemBase {
             applyVelocity(entity);
         }
 
-        ArrayList<Entity> revertVelocityObjects = new ArrayList<>();
-        for (int i = 0; i < physicsObjects.size() - 1; i++) {
-            for (int j = i + 1; j < physicsObjects.size(); j++) {
-                if (checkCollision(physicsObjects.get(i), physicsObjects.get(j))) {
-                    revertVelocityObjects.add(physicsObjects.get(i));
-                    revertVelocityObjects.add(physicsObjects.get(j));
+        ArrayList<Entity> toRemove = new ArrayList<>();
+
+        for (int i = 0; i < physicsObjects.size(); i++) {
+            for (int j = 0; j < physicsObjects.size(); j++) {
+                Entity entityA = physicsObjects.get(i);
+                Entity entityB = physicsObjects.get(j);
+
+                if (i == j) {
+                    continue;
                 }
+
+                if (!checkCollision(entityA, entityB)) {
+                    continue;
+                }
+
+                // if it's a bullet, don't bother checking axis collision
+
+                if (entityA.getType() == EntityType.PLAYER_PROJ) {
+                    System.out.println("A bullet collided with a " + entityB.getType());
+                    if (entityB.getType() == EntityType.ENEMY) {
+                        HealthComponent hc = (HealthComponent) entityB.getComponent(ComponentNames.HEALTH);
+                        RenderComponent rc = (RenderComponent) entityB.getComponent(ComponentNames.RENDER);
+                        rc.setFlashing(true);
+                        hc.takeDamage(50);
+                        if (hc.isDead()) {
+                            toRemove.add(entityB);
+                        }
+                    }
+                    toRemove.add(entityA);
+                    continue;
+                }
+
+                // if player collided with an enemy, take damage
+
+                if (entityA.getType() == EntityType.PLAYER) {
+                    if (entityB.getType() == EntityType.ENEMY) {
+                        System.out.println("Player collided with enemy");
+                        HealthComponent hc = (HealthComponent) entityA.getComponent(ComponentNames.HEALTH);
+                        hc.takeDamage(10);
+                        if (hc.isDead()) {
+                            toRemove.add(entityA);
+                        }
+                    }
+                }
+
+                Vec2D xAxis = new Vec2D(1, 0);
+                Vec2D yAxis = new Vec2D(0, 1);
+
+                KinematicBodyComponent kBodyA = (KinematicBodyComponent)
+                        entityA.getComponent(ComponentNames.KINEMATIC_BODY);
+
+                if (kBodyA == null) {
+                    continue;
+                }
+
+                boolean xCollision = isCollidingOnAxis(entityA, entityB, xAxis);
+                boolean yCollision = isCollidingOnAxis(entityA, entityB, yAxis);
+
+                // only slide if entity is player / mob
+
+                revertVelocity(entityA);
+
+                if (xCollision && !yCollision) {
+//                    System.out.println("Collision on x axis");
+                    kBodyA.setVelocity(kBodyA.getVelocity().mul(yAxis));
+                } else if (!xCollision && yCollision) {
+//                    System.out.println("Collision on y axis");
+                    kBodyA.setVelocity(kBodyA.getVelocity().mul(xAxis));
+                } else {
+                    kBodyA.setVelocity(kBodyA.getVelocity().mul(Vec2D.ZERO));
+                }
+
+                applyVelocity(entityA);
             }
         }
 
-        for (Entity entity : revertVelocityObjects) {
-            revertVelocity(entity);
+        for (Entity end : toRemove) {
+            entityList.remove(end.getId());
         }
+
+    }
+
+    private boolean insideQueue(ArrayList<Entity> list, Entity entity) {
+        for (Entity e : list) {
+            if (e.getId().equals(entity.getId())) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isCollidingOnAxis(Entity entity, Entity other, Vec2D dir) {
+        // entity is implementing kinematic body component
+        revertVelocity(entity);
+
+        KinematicBodyComponent entityComponent = (KinematicBodyComponent)
+                entity.getComponent(ComponentNames.KINEMATIC_BODY);
+
+        Vec2D prevPos = entityComponent.getPos();
+        entityComponent.setPos(entityComponent.getPos().add(entityComponent.getVelocity().mul(dir)));
+        boolean result = checkCollision(entity, other);
+        entityComponent.setPos(prevPos);
+
+        applyVelocity(entity);
+        return result;
     }
 
     private void revertVelocity(Entity entity) {
@@ -88,10 +184,11 @@ public class PhysicsSystem extends SystemBase {
             System.err.println("[ERROR]: A physics entity does not have implement the collider component!");
             return Rectangle2D.EMPTY;
         }
+
         int sizeX = (int)entityComponent.getSize().getPosX();
         int sizeY = (int)entityComponent.getSize().getPosY();
-        int posX = (int)entityComponent.getPos().getPosX();
-        int posY = (int)entityComponent.getPos().getPosY();
+        int posX  = (int)entityComponent.getPos().getPosX();
+        int posY  = (int)entityComponent.getPos().getPosY();
 
         return new Rectangle2D(posX + collisionComponent.getOffsetFirst().getPosX() * sizeX,
                                posY + collisionComponent.getOffsetFirst().getPosY() * sizeY,

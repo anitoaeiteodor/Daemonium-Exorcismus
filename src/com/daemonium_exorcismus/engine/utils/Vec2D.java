@@ -19,6 +19,14 @@ public class Vec2D {
         return new Vec2D(posX - other.posX, posY - other.posY);
     }
 
+    public Vec2D mul(Vec2D other) {
+        return new Vec2D(posX * other.posX, posY * other.posY);
+    }
+
+    public Vec2D scale(double alpha) {
+        return new Vec2D(posX * alpha, posY * alpha);
+    }
+
     public double dotProduct(Vec2D other) {
         return posX * other.posX + posY * other.posY;
     }

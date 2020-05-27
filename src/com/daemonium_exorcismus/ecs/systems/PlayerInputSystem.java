@@ -1,11 +1,17 @@
 package com.daemonium_exorcismus.ecs.systems;
 
 import com.daemonium_exorcismus.ecs.Entity;
+import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
 import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
 import com.daemonium_exorcismus.ecs.components.RenderComponent;
+import com.daemonium_exorcismus.ecs.components.RigidBodyComponent;
+import com.daemonium_exorcismus.ecs.factory.EntityFactory;
 import com.daemonium_exorcismus.engine.core.Game;
-import com.daemonium_exorcismus.engine.core.InputManager;
+import com.daemonium_exorcismus.engine.core.KeyboardManager;
+import com.daemonium_exorcismus.engine.core.MouseManager;
+import com.daemonium_exorcismus.engine.graphics.AssetManager;
+import com.daemonium_exorcismus.engine.graphics.Assets;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
 import java.awt.event.KeyEvent;
@@ -15,6 +21,8 @@ import java.util.HashSet;
 public class PlayerInputSystem extends SystemBase {
 
     private static final int SPEED = 10;
+    private static final double RELOAD_SPEED = 5 * Game.timeFrame;
+    private long lastReloadTime = 0;
 
     public PlayerInputSystem() {
         name = SystemNames.PLAYER_INPUT;
@@ -26,9 +34,7 @@ public class PlayerInputSystem extends SystemBase {
         if(newTime - oldTime < Game.timeFrame)
             return;
 
-        oldTime = newTime;
-
-        HashSet<Integer> input = InputManager.keysPressed;
+        HashSet<Integer> input = KeyboardManager.keysPressed;
 
         Entity player = null;
 
@@ -39,9 +45,46 @@ public class PlayerInputSystem extends SystemBase {
             }
         }
 
+        if (player == null) {
+            return;
+        }
+
+        lastReloadTime += newTime - oldTime;
+        if (lastReloadTime > RELOAD_SPEED) {
+            Vec2D mousePos = MouseManager.mousePos;
+
+            if (mousePos.getPosY() != -1) {
+                lastReloadTime = 0;
+                MouseManager.mousePos = new Vec2D(-1, -1);
+                mousePos.add(new Vec2D(32, 32));
+                KinematicBodyComponent playerBody = ((KinematicBodyComponent)
+                        player.getComponent(ComponentNames.KINEMATIC_BODY));
+
+                EntityFactory factory = new EntityFactory();
+
+                Vec2D velocity = mousePos.sub(((KinematicBodyComponent)
+                        player.getComponent(ComponentNames.KINEMATIC_BODY)).getPos().add(new Vec2D(32, 32)));
+                velocity = velocity.scale(1. / velocity.norm());
+
+                Entity spawn = factory.getEntity(EntityType.PLAYER_PROJ, playerBody.getPos().add(velocity.scale(30)),
+                        true);
+
+                KinematicBodyComponent kBody = (KinematicBodyComponent) spawn.getComponent(ComponentNames.KINEMATIC_BODY);
+                kBody.setVelocity(velocity.scale(20));
+                entityList.put(spawn.getId(), spawn);
+
+                RenderComponent rc = (RenderComponent) player.getComponent(ComponentNames.RENDER);
+                rc.setFlipped(false);
+                if (mousePos.sub(playerBody.getPos()).getPosX() < 0) {
+                    rc.setFlipped(true);
+                }
+            }
+        } else {
+            MouseManager.mousePos = new Vec2D(-1, -1);
+        }
+
         double velX = 0;
         double velY = 0;
-
         for (Integer key : input) {
             switch (key) {
                 case KeyEvent.VK_W:
@@ -60,7 +103,6 @@ public class PlayerInputSystem extends SystemBase {
         }
         Vec2D velocity = new Vec2D(velX, velY);
 
-        assert player != null;
         if (!player.hasComponent(ComponentNames.KINEMATIC_BODY)) {
             System.err.println("Player does not have kinematic body component!");
         } else {
@@ -71,5 +113,7 @@ public class PlayerInputSystem extends SystemBase {
                 ((RenderComponent) player.getComponent(ComponentNames.RENDER)).setFlipped(false);
             }
         }
+
+        oldTime = newTime;
     }
 }

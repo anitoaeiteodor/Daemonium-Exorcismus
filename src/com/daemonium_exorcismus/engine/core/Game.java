@@ -2,12 +2,8 @@ package com.daemonium_exorcismus.engine.core;
 
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
-import com.daemonium_exorcismus.ecs.components.*;
 import com.daemonium_exorcismus.ecs.factory.EntityFactory;
-import com.daemonium_exorcismus.ecs.systems.PhysicsSystem;
-import com.daemonium_exorcismus.ecs.systems.PlayerInputSystem;
-import com.daemonium_exorcismus.ecs.systems.RenderSystem;
-import com.daemonium_exorcismus.ecs.systems.SystemBase;
+import com.daemonium_exorcismus.ecs.systems.*;
 
 import java.awt.event.KeyEvent;
 import java.util.ArrayList;
@@ -30,8 +26,8 @@ public class Game implements Runnable
     private ArrayList<SystemBase> systems = new ArrayList<>();
     private Map map;
 
-    public final static int framesPerSecond   = 60; /*!< Constanta intreaga initializata cu numarul de frame-uri pe secunda.*/
-    public final static double timeFrame      = 1000000000.0 / framesPerSecond; /*!< Durata unui frame in nanosecunde.*/
+    public final static int ticksPerSecond = 60;
+    public final static double timeFrame      = 1000000000.0 / ticksPerSecond;
 
 
     public Game(String title, int width, int height)
@@ -50,7 +46,7 @@ public class Game implements Runnable
 
         AssetManager.InitAssets();
         RenderManager.InitRenderManager(wnd);
-        wnd.addListener(new InputManager());
+        wnd.addListeners(new KeyboardManager(), new MouseManager());
 
         // temporary code here
 
@@ -60,12 +56,16 @@ public class Game implements Runnable
 
         Entity player = factory.getEntity(EntityType.PLAYER, new Vec2D(200, 200), true);
         Entity enemy = factory.getEntity(EntityType.ENEMY, new Vec2D(400, 200), true);
+        Entity enemy2 = factory.getEntity(EntityType.ENEMY, new Vec2D(500, 200), true);
+        Entity enemy3 = factory.getEntity(EntityType.ENEMY, new Vec2D(500, 300), true);
         Entity skull = factory.getEntity(EntityType.SKULL, new Vec2D(200, 250), true);
         Entity crate = factory.getEntity(EntityType.CRATE, new Vec2D(400, 450), true);
         Entity column = factory.getEntity(EntityType.COLUMN, new Vec2D(200, 470), true);
 
         entities.put(player.getId(), player);
         entities.put(enemy.getId(), enemy);
+        entities.put(enemy2.getId(), enemy2);
+        entities.put(enemy3.getId(), enemy3);
         entities.put(skull.getId(), skull);
         entities.put(crate.getId(), crate);
         entities.put(column.getId(), column);
@@ -73,10 +73,12 @@ public class Game implements Runnable
         SystemBase physics = new PhysicsSystem();
         SystemBase render = new RenderSystem();
         SystemBase input = new PlayerInputSystem();
+        SystemBase enemyAI = new EnemySystem();
 
         systems.add(render);
         systems.add(input);
         systems.add(physics);
+        systems.add(enemyAI);
     }
 
     public void run()
@@ -121,7 +123,7 @@ public class Game implements Runnable
 
     private void update(long newTime)
     {
-        if (InputManager.keysPressed.contains(KeyEvent.VK_F)) {
+        if (KeyboardManager.keysPressed.contains(KeyEvent.VK_F)) {
             map.setLoadNextArea(true);
         }
         for(SystemBase system : systems) {

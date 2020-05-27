@@ -160,7 +160,6 @@ public class Map {
                 rects.add(rect);
             }
 
-            System.out.println(posX + " " + posY);
             Entity column = factory.getEntity(EntityType.COLUMN, new Vec2D(posX, posY), true);
             entities.put(column.getId(), column);
 
@@ -188,7 +187,6 @@ public class Map {
                 rects.add(rect);
             }
 
-            System.out.println(posX + " " + posY);
             Entity crate = factory.getEntity(EntityType.CRATE, new Vec2D(posX, posY), true);
             entities.put(crate.getId(), crate);
 
@@ -216,7 +214,6 @@ public class Map {
                 rects.add(rect);
             }
 
-            System.out.println(posX + " " + posY);
             Entity skull = factory.getEntity(EntityType.SKULL, new Vec2D(posX, posY), true);
             entities.put(skull.getId(), skull);
 

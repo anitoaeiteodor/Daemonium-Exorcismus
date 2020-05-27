@@ -4,7 +4,7 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
 
-public class InputManager extends KeyAdapter {
+public class KeyboardManager extends KeyAdapter {
 
     public static HashSet<Integer> keysPressed = new HashSet<>();
 

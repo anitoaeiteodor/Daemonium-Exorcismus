@@ -3,6 +3,7 @@ package com.daemonium_exorcismus.engine.core;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyAdapter;
+import java.awt.event.MouseListener;
 
 /*! \class GameWindow
     \brief Implementeaza notiunea de fereastra a jocului.
@@ -49,9 +50,12 @@ public class GameWindow
         wndFrame.pack();
     }
 
-    public void addListener(KeyAdapter adapter) {
+    public void addListeners(KeyAdapter adapter, MouseListener listener) {
         System.out.println("Added adapter: " + adapter);
+        System.out.println("Added listener: " + listener);
         canvas.addKeyListener(adapter);
+        canvas.addMouseListener(listener);
+        canvas.requestFocus();
     }
 
     /*! \fn public int GetWndWidth()

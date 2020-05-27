@@ -21,9 +21,22 @@ public class EntityFactory {
                 return createSkull(position, isVisible);
             case ENEMY:
                 return createEnemy(position, isVisible);
+            case PLAYER_PROJ:
+                return createPlayerProj(position, isVisible);
         }
         System.out.println("[ERROR]: Entity type not found!");
         return null;
+    }
+
+    private Entity createPlayerProj(Vec2D position, boolean isVisible) {
+        Entity proj = new Entity(EntityType.PLAYER_PROJ);
+        proj.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.PLAYER_PROJ),
+                false, 2));
+        proj.addComponent(new KinematicBodyComponent(position,
+                new Vec2D(64, 64), new Vec2D(0, 0)));
+        proj.addComponent(new ColliderComponent(true, new Vec2D(0.40, 0.40),
+                new Vec2D(0.40, 0.40)));
+        return proj;
     }
 
     private Entity createEnemy(Vec2D position, boolean isVisible) {
@@ -32,8 +45,9 @@ public class EntityFactory {
                 false, 2));
         enemy.addComponent(new KinematicBodyComponent(position,
                 new Vec2D(64, 64), new Vec2D(0, 0)));
-        enemy.addComponent(new ColliderComponent(true, new Vec2D(0.25, 0.25),
-                new Vec2D(0.25, 0)));
+        enemy.addComponent(new ColliderComponent(true, new Vec2D(0.25, 0.35),
+                new Vec2D(0.25, 0.15)));
+        enemy.addComponent(new HealthComponent(100));
         return enemy;
     }
 
@@ -72,8 +86,9 @@ public class EntityFactory {
         player.addComponent(new KinematicBodyComponent(position, new Vec2D(64, 64),
                 new Vec2D(0, 0)));
         player.addComponent(new PlayerControlledComponent(true));
-        player.addComponent(new ColliderComponent(true, new Vec2D(0.18, 0.18),
-                new Vec2D(0.18, 0)));
+        player.addComponent(new ColliderComponent(true, new Vec2D(0.18, 0.24),
+                new Vec2D(0.18, 0.15)));
+        player.addComponent(new HealthComponent(100));
 
         return player;
     }

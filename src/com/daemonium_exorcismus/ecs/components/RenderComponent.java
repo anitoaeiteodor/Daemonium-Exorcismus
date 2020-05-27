@@ -8,6 +8,7 @@ public class RenderComponent extends Component {
     private boolean isFlipped;
     private BufferedImage sprite;
     private int layer;
+    private boolean isFlashing;
 
     public RenderComponent(boolean isVisible, BufferedImage sprite, boolean isFlipped, int layer) {
         this.name = ComponentNames.RENDER;
@@ -15,6 +16,15 @@ public class RenderComponent extends Component {
         this.sprite = sprite;
         this.isFlipped = isFlipped;
         this.layer = layer;
+        this.isFlashing = false;
+    }
+
+    public boolean isFlashing() {
+        return isFlashing;
+    }
+
+    public void setFlashing(boolean flashing) {
+        isFlashing = flashing;
     }
 
     public int getLayer() {

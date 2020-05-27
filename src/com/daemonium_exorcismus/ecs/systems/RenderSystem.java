@@ -21,18 +21,41 @@ public class RenderSystem extends SystemBase {
     }
 
     private boolean isFading;
+    private HashMap<String, Long> flashing = new HashMap<>();
+    private static final int FLASH_FRAME_COUNT = 4;
 
     @Override
     public void updateSystem(HashMap<String, Entity> entityList, long newTime) {
-        // this system updates as many times as possible per second, no need for newTime
+        // this system updates as many times as possible per second
+//        System.out.println("[FPS]: " + 1. / ((newTime - oldTime) / 1000000000.));
+//        oldTime = newTime;
         ArrayList<Entity> toRender = new ArrayList<>();
+
+        for (String entId : flashing.keySet()) {
+            Entity ent = entityList.get(entId);
+            if (ent == null) {
+                continue;
+            }
+            if (newTime - flashing.get(entId) > Game.timeFrame * FLASH_FRAME_COUNT) {
+                RenderComponent rc = (RenderComponent) ent.getComponent(ComponentNames.RENDER);
+                rc.setVisible(true);
+            }
+        }
+
 
         for(String key : entityList.keySet()) {
             RenderComponent component = (RenderComponent) entityList.get(key).getComponent(ComponentNames.RENDER);
             if (component != null && component.isVisible()) {
                 toRender.add(entityList.get(key));
             }
+            if(component != null && component.isFlashing()) {
+                System.out.println("Set " + entityList.get(key).getType() + " to flash");
+                flashing.put(key, newTime);
+                component.setFlashing(false);
+                component.setVisible(false);
+            }
         }
+
         toRender.sort(new SortByLayer());
 
         RenderManager.GetInstance().setFadeToBlack(isFading);
