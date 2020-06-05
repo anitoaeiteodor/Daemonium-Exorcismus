@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import com.daemonium_exorcismus.engine.graphics.*;
+import com.daemonium_exorcismus.engine.input.KeyboardManager;
+import com.daemonium_exorcismus.engine.input.MouseManager;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
 public class Game implements Runnable
@@ -55,12 +57,14 @@ public class Game implements Runnable
         EntityFactory factory = new EntityFactory();
 
         Entity player = factory.getEntity(EntityType.PLAYER, new Vec2D(200, 200), true);
-        Entity enemy = factory.getEntity(EntityType.ENEMY, new Vec2D(400, 200), true);
-        Entity enemy2 = factory.getEntity(EntityType.ENEMY, new Vec2D(500, 200), true);
-        Entity enemy3 = factory.getEntity(EntityType.ENEMY, new Vec2D(500, 300), true);
+        Entity enemy = factory.getEntity(EntityType.REGULAR_ENEMY, new Vec2D(400, 200), true);
+        Entity enemy2 = factory.getEntity(EntityType.REGULAR_ENEMY, new Vec2D(500, 200), true);
+        Entity enemy3 = factory.getEntity(EntityType.REGULAR_ENEMY, new Vec2D(500, 300), true);
         Entity skull = factory.getEntity(EntityType.SKULL, new Vec2D(200, 250), true);
         Entity crate = factory.getEntity(EntityType.CRATE, new Vec2D(400, 450), true);
         Entity column = factory.getEntity(EntityType.COLUMN, new Vec2D(200, 470), true);
+        Entity mediumEnemy = factory.getEntity(EntityType.MEDIUM_ENEMY, new Vec2D(600, 500), true);
+        Entity bigEnemy = factory.getEntity(EntityType.HEAVY_ENEMY, new Vec2D(600, 400), true);
 
         entities.put(player.getId(), player);
         entities.put(enemy.getId(), enemy);
@@ -69,6 +73,8 @@ public class Game implements Runnable
         entities.put(skull.getId(), skull);
         entities.put(crate.getId(), crate);
         entities.put(column.getId(), column);
+        entities.put(mediumEnemy.getId(), mediumEnemy);
+        entities.put(bigEnemy.getId(), bigEnemy);
 
         SystemBase physics = new PhysicsSystem();
         SystemBase render = new RenderSystem();

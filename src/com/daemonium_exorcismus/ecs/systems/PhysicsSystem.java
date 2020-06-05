@@ -3,18 +3,17 @@ package com.daemonium_exorcismus.ecs.systems;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.*;
-import com.daemonium_exorcismus.ecs.components.Component;
+import com.daemonium_exorcismus.ecs.components.physics.ColliderComponent;
+import com.daemonium_exorcismus.ecs.components.physics.KinematicBodyComponent;
+import com.daemonium_exorcismus.ecs.components.physics.RigidBodyComponent;
 import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 import javafx.geometry.Rectangle2D;
 
-import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PhysicsSystem extends SystemBase {
-
-    private double deltaTime;
 
     public PhysicsSystem() {
         this.name = SystemNames.PHYSICS;
@@ -26,7 +25,6 @@ public class PhysicsSystem extends SystemBase {
         if(newTime - oldTime < Game.timeFrame)
             return;
 
-        deltaTime = (newTime - oldTime) / 1000000000.;
         oldTime = newTime;
 
         ArrayList<Entity> physicsObjects = new ArrayList<>();
@@ -57,11 +55,19 @@ public class PhysicsSystem extends SystemBase {
                     continue;
                 }
 
+                // if two bullets collide, they pass trough each other
+                if (entityA.getType() == EntityType.ENEMY_PROJ && entityB.getType() == EntityType.PLAYER_PROJ
+                    || entityA.getType() == EntityType.PLAYER_PROJ && entityB.getType() == EntityType.ENEMY_PROJ) {
+                    continue;
+                }
+
                 // if it's a bullet, don't bother checking axis collision
 
                 if (entityA.getType() == EntityType.PLAYER_PROJ) {
-                    System.out.println("A bullet collided with a " + entityB.getType());
-                    if (entityB.getType() == EntityType.ENEMY) {
+//                    System.out.println("A bullet collided with a " + entityB.getType());
+                    if (entityB.getType() == EntityType.REGULAR_ENEMY
+                            || entityB.getType() == EntityType.MEDIUM_ENEMY
+                            || entityB.getType() == EntityType.HEAVY_ENEMY) {
                         HealthComponent hc = (HealthComponent) entityB.getComponent(ComponentNames.HEALTH);
                         RenderComponent rc = (RenderComponent) entityB.getComponent(ComponentNames.RENDER);
                         rc.setFlashing(true);
@@ -76,15 +82,19 @@ public class PhysicsSystem extends SystemBase {
 
                 // if player collided with an enemy, take damage
 
-                if (entityA.getType() == EntityType.PLAYER) {
-                    if (entityB.getType() == EntityType.ENEMY) {
-                        System.out.println("Player collided with enemy");
-                        HealthComponent hc = (HealthComponent) entityA.getComponent(ComponentNames.HEALTH);
+                if (entityA.getType() == EntityType.ENEMY_PROJ) {
+                    if (entityB.getType() == EntityType.PLAYER) {
+//                        System.out.println("Player collided with enemy proj");
+                        HealthComponent hc = (HealthComponent) entityB.getComponent(ComponentNames.HEALTH);
+                        RenderComponent rc = (RenderComponent) entityB.getComponent(ComponentNames.RENDER);
                         hc.takeDamage(10);
+                        rc.setFlashing(true);
                         if (hc.isDead()) {
-                            toRemove.add(entityA);
+                            toRemove.add(entityB);
                         }
                     }
+                    toRemove.add(entityA);
+                    continue;
                 }
 
                 Vec2D xAxis = new Vec2D(1, 0);

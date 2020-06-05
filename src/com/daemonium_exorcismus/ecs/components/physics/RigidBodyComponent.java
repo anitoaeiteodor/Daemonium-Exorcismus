@@ -1,5 +1,7 @@
-package com.daemonium_exorcismus.ecs.components;
+package com.daemonium_exorcismus.ecs.components.physics;
 
+import com.daemonium_exorcismus.ecs.components.Component;
+import com.daemonium_exorcismus.ecs.components.ComponentNames;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
 public class RigidBodyComponent extends Component {

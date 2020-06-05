@@ -4,9 +4,11 @@ public enum Assets {
     PLAYER,
     CRATE,
     COLUMN,
-    SMALL_ENEMY,
+    REGULAR_ENEMY,
+    MEDIUM_ENEMY,
+    BIG_ENEMY,
     MAP,
     SKULL,
     PLAYER_PROJ,
-
+    ENEMY_PROJ
 }

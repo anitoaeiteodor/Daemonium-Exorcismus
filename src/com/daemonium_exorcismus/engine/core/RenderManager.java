@@ -2,7 +2,8 @@ package com.daemonium_exorcismus.engine.core;
 
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.components.*;
-import com.daemonium_exorcismus.engine.utils.Vec2D;
+import com.daemonium_exorcismus.ecs.components.physics.KinematicBodyComponent;
+import com.daemonium_exorcismus.ecs.components.physics.RigidBodyComponent;
 
 import java.awt.*;
 import java.awt.image.BufferStrategy;

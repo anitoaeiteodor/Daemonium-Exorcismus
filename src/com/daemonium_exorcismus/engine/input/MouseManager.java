@@ -1,4 +1,4 @@
-package com.daemonium_exorcismus.engine.core;
+package com.daemonium_exorcismus.engine.input;
 
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 

@@ -16,11 +16,15 @@ public class AssetManager {
         System.out.println("Initializing assets");
 
         assets.put(Assets.PLAYER, resources.crop(8, 14, 1, 1));
-        assets.put(Assets.SMALL_ENEMY, resources.crop(0, 11, 1, 1));
+        assets.put(Assets.REGULAR_ENEMY, resources.crop(0, 11, 1, 1));
         assets.put(Assets.SKULL, resources.crop(1, 3, 1, 1));
         assets.put(Assets.CRATE, resources.crop(5, 6,1, 2));
         assets.put(Assets.COLUMN, resources.crop(13, 11, 1, 2));
         assets.put(Assets.PLAYER_PROJ, resources.crop(5, 8, 1, 1));
+        assets.put(Assets.ENEMY_PROJ, resources.crop(7, 8, 1, 1));
+        assets.put(Assets.MEDIUM_ENEMY, resources.crop(2, 11, 1, 1));
+        assets.put(Assets.BIG_ENEMY, resources.crop(4, 11, 1, 1));
+
         assets.put(Assets.MAP, map);
     }
 

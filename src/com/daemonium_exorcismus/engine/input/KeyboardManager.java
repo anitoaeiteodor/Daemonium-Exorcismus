@@ -1,4 +1,4 @@
-package com.daemonium_exorcismus.engine.core;
+package com.daemonium_exorcismus.engine.input;
 
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;

@@ -1,17 +1,15 @@
 package com.daemonium_exorcismus.ecs.systems;
 
+import com.daemonium_exorcismus.Constants;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
-import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
+import com.daemonium_exorcismus.ecs.components.physics.KinematicBodyComponent;
 import com.daemonium_exorcismus.ecs.components.RenderComponent;
-import com.daemonium_exorcismus.ecs.components.RigidBodyComponent;
 import com.daemonium_exorcismus.ecs.factory.EntityFactory;
 import com.daemonium_exorcismus.engine.core.Game;
-import com.daemonium_exorcismus.engine.core.KeyboardManager;
-import com.daemonium_exorcismus.engine.core.MouseManager;
-import com.daemonium_exorcismus.engine.graphics.AssetManager;
-import com.daemonium_exorcismus.engine.graphics.Assets;
+import com.daemonium_exorcismus.engine.input.KeyboardManager;
+import com.daemonium_exorcismus.engine.input.MouseManager;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
 import java.awt.event.KeyEvent;
@@ -20,8 +18,9 @@ import java.util.HashSet;
 
 public class PlayerInputSystem extends SystemBase {
 
-    private static final int SPEED = 10;
-    private static final double RELOAD_SPEED = 5 * Game.timeFrame;
+    private static final int SPEED = Constants.PLAYER_SPEED;
+    private static final int PROJ_SPEED = Constants.PLAYER_PROJ_SPEED;
+    private static final double RELOAD_SPEED = Constants.PLAYER_RELOAD_SPEED * Game.timeFrame;
     private long lastReloadTime = 0;
 
     public PlayerInputSystem() {
@@ -70,9 +69,9 @@ public class PlayerInputSystem extends SystemBase {
                         true);
 
                 KinematicBodyComponent kBody = (KinematicBodyComponent) spawn.getComponent(ComponentNames.KINEMATIC_BODY);
-                kBody.setVelocity(velocity.scale(20));
+                kBody.setVelocity(velocity.scale(PROJ_SPEED));
                 entityList.put(spawn.getId(), spawn);
-
+ 
                 RenderComponent rc = (RenderComponent) player.getComponent(ComponentNames.RENDER);
                 rc.setFlipped(false);
                 if (mousePos.sub(playerBody.getPos()).getPosX() < 0) {

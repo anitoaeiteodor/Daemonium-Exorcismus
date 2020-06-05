@@ -1,15 +1,14 @@
 package com.daemonium_exorcismus.ecs.systems;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
-import com.daemonium_exorcismus.ecs.components.KinematicBodyComponent;
+import com.daemonium_exorcismus.ecs.components.physics.KinematicBodyComponent;
 import com.daemonium_exorcismus.ecs.components.RenderComponent;
-import com.daemonium_exorcismus.ecs.components.RigidBodyComponent;
+import com.daemonium_exorcismus.ecs.components.physics.RigidBodyComponent;
 import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.engine.core.RenderManager;
 
@@ -49,7 +48,7 @@ public class RenderSystem extends SystemBase {
                 toRender.add(entityList.get(key));
             }
             if(component != null && component.isFlashing()) {
-                System.out.println("Set " + entityList.get(key).getType() + " to flash");
+//                System.out.println("Set " + entityList.get(key).getType() + " to flash");
                 flashing.put(key, newTime);
                 component.setFlashing(false);
                 component.setVisible(false);

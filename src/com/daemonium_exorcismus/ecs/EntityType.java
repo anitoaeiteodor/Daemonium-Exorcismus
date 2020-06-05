@@ -1,7 +1,11 @@
 package com.daemonium_exorcismus.ecs;
 
 public enum EntityType {
-    PLAYER, ENEMY, MAP, WALL,
+    PLAYER, MAP, WALL,
     SKULL, CRATE, COLUMN,
-    PLAYER_PROJ
+    PLAYER_PROJ, ENEMY_PROJ,
+    REGULAR_ENEMY,
+    MEDIUM_ENEMY,
+    HEAVY_ENEMY,
+    BOSS
 }
