@@ -1,5 +1,6 @@
 package com.daemonium_exorcismus.ecs.systems;
 
+import com.daemonium_exorcismus.Constants;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.*;
@@ -57,7 +58,8 @@ public class PhysicsSystem extends SystemBase {
 
                 // if two bullets collide, they pass trough each other
                 if (entityA.getType() == EntityType.ENEMY_PROJ && entityB.getType() == EntityType.PLAYER_PROJ
-                    || entityA.getType() == EntityType.PLAYER_PROJ && entityB.getType() == EntityType.ENEMY_PROJ) {
+                    || entityA.getType() == EntityType.PLAYER_PROJ && entityB.getType() == EntityType.ENEMY_PROJ
+                    || entityA.getType() == EntityType.ENEMY_PROJ && entityB.getType() == EntityType.ENEMY_PROJ) {
                     continue;
                 }
 
@@ -71,7 +73,7 @@ public class PhysicsSystem extends SystemBase {
                         HealthComponent hc = (HealthComponent) entityB.getComponent(ComponentNames.HEALTH);
                         RenderComponent rc = (RenderComponent) entityB.getComponent(ComponentNames.RENDER);
                         rc.setFlashing(true);
-                        hc.takeDamage(50);
+                        hc.takeDamage(Constants.PLAYER_PROJ_DAMAGE);
                         if (hc.isDead()) {
                             toRemove.add(entityB);
                         }
@@ -80,14 +82,14 @@ public class PhysicsSystem extends SystemBase {
                     continue;
                 }
 
-                // if player collided with an enemy, take damage
+                // if player collided with an enemy projectile, take damage
 
                 if (entityA.getType() == EntityType.ENEMY_PROJ) {
                     if (entityB.getType() == EntityType.PLAYER) {
 //                        System.out.println("Player collided with enemy proj");
                         HealthComponent hc = (HealthComponent) entityB.getComponent(ComponentNames.HEALTH);
                         RenderComponent rc = (RenderComponent) entityB.getComponent(ComponentNames.RENDER);
-                        hc.takeDamage(10);
+                        hc.takeDamage(Constants.ENEMY_PROJ_DAMAGE);
                         rc.setFlashing(true);
                         if (hc.isDead()) {
                             toRemove.add(entityB);

@@ -7,5 +7,5 @@ public class ComponentNames {
     public static final String COLLIDER = "collider";
     public static final String PLAYER_CNTRL = "player_cntrl";
     public static final String HEALTH = "health";
-    public static final String AI = "ai";
+    public static final String SHOOTING = "shooting";
 }

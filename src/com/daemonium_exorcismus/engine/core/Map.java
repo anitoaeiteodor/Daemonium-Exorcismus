@@ -1,5 +1,6 @@
 package com.daemonium_exorcismus.engine.core;
 
+import com.daemonium_exorcismus.Constants;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.*;
@@ -92,10 +93,10 @@ public class Map {
         entities.put(rightBound.getId(), rightBound);
         entities.put(map.getId(), map);
 
-        spawnPoints[0] = new Vec2D(100, 300);
-        spawnPoints[1] = new Vec2D(1000, 300);
-        spawnPoints[2] = new Vec2D(100, 600);
-        spawnPoints[3] = new Vec2D(1000, 600);
+        spawnPoints[0] = Constants.SPAWN_A;
+        spawnPoints[2] = Constants.SPAWN_B;
+        spawnPoints[3] = Constants.SPAWN_C;
+        spawnPoints[1] = Constants.SPAWN_D;
 
     }
 
@@ -158,12 +159,13 @@ public class Map {
         EntityFactory factory = new EntityFactory();
         rects.clear();
 
+        int bound = Constants.TEXTURE_SIZE * 4;
         for (Vec2D spawnPoint : spawnPoints) {
-            rects.add(new Rectangle2D(spawnPoint.getPosX() - 32,
-                    spawnPoint.getPosY() - 32, 64, 64));
+            rects.add(new Rectangle2D(spawnPoint.getPosX() - bound / 2.,
+                    spawnPoint.getPosY() - bound / 2., bound, bound));
         }
-        rects.add(new Rectangle2D(wnd.getWndWidth() / 2. - 64, wnd.getWndHeight() / 2. - 64,
-                128, 128));
+        rects.add(new Rectangle2D(wnd.getWndWidth() / 2. - bound, wnd.getWndHeight() / 2. - bound,
+                bound * 2, bound * 2));
 
         int tries = 1000;
 

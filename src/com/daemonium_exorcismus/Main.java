@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         DatabaseDriver.extractInfo();
 
-//        Game game = new Game("Daemonium Exorcismus", 1200, 800);
-//        game.startGame();
+        Game game = new Game("Daemonium Exorcismus", 1200, 800);
+        game.startGame();
     }
 }

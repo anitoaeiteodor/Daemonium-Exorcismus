@@ -13,7 +13,7 @@ public class ShootingComponent extends Component {
     public ShootingComponent(ShooterType type, int frameReloadTimer) {
         this.type = type;
         this.frameReloadTimer = frameReloadTimer;
-        this.name = ComponentNames.AI;
+        this.name = ComponentNames.SHOOTING;
         this.lastTime = 0;
     }
 

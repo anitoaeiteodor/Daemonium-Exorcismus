@@ -1,5 +1,6 @@
 package com.daemonium_exorcismus.ecs.factory;
 
+import com.daemonium_exorcismus.EntityProperties;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.*;
@@ -44,11 +45,11 @@ public class EntityFactory {
         enemy.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.BIG_ENEMY),
                 false, 2));
         enemy.addComponent(new KinematicBodyComponent(position,
-                new Vec2D(64, 64), new Vec2D(0, 0)));
-        enemy.addComponent(new ColliderComponent(true, new Vec2D(0.25, 0.10),
-                new Vec2D(0.25, 0.15)));
-        enemy.addComponent(new HealthComponent(500));
-        enemy.addComponent(new ShootingComponent(ShooterType.RADIAL, 50));
+                EntityProperties.HeavyEnemy.SIZE, Vec2D.ZERO));
+        enemy.addComponent(new ColliderComponent(true, EntityProperties.HeavyEnemy.COLLIDER_OFFSET_FIRST,
+                EntityProperties.HeavyEnemy.COLLIDER_OFFSET_SECOND));
+        enemy.addComponent(new HealthComponent(EntityProperties.HeavyEnemy.HEALTH));
+        enemy.addComponent(new ShootingComponent(EntityProperties.HeavyEnemy.SHOOTER_TYPE, 60));
         return enemy;
     }
 
@@ -58,11 +59,11 @@ public class EntityFactory {
         enemy.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.MEDIUM_ENEMY),
                 false, 2));
         enemy.addComponent(new KinematicBodyComponent(position,
-                new Vec2D(64, 64), new Vec2D(0, 0)));
-        enemy.addComponent(new ColliderComponent(true, new Vec2D(0.20, 0.20),
-                new Vec2D(0.25, 0.15)));
-        enemy.addComponent(new HealthComponent(300));
-        enemy.addComponent(new ShootingComponent(ShooterType.CONE, 40));
+               EntityProperties.MediumEnemy.SIZE,Vec2D.ZERO));
+        enemy.addComponent(new ColliderComponent(true, EntityProperties.MediumEnemy.COLLIDER_OFFSET_FIRST,
+                EntityProperties.MediumEnemy.COLLIDER_OFFSET_SECOND));
+        enemy.addComponent(new HealthComponent(EntityProperties.MediumEnemy.HEALTH));
+        enemy.addComponent(new ShootingComponent(EntityProperties.MediumEnemy.SHOOTER_TYPE, 50));
         return enemy;
     }
 
@@ -71,9 +72,9 @@ public class EntityFactory {
         proj.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.ENEMY_PROJ),
                 false, 2));
         proj.addComponent(new KinematicBodyComponent(position,
-                new Vec2D(64, 64), new Vec2D(0, 0)));
-        proj.addComponent(new ColliderComponent(true, new Vec2D(0.40, 0.40),
-                new Vec2D(0.40, 0.40)));
+                EntityProperties.Projectile.SIZE, Vec2D.ZERO));
+        proj.addComponent(new ColliderComponent(true, EntityProperties.Projectile.COLLIDER_OFFSET_FIRST,
+                EntityProperties.Projectile.COLLIDER_OFFSET_SECOND));
         return proj;
     }
 
@@ -82,9 +83,9 @@ public class EntityFactory {
         proj.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.PLAYER_PROJ),
                 false, 2));
         proj.addComponent(new KinematicBodyComponent(position,
-                new Vec2D(64, 64), new Vec2D(0, 0)));
-        proj.addComponent(new ColliderComponent(true, new Vec2D(0.40, 0.40),
-                new Vec2D(0.40, 0.40)));
+                EntityProperties.Projectile.SIZE, Vec2D.ZERO));
+        proj.addComponent(new ColliderComponent(true, EntityProperties.Projectile.COLLIDER_OFFSET_FIRST,
+                EntityProperties.Projectile.COLLIDER_OFFSET_SECOND));
         return proj;
     }
 
@@ -93,11 +94,11 @@ public class EntityFactory {
         enemy.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.REGULAR_ENEMY),
                 false, 2));
         enemy.addComponent(new KinematicBodyComponent(position,
-                new Vec2D(64, 64), new Vec2D(0, 0)));
-        enemy.addComponent(new ColliderComponent(true, new Vec2D(0.25, 0.35),
-                new Vec2D(0.25, 0.15)));
-        enemy.addComponent(new HealthComponent(100));
-        enemy.addComponent(new ShootingComponent(ShooterType.BASIC, 30));
+                EntityProperties.RegularEnemy.SIZE, Vec2D.ZERO));
+        enemy.addComponent(new ColliderComponent(true, EntityProperties.RegularEnemy.COLLIDER_OFFSET_FIRST,
+                EntityProperties.RegularEnemy.COLLIDER_OFFSET_SECOND));
+        enemy.addComponent(new HealthComponent(EntityProperties.RegularEnemy.HEALTH));
+        enemy.addComponent(new ShootingComponent(EntityProperties.RegularEnemy.SHOOTER_TYPE, 40));
         return enemy;
     }
 
@@ -105,7 +106,7 @@ public class EntityFactory {
         Entity skull = new Entity(EntityType.SKULL);
         skull.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.SKULL),
                 false, 1));
-        skull.addComponent(new RigidBodyComponent(position, new Vec2D(64, 64)));
+        skull.addComponent(new RigidBodyComponent(position, EntityProperties.Skull.SIZE));
         return skull;
     }
 
@@ -113,9 +114,9 @@ public class EntityFactory {
         Entity column = new Entity(EntityType.COLUMN);
         column.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.COLUMN),
                 false, 2));
-        column.addComponent(new RigidBodyComponent(position, new Vec2D(64, 128)));
-        column.addComponent(new ColliderComponent(true, new Vec2D(0.10, 0.65),
-                new Vec2D(0.10, 0.20)));
+        column.addComponent(new RigidBodyComponent(position, EntityProperties.Column.SIZE));
+        column.addComponent(new ColliderComponent(true, EntityProperties.Column.COLLIDER_OFFSET_FIRST,
+                EntityProperties.Column.COLLIDER_OFFSET_SECOND));
         return column;
     }
 
@@ -123,9 +124,9 @@ public class EntityFactory {
         Entity crate = new Entity(EntityType.CRATE);
         crate.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.CRATE),
                 false, 2));
-        crate.addComponent(new RigidBodyComponent(position, new Vec2D(64, 128)));
-        crate.addComponent(new ColliderComponent(true, new Vec2D(0, 0.50),
-                new Vec2D(0, 0.20)));
+        crate.addComponent(new RigidBodyComponent(position, EntityProperties.Crate.SIZE));
+        crate.addComponent(new ColliderComponent(true, EntityProperties.Crate.COLLIDER_OFFSET_FIRST,
+                EntityProperties.Crate.COLLIDER_OFFSET_SECOND));
         return crate;
     }
 
@@ -133,12 +134,12 @@ public class EntityFactory {
         Entity player = new Entity(EntityType.PLAYER);
         player.addComponent(new RenderComponent(isVisible, AssetManager.assets.get(Assets.PLAYER),
                 false, 2));
-        player.addComponent(new KinematicBodyComponent(position, new Vec2D(64, 64),
-                new Vec2D(0, 0)));
+        player.addComponent(new KinematicBodyComponent(position,
+                EntityProperties.Player.SIZE, Vec2D.ZERO));
         player.addComponent(new PlayerControlledComponent(true));
-        player.addComponent(new ColliderComponent(true, new Vec2D(0.18, 0.24),
-                new Vec2D(0.18, 0.15)));
-        player.addComponent(new HealthComponent(250));
+        player.addComponent(new ColliderComponent(true, EntityProperties.Player.COLLIDER_OFFSET_FIRST,
+                EntityProperties.Player.COLLIDER_OFFSET_SECOND));
+        player.addComponent(new HealthComponent(EntityProperties.Player.HEALTH));
 
         return player;
     }
