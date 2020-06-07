@@ -11,10 +11,7 @@ public class Constants {
 
     public static int PLAYER_PROJ_SPEED;
     public static int PLAYER_PROJ_DAMAGE;
-    public static int PLAYER_SPEED;
-    public static int PLAYER_RELOAD_SPEED;
 
-    public static int ENEMY_SPEED;
     public static int ENEMY_PROJ_SPEED;
     public static int ENEMY_PROJ_DAMAGE;
 

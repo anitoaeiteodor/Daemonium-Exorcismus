@@ -1,6 +1,7 @@
 package com.daemonium_exorcismus.ecs.systems;
 
 import com.daemonium_exorcismus.Constants;
+import com.daemonium_exorcismus.EntityProperties;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
@@ -18,9 +19,9 @@ import java.util.HashSet;
 
 public class PlayerInputSystem extends SystemBase {
 
-    private static final int SPEED = Constants.PLAYER_SPEED;
+    private static final int SPEED = EntityProperties.Player.SPEED;
     private static final int PROJ_SPEED = Constants.PLAYER_PROJ_SPEED;
-    private static final double RELOAD_SPEED = Constants.PLAYER_RELOAD_SPEED * Game.timeFrame;
+    private static final double RELOAD_SPEED = EntityProperties.Player.RELOAD_TIME * Game.timeFrame;
     private long lastReloadTime = 0;
 
     public PlayerInputSystem() {

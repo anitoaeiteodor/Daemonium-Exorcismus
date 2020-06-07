@@ -26,6 +26,14 @@ public class KeyboardManager extends KeyAdapter {
             case KeyEvent.VK_F:
                 keysPressed.add(KeyEvent.VK_F);
                 break;
+            case KeyEvent.VK_F1:
+                if (keysPressed.contains(KeyEvent.VK_F1)) {
+                    keysPressed.remove(KeyEvent.VK_F1);
+                }
+                else {
+                    keysPressed.add(KeyEvent.VK_F1);
+                }
+                break;
         }
     }
 

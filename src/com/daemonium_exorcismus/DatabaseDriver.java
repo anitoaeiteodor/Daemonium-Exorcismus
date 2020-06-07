@@ -2,6 +2,7 @@ package com.daemonium_exorcismus;
 
 import com.daemonium_exorcismus.ecs.components.shooting.ShooterType;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
+import com.daemonium_exorcismus.spawn.LevelInfo;
 
 import java.sql.*;
 import java.util.List;
@@ -25,8 +26,7 @@ public class DatabaseDriver {
             Statement stmt = c.createStatement();
 
             String[] cts = {"TextureSize", "WindowWidth", "WindowHeight", "EnemyProjSpeed", "PlayerProjSpeed",
-                            "PlayerSpeed", "PlayerReloadSpeed", "SpawnA", "SpawnB", "SpawnC", "SpawnD",
-                            "PlayerProjDamage", "EnemyProjDamage", "EnemySpeed"};
+                            "SpawnA", "SpawnB", "SpawnC", "SpawnD", "PlayerProjDamage", "EnemyProjDamage"};
 
             for(String entry : cts) {
                 ResultSet rs = stmt.executeQuery(
@@ -47,17 +47,8 @@ public class DatabaseDriver {
                     case "EnemyProjSpeed":
                         Constants.ENEMY_PROJ_SPEED = Integer.parseInt(rs.getString("Value"));
                         break;
-                    case "EnemySpeed":
-                        Constants.ENEMY_SPEED = Integer.parseInt(rs.getString("Value"));
-                        break;
                     case "PlayerProjSpeed":
                         Constants.PLAYER_PROJ_SPEED = Integer.parseInt(rs.getString("Value"));
-                        break;
-                    case "PlayerSpeed":
-                        Constants.PLAYER_SPEED = Integer.parseInt(rs.getString("Value"));
-                        break;
-                    case "PlayerReloadSpeed":
-                        Constants.PLAYER_RELOAD_SPEED = Integer.parseInt(rs.getString("Value"));
                         break;
                     case "SpawnA":
                         String[] coords = rs.getString("Value").split(" ");
@@ -114,6 +105,8 @@ public class DatabaseDriver {
                 }
 
                 int health = rs.getInt("Health");
+                int speed = rs.getInt("Speed");
+                int reloadTime = rs.getInt("ReloadTime");
 
                 String shootingType = rs.getString("ShootingType");
                 ShooterType shooterType = null;
@@ -139,6 +132,8 @@ public class DatabaseDriver {
                         EntityProperties.RegularEnemy.SIZE = size;
                         EntityProperties.RegularEnemy.HEALTH = health;
                         EntityProperties.RegularEnemy.SHOOTER_TYPE = shooterType;
+                        EntityProperties.RegularEnemy.SPEED = speed;
+                        EntityProperties.RegularEnemy.RELOAD_TIME = reloadTime;
                         break;
                     case "Medium":
                         EntityProperties.MediumEnemy.COLLIDER_OFFSET_FIRST = colliderOffsetFirst;
@@ -146,6 +141,8 @@ public class DatabaseDriver {
                         EntityProperties.MediumEnemy.SIZE = size;
                         EntityProperties.MediumEnemy.HEALTH = health;
                         EntityProperties.MediumEnemy.SHOOTER_TYPE = shooterType;
+                        EntityProperties.MediumEnemy.SPEED = speed;
+                        EntityProperties.MediumEnemy.RELOAD_TIME = reloadTime;
                         break;
                     case "Heavy":
                         EntityProperties.HeavyEnemy.COLLIDER_OFFSET_FIRST = colliderOffsetFirst;
@@ -153,12 +150,16 @@ public class DatabaseDriver {
                         EntityProperties.HeavyEnemy.SIZE = size;
                         EntityProperties.HeavyEnemy.HEALTH = health;
                         EntityProperties.HeavyEnemy.SHOOTER_TYPE = shooterType;
+                        EntityProperties.HeavyEnemy.SPEED = speed;
+                        EntityProperties.HeavyEnemy.RELOAD_TIME = reloadTime;
                         break;
                     case "Player":
                         EntityProperties.Player.COLLIDER_OFFSET_FIRST = colliderOffsetFirst;
                         EntityProperties.Player.COLLIDER_OFFSET_SECOND = colliderOffsetSecond;
                         EntityProperties.Player.SIZE = size;
                         EntityProperties.Player.HEALTH = health;
+                        EntityProperties.Player.SPEED = speed;
+                        EntityProperties.Player.RELOAD_TIME = reloadTime;
                         break;
                     case "Crate":
                         EntityProperties.Crate.COLLIDER_OFFSET_FIRST = colliderOffsetFirst;
@@ -182,6 +183,23 @@ public class DatabaseDriver {
             }
 
             System.out.println("Done fetching data from Entities table.");
+            System.out.println("Fetching level data...");
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Levels ORDER BY Level ASC");
+            StringBuilder levelInfo = new StringBuilder();
+
+            while (rs.next()) {
+                levelInfo.append(rs.getInt("Level")).append(" ");
+                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnAEn"), rs.getInt("SpawnADel"), rs.getInt("SpawnAOffset")));
+                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnBEn"), rs.getInt("SpawnBDel"), rs.getInt("SpawnBOffset")));
+                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnCEn"), rs.getInt("SpawnCDel"), rs.getInt("SpawnCOffset")));
+                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnDEn"), rs.getInt("SpawnDDel"), rs.getInt("SpawnDOffset")));
+                levelInfo.append("\n");
+            }
+
+            LevelInfo.levelInfo = levelInfo.toString();
+
+            System.out.println("Done fetching level data.");
 
         } catch (SQLException e) {
             e.printStackTrace();

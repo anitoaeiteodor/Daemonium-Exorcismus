@@ -1,6 +1,7 @@
 package com.daemonium_exorcismus.ecs.systems;
 
 import com.daemonium_exorcismus.Constants;
+import com.daemonium_exorcismus.EntityProperties;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
@@ -52,7 +53,7 @@ public class EnemySystem extends SystemBase {
 
             if (changeDir) {
                 Vec2D newDir = new Vec2D(Math.cos(Math.random() * Math.PI * 2),
-                        Math.sin(Math.random() * Math.PI * 2)).scale(2.5);
+                        Math.sin(Math.random() * Math.PI * 2)).scale(EntityProperties.RegularEnemy.SPEED / 2.);
                 enemyKB.setVelocity(newDir);
             }
 
@@ -77,7 +78,7 @@ public class EnemySystem extends SystemBase {
         switch (enemySC.getType()) {
             case BASIC:
                 Entity proj = factory.getEntity(EntityType.ENEMY_PROJ,
-                        enemyKB.getPos().add(velocity.scale(30)), true);
+                        enemyKB.getPos().add(velocity.scale(enemyKB.getSize().scale(0.5).getPosX())), true);
 
                 KinematicBodyComponent projKb = (KinematicBodyComponent) proj.getComponent(ComponentNames.KINEMATIC_BODY);
                 projKb.setVelocity(velocity.scale(PROJ_SPEED));
@@ -85,28 +86,21 @@ public class EnemySystem extends SystemBase {
                 entityList.put(proj.getId(), proj);
                 break;
             case CONE:
-                Entity[] projectiles = new Entity[3];
-
                 for (int i = -1; i <= 1; i++) {
-                    double angle = i * Math.PI / 3;
+                    double angle = i * Math.PI / 6;
                     double x = Math.cos(angle) * velocity.getPosX() - Math.sin(angle) * velocity.getPosY();
                     double y = Math.sin(angle) * velocity.getPosX() + Math.cos(angle) * velocity.getPosY();
 
                     Vec2D newVel = new Vec2D(x, y);
 
                     proj = factory.getEntity(EntityType.ENEMY_PROJ,
-                            enemyKB.getPos().add(newVel.scale(30)), true);
+                            enemyKB.getPos().add(newVel.scale(enemyKB.getSize().scale(0.5).getPosX())), true);
 
                     projKb = (KinematicBodyComponent) proj.getComponent(ComponentNames.KINEMATIC_BODY);
                     projKb.setVelocity(newVel.scale(PROJ_SPEED));
 
-                    projectiles[i + 1] = proj;
+                    entityList.put(proj.getId(), proj);
                 }
-
-                for (Entity pr : projectiles) {
-                    entityList.put(pr.getId(), pr);
-                }
-
                 break;
             case RADIAL:
                 for (int i = 0; i < 8; i++) {
@@ -114,11 +108,10 @@ public class EnemySystem extends SystemBase {
                     double x = Math.cos(angle) * velocity.getPosX() - Math.sin(angle) * velocity.getPosY();
                     double y = Math.sin(angle) * velocity.getPosX() + Math.cos(angle) * velocity.getPosY();
 
-
                     Vec2D newVel = new Vec2D(x, y);
 
                     proj = factory.getEntity(EntityType.ENEMY_PROJ,
-                            enemyKB.getPos().add(newVel.scale(50)), true);
+                            enemyKB.getPos().add(newVel.scale(enemyKB.getSize().scale(0.8).getPosX())), true);
 
                     projKb = (KinematicBodyComponent) proj.getComponent(ComponentNames.KINEMATIC_BODY);
                     projKb.setVelocity(newVel.scale(PROJ_SPEED));

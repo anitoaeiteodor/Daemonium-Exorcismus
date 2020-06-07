@@ -7,6 +7,8 @@ public class EntityProperties {
     public static class Player {
         public static Vec2D COLLIDER_OFFSET_FIRST;
         public static Vec2D COLLIDER_OFFSET_SECOND;
+        public static int SPEED;
+        public static int RELOAD_TIME;
         public static Vec2D SIZE;
         public static int HEALTH;
     }
@@ -15,6 +17,8 @@ public class EntityProperties {
         public static Vec2D COLLIDER_OFFSET_FIRST;
         public static Vec2D COLLIDER_OFFSET_SECOND;
         public static Vec2D SIZE;
+        public static int SPEED;
+        public static int RELOAD_TIME;
         public static int HEALTH;
         public static ShooterType SHOOTER_TYPE;
     }
@@ -24,6 +28,8 @@ public class EntityProperties {
         public static Vec2D COLLIDER_OFFSET_FIRST;
         public static Vec2D COLLIDER_OFFSET_SECOND;
         public static Vec2D SIZE;
+        public static int SPEED;
+        public static int RELOAD_TIME;
         public static int HEALTH;
         public static ShooterType SHOOTER_TYPE;
     }
@@ -33,6 +39,8 @@ public class EntityProperties {
         public static Vec2D COLLIDER_OFFSET_FIRST;
         public static Vec2D COLLIDER_OFFSET_SECOND;
         public static Vec2D SIZE;
+        public static int SPEED;
+        public static int RELOAD_TIME;
         public static int HEALTH;
         public static ShooterType SHOOTER_TYPE;
     }

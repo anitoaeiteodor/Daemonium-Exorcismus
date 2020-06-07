@@ -49,7 +49,8 @@ public class EntityFactory {
         enemy.addComponent(new ColliderComponent(true, EntityProperties.HeavyEnemy.COLLIDER_OFFSET_FIRST,
                 EntityProperties.HeavyEnemy.COLLIDER_OFFSET_SECOND));
         enemy.addComponent(new HealthComponent(EntityProperties.HeavyEnemy.HEALTH));
-        enemy.addComponent(new ShootingComponent(EntityProperties.HeavyEnemy.SHOOTER_TYPE, 60));
+        enemy.addComponent(new ShootingComponent(EntityProperties.HeavyEnemy.SHOOTER_TYPE,
+                EntityProperties.HeavyEnemy.RELOAD_TIME));
         return enemy;
     }
 
@@ -63,7 +64,8 @@ public class EntityFactory {
         enemy.addComponent(new ColliderComponent(true, EntityProperties.MediumEnemy.COLLIDER_OFFSET_FIRST,
                 EntityProperties.MediumEnemy.COLLIDER_OFFSET_SECOND));
         enemy.addComponent(new HealthComponent(EntityProperties.MediumEnemy.HEALTH));
-        enemy.addComponent(new ShootingComponent(EntityProperties.MediumEnemy.SHOOTER_TYPE, 50));
+        enemy.addComponent(new ShootingComponent(EntityProperties.MediumEnemy.SHOOTER_TYPE,
+                EntityProperties.MediumEnemy.RELOAD_TIME));
         return enemy;
     }
 
@@ -98,7 +100,8 @@ public class EntityFactory {
         enemy.addComponent(new ColliderComponent(true, EntityProperties.RegularEnemy.COLLIDER_OFFSET_FIRST,
                 EntityProperties.RegularEnemy.COLLIDER_OFFSET_SECOND));
         enemy.addComponent(new HealthComponent(EntityProperties.RegularEnemy.HEALTH));
-        enemy.addComponent(new ShootingComponent(EntityProperties.RegularEnemy.SHOOTER_TYPE, 40));
+        enemy.addComponent(new ShootingComponent(EntityProperties.RegularEnemy.SHOOTER_TYPE,
+                EntityProperties.RegularEnemy.RELOAD_TIME));
         return enemy;
     }
 

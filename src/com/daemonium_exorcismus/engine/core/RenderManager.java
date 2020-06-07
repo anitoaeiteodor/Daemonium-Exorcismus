@@ -2,10 +2,13 @@ package com.daemonium_exorcismus.engine.core;
 
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.components.*;
+import com.daemonium_exorcismus.ecs.components.physics.ColliderComponent;
 import com.daemonium_exorcismus.ecs.components.physics.KinematicBodyComponent;
 import com.daemonium_exorcismus.ecs.components.physics.RigidBodyComponent;
+import com.daemonium_exorcismus.engine.input.KeyboardManager;
 
 import java.awt.*;
+import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
@@ -78,19 +81,21 @@ public class RenderManager {
                             null);
                 }
 
-                // debug info for collision
-//                ColliderComponent collider = (ColliderComponent) entity.getComponent(ComponentNames.COLLIDER);
-//                if (collider != null) {
-//                    g.setColor(Color.YELLOW);
-//                    int sizeX = (int)body.getSize().getPosX();
-//                    int sizeY = (int)body.getSize().getPosY();
-//                    g.drawRect((int)(body.getPos().getPosX() + collider.getOffsetFirst().getPosX() * sizeX),
-//                            (int)(body.getPos().getPosY() + collider.getOffsetFirst().getPosY() * sizeY),
-//                            (int)(sizeX - collider.getOffsetSecond().getPosX() * sizeX
-//                                    - collider.getOffsetFirst().getPosX() * sizeX),
-//                            (int)(sizeY - collider.getOffsetSecond().getPosY() * sizeY
-//                                    - collider.getOffsetFirst().getPosY() * sizeY));
-//                }
+                if (KeyboardManager.keysPressed.contains(KeyEvent.VK_F1)) {
+                    // debug info for collision
+                    ColliderComponent collider = (ColliderComponent) entity.getComponent(ComponentNames.COLLIDER);
+                    if (collider != null) {
+                        g.setColor(Color.YELLOW);
+                        int sizeX = (int) body.getSize().getPosX();
+                        int sizeY = (int) body.getSize().getPosY();
+                        g.drawRect((int) (body.getPos().getPosX() + collider.getOffsetFirst().getPosX() * sizeX),
+                                (int) (body.getPos().getPosY() + collider.getOffsetFirst().getPosY() * sizeY),
+                                (int) (sizeX - collider.getOffsetSecond().getPosX() * sizeX
+                                        - collider.getOffsetFirst().getPosX() * sizeX),
+                                (int) (sizeY - collider.getOffsetSecond().getPosY() * sizeY
+                                        - collider.getOffsetFirst().getPosY() * sizeY));
+                    }
+                }
             }
         }
 

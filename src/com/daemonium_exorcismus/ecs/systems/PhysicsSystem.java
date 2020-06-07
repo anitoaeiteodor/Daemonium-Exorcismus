@@ -99,6 +99,16 @@ public class PhysicsSystem extends SystemBase {
                     continue;
                 }
 
+                if (isEnemy(entityA) && isEnemy(entityB)) {
+                    KinematicBodyComponent kbA = (KinematicBodyComponent) entityA.getComponent(ComponentNames.KINEMATIC_BODY);
+                    KinematicBodyComponent kbB = (KinematicBodyComponent) entityB.getComponent(ComponentNames.KINEMATIC_BODY);
+                    kbA.setVelocity(kbA.getVelocity().scale(-1));
+                    kbB.setVelocity(kbB.getVelocity().scale(-1));
+                    applyVelocity(entityA);
+                    applyVelocity(entityB);
+                    continue;
+                }
+
                 Vec2D xAxis = new Vec2D(1, 0);
                 Vec2D yAxis = new Vec2D(0, 1);
 
@@ -134,6 +144,12 @@ public class PhysicsSystem extends SystemBase {
             entityList.remove(end.getId());
         }
 
+    }
+
+    private boolean isEnemy(Entity entity) {
+        return (entity.getType() == EntityType.REGULAR_ENEMY
+                || entity.getType() == EntityType.MEDIUM_ENEMY
+                || entity.getType() == EntityType.HEAVY_ENEMY);
     }
 
     private boolean insideQueue(ArrayList<Entity> list, Entity entity) {

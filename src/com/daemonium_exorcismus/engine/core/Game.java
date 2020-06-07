@@ -1,5 +1,6 @@
 package com.daemonium_exorcismus.engine.core;
 
+import com.daemonium_exorcismus.Constants;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
 import com.daemonium_exorcismus.ecs.factory.EntityFactory;
@@ -13,6 +14,8 @@ import com.daemonium_exorcismus.engine.graphics.*;
 import com.daemonium_exorcismus.engine.input.KeyboardManager;
 import com.daemonium_exorcismus.engine.input.MouseManager;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
+import com.daemonium_exorcismus.spawn.Spawner;
+import com.daemonium_exorcismus.spawn.Wave;
 
 public class Game implements Runnable
 {
@@ -41,6 +44,8 @@ public class Game implements Runnable
         runState = false;
     }
 
+    private Spawner spawner;
+
     private void initGame()
     {
         wnd = new GameWindow(title, width, height);
@@ -67,14 +72,26 @@ public class Game implements Runnable
         Entity bigEnemy = factory.getEntity(EntityType.HEAVY_ENEMY, new Vec2D(600, 400), true);
 
         entities.put(player.getId(), player);
-        entities.put(enemy.getId(), enemy);
-        entities.put(enemy2.getId(), enemy2);
-        entities.put(enemy3.getId(), enemy3);
+//        entities.put(enemy.getId(), enemy);
+//        entities.put(enemy2.getId(), enemy2);
+//        entities.put(enemy3.getId(), enemy3);
         entities.put(skull.getId(), skull);
         entities.put(crate.getId(), crate);
         entities.put(column.getId(), column);
-        entities.put(mediumEnemy.getId(), mediumEnemy);
-        entities.put(bigEnemy.getId(), bigEnemy);
+//        entities.put(mediumEnemy.getId(), mediumEnemy);
+//        entities.put(bigEnemy.getId(), bigEnemy);
+
+
+        spawner = new Spawner(Constants.SPAWN_A);
+        ArrayList<EntityType> types = new ArrayList<>();
+        types.add(EntityType.REGULAR_ENEMY);
+        types.add(EntityType.REGULAR_ENEMY);
+        types.add(EntityType.REGULAR_ENEMY);
+        types.add(EntityType.MEDIUM_ENEMY);
+        types.add(EntityType.MEDIUM_ENEMY);
+        types.add(EntityType.MEDIUM_ENEMY);
+        Wave wave = new Wave(types, 10, 0);
+        spawner.setWave(wave);
 
         SystemBase physics = new PhysicsSystem();
         SystemBase render = new RenderSystem();
@@ -136,6 +153,7 @@ public class Game implements Runnable
             system.updateSystem(entities, newTime);
         }
         map.update(newTime);
+        spawner.update(entities, newTime);
     }
 
 }
