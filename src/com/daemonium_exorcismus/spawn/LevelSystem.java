@@ -13,12 +13,15 @@ import java.util.HashMap;
 
 public class LevelSystem extends SystemBase {
 
-    private HashMap<Integer, ArrayList<Wave>> levels = new HashMap<>();
+    private HashMap<Integer, ArrayList<Wave>> levels;
     private ArrayList<Spawner> spawners = new ArrayList<>();
-    private boolean nextLevelFlag = false;
+    public static boolean nextLevelFlag = false;
+    public static boolean canLoadNextArea = false;
     private int currentLevel;
+    private long waitSeconds;
 
-    public LevelSystem() {
+    public LevelSystem(HashMap<Integer, ArrayList<Wave>> levels) {
+        this.levels = levels;
         this.name = SystemNames.LEVEL;
         this.oldTime = 0;
         this.currentLevel = 0;
@@ -26,49 +29,62 @@ public class LevelSystem extends SystemBase {
         spawners.add(new Spawner(Constants.SPAWN_B));
         spawners.add(new Spawner(Constants.SPAWN_C));
         spawners.add(new Spawner(Constants.SPAWN_D));
+
+        loadNextLevel();
     }
 
     @Override
     public void updateSystem(HashMap<String, Entity> entityList, long newTime) {
-        if (finishedSpawning() && !nextLevelFlag) {
-            return;
-        }
         if (newTime - oldTime < Game.timeFrame) {
             return;
         }
-        nextLevelFlag = false;
+        waitSeconds -= newTime - oldTime;
+        oldTime = newTime;
+
+        if (finishedSpawning() && !nextLevelFlag) {
+            return;
+        }
+
+        if (nextLevelFlag) {
+            loadNextLevel();
+        }
+
+        System.out.println(waitSeconds);
+
+        if (waitSeconds > 0) {
+            return;
+        }
 
         for (Spawner spr : spawners) {
             spr.update(entityList, newTime);
         }
+
     }
 
-    private boolean finishedSpawning() {
+    public boolean finishedSpawning() {
         boolean result = true;
         for (Spawner spr : spawners) {
             result &= spr.isFinished();
+        }
+        if (result) {
+            canLoadNextArea = true;
         }
         return result;
     }
 
     public void loadNextLevel() {
+        if (levels.size() == 0) {
+            return;
+        }
         for (Spawner spr : spawners) {
             spr.setWave(levels.get(currentLevel).get(0));
             levels.get(currentLevel).remove(0);
         }
-        this.nextLevelFlag = true;
+        nextLevelFlag = false;
+        canLoadNextArea = false;
+        waitSeconds = (long) (30 * Game.timeFrame);
+        levels.remove(currentLevel);
         currentLevel++;
     }
 
-    public void addWave(int level, Wave wave) {
-        if (levels.containsKey(level)) {
-            ArrayList<Wave> waveList = levels.get(level);
-            waveList.add(wave);
-        }
-        else {
-            ArrayList<Wave> waveList = new ArrayList<>();
-            waveList.add(wave);
-            levels.put(level, waveList);
-        }
-    }
 }

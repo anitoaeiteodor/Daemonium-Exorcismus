@@ -12,6 +12,7 @@ import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.engine.input.KeyboardManager;
 import com.daemonium_exorcismus.engine.input.MouseManager;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
+import com.daemonium_exorcismus.spawn.LevelSystem;
 
 import java.awt.event.KeyEvent;
 import java.util.HashMap;

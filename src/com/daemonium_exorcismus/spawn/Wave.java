@@ -23,7 +23,7 @@ public class Wave {
     }
 
     public boolean canSpawn(long time) {
-        return (time > (delay + offset) * Game.timeFrame);
+        return (time > delay * Game.timeFrame + offset * 1000);
     }
 
     public boolean isFinished() {

@@ -99,7 +99,9 @@ public class PhysicsSystem extends SystemBase {
                     continue;
                 }
 
-                if (isEnemy(entityA) && isEnemy(entityB)) {
+                if (isEnemy(entityA) && isEnemy(entityB)
+                    || isEnemy(entityA) && entityB.getType() == EntityType.PLAYER
+                    || isEnemy(entityB) && entityA.getType() == EntityType.PLAYER) {
                     KinematicBodyComponent kbA = (KinematicBodyComponent) entityA.getComponent(ComponentNames.KINEMATIC_BODY);
                     KinematicBodyComponent kbB = (KinematicBodyComponent) entityB.getComponent(ComponentNames.KINEMATIC_BODY);
                     kbA.setVelocity(kbA.getVelocity().scale(-1));

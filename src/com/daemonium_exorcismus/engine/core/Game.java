@@ -14,6 +14,8 @@ import com.daemonium_exorcismus.engine.graphics.*;
 import com.daemonium_exorcismus.engine.input.KeyboardManager;
 import com.daemonium_exorcismus.engine.input.MouseManager;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
+import com.daemonium_exorcismus.spawn.LevelInfo;
+import com.daemonium_exorcismus.spawn.LevelSystem;
 import com.daemonium_exorcismus.spawn.Spawner;
 import com.daemonium_exorcismus.spawn.Wave;
 
@@ -82,16 +84,18 @@ public class Game implements Runnable
 //        entities.put(bigEnemy.getId(), bigEnemy);
 
 
-        spawner = new Spawner(Constants.SPAWN_A);
-        ArrayList<EntityType> types = new ArrayList<>();
-        types.add(EntityType.REGULAR_ENEMY);
-        types.add(EntityType.REGULAR_ENEMY);
-        types.add(EntityType.REGULAR_ENEMY);
-        types.add(EntityType.MEDIUM_ENEMY);
-        types.add(EntityType.MEDIUM_ENEMY);
-        types.add(EntityType.MEDIUM_ENEMY);
-        Wave wave = new Wave(types, 10, 0);
-        spawner.setWave(wave);
+        LevelSystem levelSystem = new LevelSystem(LevelInfo.parseLevelInfo());
+
+//        spawner = new Spawner(Constants.SPAWN_A);
+//        ArrayList<EntityType> types = new ArrayList<>();
+//        types.add(EntityType.REGULAR_ENEMY);
+//        types.add(EntityType.REGULAR_ENEMY);
+//        types.add(EntityType.REGULAR_ENEMY);
+//        types.add(EntityType.MEDIUM_ENEMY);
+//        types.add(EntityType.MEDIUM_ENEMY);
+//        types.add(EntityType.MEDIUM_ENEMY);
+//        Wave wave = new Wave(types, 10, 0);
+//        spawner.setWave(wave);
 
         SystemBase physics = new PhysicsSystem();
         SystemBase render = new RenderSystem();
@@ -102,6 +106,7 @@ public class Game implements Runnable
         systems.add(input);
         systems.add(physics);
         systems.add(enemyAI);
+        systems.add(levelSystem);
     }
 
     public void run()
@@ -153,7 +158,6 @@ public class Game implements Runnable
             system.updateSystem(entities, newTime);
         }
         map.update(newTime);
-        spawner.update(entities, newTime);
     }
 
 }

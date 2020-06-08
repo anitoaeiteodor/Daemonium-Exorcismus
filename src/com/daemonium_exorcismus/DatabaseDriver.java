@@ -190,10 +190,14 @@ public class DatabaseDriver {
 
             while (rs.next()) {
                 levelInfo.append(rs.getInt("Level")).append(" ");
-                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnAEn"), rs.getInt("SpawnADel"), rs.getInt("SpawnAOffset")));
-                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnBEn"), rs.getInt("SpawnBDel"), rs.getInt("SpawnBOffset")));
-                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnCEn"), rs.getInt("SpawnCDel"), rs.getInt("SpawnCOffset")));
-                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnDEn"), rs.getInt("SpawnDDel"), rs.getInt("SpawnDOffset")));
+                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnAEn"),
+                        rs.getInt("SpawnADel"), rs.getInt("SpawnAOffset")));
+                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnBEn"),
+                        rs.getInt("SpawnBDel"), rs.getInt("SpawnBOffset")));
+                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnCEn"),
+                        rs.getInt("SpawnCDel"), rs.getInt("SpawnCOffset")));
+                levelInfo.append(String.format("%s %d %d ", rs.getString("SpawnDEn"),
+                        rs.getInt("SpawnDDel"), rs.getInt("SpawnDOffset")));
                 levelInfo.append("\n");
             }
 

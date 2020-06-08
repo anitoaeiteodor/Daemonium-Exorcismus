@@ -15,6 +15,7 @@ import com.daemonium_exorcismus.engine.graphics.AssetManager;
 import com.daemonium_exorcismus.engine.graphics.Assets;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
+import com.daemonium_exorcismus.spawn.LevelSystem;
 import javafx.geometry.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -101,7 +102,8 @@ public class Map {
     }
 
     public void update(long newTime) {
-        if (!loadNextArea) {
+        if (!(loadNextArea && LevelSystem.canLoadNextArea && killedAllEnemies())) {
+            loadNextArea = false;
             oldTime = newTime;
             return;
         }
@@ -140,13 +142,15 @@ public class Map {
         entities.putAll(remaining);
         addRandomObjects();
 
-        for (Vec2D spawnPoint : spawnPoints) {
-            EntityFactory factory = new EntityFactory();
-            Entity enemy = factory.getEntity(EntityType.REGULAR_ENEMY,
-                    spawnPoint, true);
-            entities.put(enemy.getId(), enemy);
 
-        }
+        LevelSystem.nextLevelFlag = true;
+//        for (Vec2D spawnPoint : spawnPoints) {
+//            EntityFactory factory = new EntityFactory();
+//            Entity enemy = factory.getEntity(EntityType.REGULAR_ENEMY,
+//                    spawnPoint, true);
+//            entities.put(enemy.getId(), enemy);
+//
+//        }
 
         rs.setFading(false);
     }
@@ -250,6 +254,17 @@ public class Map {
             nSkulls--;
         }
 
+    }
+
+    private boolean killedAllEnemies() {
+        for (Entity ent : entities.values()) {
+            if (ent.getType() == EntityType.REGULAR_ENEMY
+                || ent.getType() == EntityType.MEDIUM_ENEMY
+                || ent.getType() == EntityType.HEAVY_ENEMY) {
+                return false;
+            }
+        }
+        return true;
     }
 
     private boolean occupied(Rectangle2D rect, ArrayList<Rectangle2D> arr) {
