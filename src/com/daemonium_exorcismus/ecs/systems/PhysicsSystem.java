@@ -16,9 +16,9 @@ import java.util.HashMap;
 
 public class PhysicsSystem extends SystemBase {
 
-    public PhysicsSystem() {
+    public PhysicsSystem(long oldTime) {
+        super(oldTime);
         this.name = SystemNames.PHYSICS;
-        oldTime = 0;
     }
 
     @Override

@@ -8,8 +8,7 @@ import java.util.HashMap;
 
 public class LevelInfo {
     public static String levelInfo;
-//    0 2 0 0 60 50 2 0 0 60 100 2 0 0 0 0 0 0 0 0 0
-//    1 5 0 0 60 50 0 1 0 60 200 5 0 0 60 100 0 1 0 60 250
+
     public static HashMap<Integer, ArrayList<Wave>> parseLevelInfo() {
         HashMap<Integer, ArrayList<Wave>> levelMap = new HashMap<>();
         String[] levels = levelInfo.split("\n");

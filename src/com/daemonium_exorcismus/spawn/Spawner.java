@@ -20,6 +20,9 @@ public class Spawner {
     }
 
     public void update(HashMap<String, Entity> entities, long newTime) {
+        if (wave == null) {
+            return;
+        }
         if (wave.isFinished()) {
             return;
         }
@@ -49,6 +52,7 @@ public class Spawner {
     }
 
     public boolean isFinished() {
+        if (wave == null) return true;
         return wave.isFinished();
     }
 }

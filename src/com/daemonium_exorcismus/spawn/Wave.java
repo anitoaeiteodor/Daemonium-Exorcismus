@@ -13,7 +13,7 @@ public class Wave {
     public Wave(ArrayList<EntityType> enemies, long delay, long offset) {
         this.enemies = enemies;
         this.delay = delay;
-        this.offset = offset;
+        this.offset = offset * 1000000000;
     }
 
     public EntityType getEnemy() {
@@ -23,10 +23,23 @@ public class Wave {
     }
 
     public boolean canSpawn(long time) {
-        return (time > delay * Game.timeFrame + offset * 1000);
+        offset -= time / 10;
+        if (offset > 0) {
+            return false;
+        }
+        return  (time > delay * Game.timeFrame);
     }
 
     public boolean isFinished() {
         return enemies.isEmpty();
+    }
+
+    @Override
+    public String toString() {
+        return "Wave{" +
+                "enemies=" + enemies +
+                ", delay=" + delay +
+                ", offset=" + offset +
+                '}';
     }
 }

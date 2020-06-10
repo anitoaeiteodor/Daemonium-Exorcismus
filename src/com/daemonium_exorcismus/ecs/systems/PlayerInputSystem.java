@@ -25,9 +25,9 @@ public class PlayerInputSystem extends SystemBase {
     private static final double RELOAD_SPEED = EntityProperties.Player.RELOAD_TIME * Game.timeFrame;
     private long lastReloadTime = 0;
 
-    public PlayerInputSystem() {
+    public PlayerInputSystem(long oldTime) {
+        super(oldTime);
         name = SystemNames.PLAYER_INPUT;
-        oldTime = 0;
     }
 
     @Override

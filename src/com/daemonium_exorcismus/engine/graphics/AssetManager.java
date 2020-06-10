@@ -11,6 +11,13 @@ public class AssetManager {
     private static SpriteSheet resources = new SpriteSheet(LoadImage("assets/0x72_16x16DungeonTileset.v4.png"),
                             16, 16);
     private static BufferedImage map = LoadImage("assets/map.png");
+    private static SpriteSheet menuAsset = new SpriteSheet(LoadImage("assets/menu.png"),
+            1200, 800);
+    private static BufferedImage tutorialScreen = LoadImage("assets/tutorial.png");
+    private static SpriteSheet pauseScreen = new SpriteSheet(LoadImage("assets/pause.png"),
+            500, 600);
+    private static SpriteSheet gameOverScreen = new SpriteSheet(LoadImage("assets/gameover.png"),
+            1200, 800);
 
     public static void InitAssets() {
         System.out.println("Initializing assets");
@@ -24,7 +31,15 @@ public class AssetManager {
         assets.put(Assets.ENEMY_PROJ, resources.crop(7, 8, 1, 1));
         assets.put(Assets.MEDIUM_ENEMY, resources.crop(2, 11, 1, 1));
         assets.put(Assets.BIG_ENEMY, resources.crop(4, 11, 1, 1));
-
+        assets.put(Assets.MENU_PLAY, menuAsset.crop(0, 0, 1, 1));
+        assets.put(Assets.MENU_LOAD, menuAsset.crop(1, 0, 1, 1));
+        assets.put(Assets.MENU_TUT, menuAsset.crop(0, 1, 1, 1));
+        assets.put(Assets.MENU_EXIT, menuAsset.crop(1, 1, 1, 1));
+        assets.put(Assets.TUT_SCREEN, tutorialScreen);
+        assets.put(Assets.PAUSE_SCREEN_RES, pauseScreen.crop(0, 0, 1, 1));
+        assets.put(Assets.PAUSE_SCREEN_EXIT, pauseScreen.crop(1, 0 , 1, 1));
+        assets.put(Assets.GAME_OVER_BACK, gameOverScreen.crop(0, 0, 1, 1));
+        assets.put(Assets.GAME_OVER_EXIT, gameOverScreen.crop(0, 1, 1, 1));
         assets.put(Assets.MAP, map);
     }
 

@@ -7,5 +7,6 @@ public enum EntityType {
     REGULAR_ENEMY,
     MEDIUM_ENEMY,
     HEAVY_ENEMY,
-    BOSS
+    HEALTH_BAR,
+    SCORE
 }

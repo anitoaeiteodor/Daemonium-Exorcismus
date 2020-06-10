@@ -25,7 +25,7 @@ public class Map {
     private ArrayList<SystemBase> systems;
     private GameWindow wnd;
 
-    private boolean loadNextArea = false;
+    private boolean loadNextArea = true;
     private long oldTime;
 
     private double UPPER_BOUND;
@@ -46,10 +46,11 @@ public class Map {
     private ArrayList<Rectangle2D> rects = new ArrayList<>();
 
 
-    public Map(HashMap<String, Entity> entities, ArrayList<SystemBase> systems, GameWindow wnd) {
+    public Map(HashMap<String, Entity> entities, ArrayList<SystemBase> systems, GameWindow wnd, long oldTime) {
         this.entities = entities;
         this.systems = systems;
         this.wnd = wnd;
+        this.oldTime = 0;
 
         UPPER_BOUND = (int)(wnd.getWndHeight() * 0.25);
         LOWER_BOUND = (int)(wnd.getWndHeight() * 0.90);
@@ -102,8 +103,9 @@ public class Map {
     }
 
     public void update(long newTime) {
+//        System.out.println(loadNextArea + " " + LevelSystem.canLoadNextArea + " " + killedAllEnemies());
         if (!(loadNextArea && LevelSystem.canLoadNextArea && killedAllEnemies())) {
-            loadNextArea = false;
+//            loadNextArea = false;
             oldTime = newTime;
             return;
         }

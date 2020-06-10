@@ -18,9 +18,9 @@ public class EnemySystem extends SystemBase {
 
     public static final int PROJ_SPEED = Constants.ENEMY_PROJ_SPEED;
 
-    public EnemySystem() {
+    public EnemySystem(long oldTime) {
+        super(oldTime);
         name = SystemNames.ENEMY;
-        oldTime = 0;
     }
 
 

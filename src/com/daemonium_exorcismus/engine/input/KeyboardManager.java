@@ -34,6 +34,12 @@ public class KeyboardManager extends KeyAdapter {
                     keysPressed.add(KeyEvent.VK_F1);
                 }
                 break;
+            case KeyEvent.VK_ESCAPE:
+                keysPressed.add(KeyEvent.VK_ESCAPE);
+                break;
+            case KeyEvent.VK_ENTER:
+                keysPressed.add(KeyEvent.VK_ENTER);
+                break;
         }
     }
 
@@ -54,6 +60,12 @@ public class KeyboardManager extends KeyAdapter {
                 break;
             case KeyEvent.VK_F:
                 keysPressed.remove(KeyEvent.VK_F);
+                break;
+            case KeyEvent.VK_ENTER:
+                keysPressed.remove(KeyEvent.VK_ENTER);
+                break;
+            case KeyEvent.VK_ESCAPE:
+                keysPressed.remove(KeyEvent.VK_ESCAPE);
                 break;
         }
     }

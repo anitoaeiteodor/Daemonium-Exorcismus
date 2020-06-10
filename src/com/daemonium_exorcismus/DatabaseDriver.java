@@ -1,6 +1,10 @@
 package com.daemonium_exorcismus;
 
+import com.daemonium_exorcismus.ecs.Entity;
+import com.daemonium_exorcismus.ecs.components.ComponentNames;
+import com.daemonium_exorcismus.ecs.components.HealthComponent;
 import com.daemonium_exorcismus.ecs.components.shooting.ShooterType;
+import com.daemonium_exorcismus.ecs.systems.HUDSystem;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 import com.daemonium_exorcismus.spawn.LevelInfo;
 
@@ -8,6 +12,53 @@ import java.sql.*;
 import java.util.List;
 
 public class DatabaseDriver {
+
+    public static int PLAYER_HEALTH = -1;
+    public static int LEVEL_NUM = -1;
+
+    public static void saveGame(int levelCount, Entity player) {
+        Connection c = null;
+
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:game-contents.db");
+
+            Statement stmt = c.createStatement();
+            stmt.executeUpdate("DELETE FROM Save");
+
+            HealthComponent hc = (HealthComponent) player.getComponent(ComponentNames.HEALTH);
+
+            String values = String.format("VALUES (%d, %d, %d)", levelCount, hc.getHealth(), (int)HUDSystem.ScoreValue);
+            stmt.executeUpdate("INSERT INTO Save (Level, PlayerHealth, Time) " + values);
+            c.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.exit(-1);
+        }
+    }
+
+    public static boolean loadGame() {
+        Connection c = null;
+        PLAYER_HEALTH = -1;
+        try {
+            Class.forName("org.sqlite.JDBC");
+            c = DriverManager.getConnection("jdbc:sqlite:game-contents.db");
+
+            Statement stmt = c.createStatement();
+
+            ResultSet rs = stmt.executeQuery("SELECT * FROM Save");
+
+            LEVEL_NUM = rs.getInt("Level") - 1;
+            PLAYER_HEALTH = rs.getInt("PlayerHealth");
+            HUDSystem.ScoreValue = rs.getInt("Time");
+
+            c.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+            System.out.println("No savegame present");
+        }
+        return PLAYER_HEALTH != -1;
+    }
 
     public static void extractInfo() {
         Connection c = null;

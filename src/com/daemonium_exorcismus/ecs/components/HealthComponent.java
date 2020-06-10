@@ -15,4 +15,12 @@ public class HealthComponent extends Component {
     public void takeDamage(int amount) {
         health -= amount;
     }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
+    }
 }

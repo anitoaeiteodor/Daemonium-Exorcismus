@@ -14,9 +14,9 @@ import com.daemonium_exorcismus.engine.core.RenderManager;
 
 public class RenderSystem extends SystemBase {
 
-    public RenderSystem() {
+    public RenderSystem(long oldTime) {
+        super(oldTime);
         this.name = SystemNames.RENDER;
-        oldTime = 0;
     }
 
     private boolean isFading;
