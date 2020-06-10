@@ -1,5 +1,8 @@
 package com.daemonium_exorcismus.ecs.components;
 
+/**
+ * Only the player entity can have this component attached.
+ */
 public class PlayerControlledComponent extends Component {
 
     private boolean isPlayerControlled;

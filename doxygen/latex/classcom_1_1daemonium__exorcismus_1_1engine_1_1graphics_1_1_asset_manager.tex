@@ -1,0 +1,96 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+engine.\+graphics.\+Asset\+Manager Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager}\index{com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}}
+\doxysubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_aa5c44218ed93227ef596321e26c4f411}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_aa5c44218ed93227ef596321e26c4f411}} 
+static void {\bfseries Init\+Assets} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a97d15913eba47e427f836e406e8a2639}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a97d15913eba47e427f836e406e8a2639}} 
+static final Hash\+Map$<$ \mbox{\hyperlink{enumcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_assets}{Assets}}, Buffered\+Image $>$ {\bfseries assets} = new Hash\+Map$<$$>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_aba3f32dfabd1c8fa947fb5ae2ff68b22}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_aba3f32dfabd1c8fa947fb5ae2ff68b22}} 
+static Buffered\+Image {\bfseries Load\+Image} (String path)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_sprite_sheet}{Sprite\+Sheet}} {\bfseries resources}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a15c648733b914144786adaf1132cc1d7}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a15c648733b914144786adaf1132cc1d7}} 
+static Buffered\+Image {\bfseries map} = Load\+Image(\char`\"{}assets/map.\+png\char`\"{})
+\item 
+static \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_sprite_sheet}{Sprite\+Sheet}} {\bfseries menu\+Asset}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a4f5fe9c8faff98248b1174763bdd3954}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a4f5fe9c8faff98248b1174763bdd3954}} 
+static Buffered\+Image {\bfseries tutorial\+Screen} = Load\+Image(\char`\"{}assets/tutorial.\+png\char`\"{})
+\item 
+static \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_sprite_sheet}{Sprite\+Sheet}} {\bfseries pause\+Screen}
+\item 
+static \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_sprite_sheet}{Sprite\+Sheet}} {\bfseries game\+Over\+Screen}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that is responsible for loading and providing assets. 
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a4c8e4d2b80a46ddf21375cd987e195af}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a4c8e4d2b80a46ddf21375cd987e195af}} 
+\index{com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}!gameOverScreen@{gameOverScreen}}
+\index{gameOverScreen@{gameOverScreen}!com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}}
+\doxysubsubsection{\texorpdfstring{gameOverScreen}{gameOverScreen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_sprite_sheet}{Sprite\+Sheet}} com.\+daemonium\+\_\+exorcismus.\+engine.\+graphics.\+Asset\+Manager.\+game\+Over\+Screen\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \textcolor{keyword}{new} SpriteSheet(LoadImage(\textcolor{stringliteral}{"assets/gameover.png"}),}
+\DoxyCodeLine{            1200, 800)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a08631086a2cf27e629217de7fe15a9a0}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a08631086a2cf27e629217de7fe15a9a0}} 
+\index{com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}!menuAsset@{menuAsset}}
+\index{menuAsset@{menuAsset}!com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}}
+\doxysubsubsection{\texorpdfstring{menuAsset}{menuAsset}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_sprite_sheet}{Sprite\+Sheet}} com.\+daemonium\+\_\+exorcismus.\+engine.\+graphics.\+Asset\+Manager.\+menu\+Asset\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \textcolor{keyword}{new} SpriteSheet(LoadImage(\textcolor{stringliteral}{"assets/menu.png"}),}
+\DoxyCodeLine{            1200, 800)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_ab6b655d9fe179f32b45557b88e10f9ac}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_ab6b655d9fe179f32b45557b88e10f9ac}} 
+\index{com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}!pauseScreen@{pauseScreen}}
+\index{pauseScreen@{pauseScreen}!com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}}
+\doxysubsubsection{\texorpdfstring{pauseScreen}{pauseScreen}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_sprite_sheet}{Sprite\+Sheet}} com.\+daemonium\+\_\+exorcismus.\+engine.\+graphics.\+Asset\+Manager.\+pause\+Screen\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \textcolor{keyword}{new} SpriteSheet(LoadImage(\textcolor{stringliteral}{"assets/pause.png"}),}
+\DoxyCodeLine{            500, 600)}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a33f4e59d3c852c7ff370e5a2c889e6cf}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_asset_manager_a33f4e59d3c852c7ff370e5a2c889e6cf}} 
+\index{com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}!resources@{resources}}
+\index{resources@{resources}!com.daemonium\_exorcismus.engine.graphics.AssetManager@{com.daemonium\_exorcismus.engine.graphics.AssetManager}}
+\doxysubsubsection{\texorpdfstring{resources}{resources}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1graphics_1_1_sprite_sheet}{Sprite\+Sheet}} com.\+daemonium\+\_\+exorcismus.\+engine.\+graphics.\+Asset\+Manager.\+resources\hspace{0.3cm}{\ttfamily [static]}, {\ttfamily [private]}}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{= \textcolor{keyword}{new} SpriteSheet(LoadImage(\textcolor{stringliteral}{"assets/0x72\_16x16DungeonTileset.v4.png"}),}
+\DoxyCodeLine{                            16, 16)}
+
+\end{DoxyCode}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/engine/graphics/Asset\+Manager.\+java\end{DoxyCompactItemize}

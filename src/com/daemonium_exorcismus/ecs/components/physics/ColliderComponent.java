@@ -6,6 +6,9 @@ import com.daemonium_exorcismus.engine.utils.Vec2D;
 
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Entities that have this component attached are able to collide with other entities.
+ */
 public class ColliderComponent extends Component {
 
     private boolean isCollidable;

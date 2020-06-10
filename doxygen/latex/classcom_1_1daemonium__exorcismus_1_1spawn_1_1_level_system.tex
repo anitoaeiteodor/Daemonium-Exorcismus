@@ -1,0 +1,75 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+spawn.\+Level\+System Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system}\index{com.daemonium\_exorcismus.spawn.LevelSystem@{com.daemonium\_exorcismus.spawn.LevelSystem}}
+Inheritance diagram for com.\+daemonium\+\_\+exorcismus.\+spawn.\+Level\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a7e22383c53faac751b95c842d5119ce5}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a7e22383c53faac751b95c842d5119ce5}} 
+{\bfseries Level\+System} (Hash\+Map$<$ Integer, Array\+List$<$ \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_wave}{Wave}} $>$$>$ levels, long old\+Time)
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a93240ec2bd43e2cbee6565d4d27ce3c2}{update\+System}} (Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$ entity\+List, long new\+Time)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a7ed9cc2003e5b3fba86da63099ac9652}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a7ed9cc2003e5b3fba86da63099ac9652}} 
+boolean {\bfseries finished\+Spawning} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_ac333c16d1b42331a8be16ca325a66d89}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_ac333c16d1b42331a8be16ca325a66d89}} 
+void {\bfseries load\+Next\+Level} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a5929c103d0fe0ff6846e2b7ece3d67aa}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a5929c103d0fe0ff6846e2b7ece3d67aa}} 
+static boolean {\bfseries next\+Level\+Flag} = false
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a7103952f7813ca2d67a66577131277c5}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a7103952f7813ca2d67a66577131277c5}} 
+static boolean {\bfseries can\+Load\+Next\+Area} = true
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a2f7d0062cb010713c0032a30374f4141}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a2f7d0062cb010713c0032a30374f4141}} 
+static int {\bfseries current\+Level}
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_aabd4b8bd30ed5d590d4750df5c4567ef}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_aabd4b8bd30ed5d590d4750df5c4567ef}} 
+Hash\+Map$<$ Integer, Array\+List$<$ \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_wave}{Wave}} $>$ $>$ {\bfseries levels}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a2e0e66dd5403c13b9a8500ae830d2311}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a2e0e66dd5403c13b9a8500ae830d2311}} 
+Array\+List$<$ \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_spawner}{Spawner}} $>$ {\bfseries spawners} = new Array\+List$<$$>$()
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_ade891ab913b02d173335a9ac0c542c56}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_ade891ab913b02d173335a9ac0c542c56}} 
+long {\bfseries wait\+Seconds}
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This system is responsible for keeping track of the current level the player is in. It also handles the spawner logic. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a93240ec2bd43e2cbee6565d4d27ce3c2}\label{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a93240ec2bd43e2cbee6565d4d27ce3c2}} 
+\index{com.daemonium\_exorcismus.spawn.LevelSystem@{com.daemonium\_exorcismus.spawn.LevelSystem}!updateSystem@{updateSystem}}
+\index{updateSystem@{updateSystem}!com.daemonium\_exorcismus.spawn.LevelSystem@{com.daemonium\_exorcismus.spawn.LevelSystem}}
+\doxysubsubsection{\texorpdfstring{updateSystem()}{updateSystem()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+spawn.\+Level\+System.\+update\+System (\begin{DoxyParamCaption}\item[{Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$}]{entity\+List,  }\item[{long}]{new\+Time }\end{DoxyParamCaption})}
+
+This method updates the system. 
+\begin{DoxyParams}{Parameters}
+{\em entity\+List} & hashmap of all the entities currently in the game \\
+\hline
+{\em new\+Time} & used to calculate elapsed time \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_afb309e673e6bf88d97dcd118d94fbfe8}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+System\+Base}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/spawn/Level\+System.\+java\end{DoxyCompactItemize}

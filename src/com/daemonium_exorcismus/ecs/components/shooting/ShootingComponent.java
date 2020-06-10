@@ -4,6 +4,9 @@ import com.daemonium_exorcismus.ecs.components.Component;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
 import com.daemonium_exorcismus.engine.core.Game;
 
+/**
+ * A component aimed exclusively at enemy entities. It stores the type of attack it implements.
+ */
 public class ShootingComponent extends Component {
 
     private ShooterType type;

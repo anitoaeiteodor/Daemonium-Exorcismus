@@ -3,6 +3,9 @@ package com.daemonium_exorcismus.ecs.components.physics;
 import com.daemonium_exorcismus.ecs.components.ComponentNames;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
+/**
+ * Extension of RigidBody that allow entities to move.
+ */
 public class KinematicBodyComponent extends RigidBodyComponent {
 
     private Vec2D velocity;

@@ -6,6 +6,9 @@ import com.daemonium_exorcismus.ecs.EntityType;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Helper class that parses the information from the database.
+ */
 public class LevelInfo {
     public static String levelInfo;
 

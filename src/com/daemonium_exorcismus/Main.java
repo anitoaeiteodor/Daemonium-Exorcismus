@@ -3,7 +3,9 @@ package com.daemonium_exorcismus;
 import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.spawn.LevelInfo;
 
-
+/**
+ * Main class. Starting point of the program.
+ */
 public class Main {
 
     public static void main(String[] args) {

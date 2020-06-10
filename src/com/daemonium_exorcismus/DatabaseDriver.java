@@ -11,11 +11,17 @@ import com.daemonium_exorcismus.spawn.LevelInfo;
 import java.sql.*;
 import java.util.List;
 
+/**
+ *  Helper class that extracts all the information required for the game to work from a database.
+ */
 public class DatabaseDriver {
 
     public static int PLAYER_HEALTH = -1;
     public static int LEVEL_NUM = -1;
 
+    /**
+     *   Method to save the game.
+     */
     public static void saveGame(int levelCount, Entity player) {
         Connection c = null;
 
@@ -37,6 +43,9 @@ public class DatabaseDriver {
         }
     }
 
+    /**
+     *   Method to load the game.
+     */
     public static boolean loadGame() {
         Connection c = null;
         PLAYER_HEALTH = -1;
@@ -60,6 +69,9 @@ public class DatabaseDriver {
         return PLAYER_HEALTH != -1;
     }
 
+    /**
+     *   Static function that extract data from all the tables.
+     */
     public static void extractInfo() {
         Connection c = null;
 

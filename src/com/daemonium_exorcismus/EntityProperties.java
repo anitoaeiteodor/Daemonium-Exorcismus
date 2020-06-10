@@ -3,6 +3,9 @@ package com.daemonium_exorcismus;
 import com.daemonium_exorcismus.ecs.components.shooting.ShooterType;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
+/**
+ * Class that contain all entity information extracted from the database.
+ */
 public class EntityProperties {
     public static class Player {
         public static Vec2D COLLIDER_OFFSET_FIRST;

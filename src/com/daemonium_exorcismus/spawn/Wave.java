@@ -5,6 +5,10 @@ import com.daemonium_exorcismus.engine.core.Game;
 
 import java.util.ArrayList;
 
+/**
+ * This class contains all the information of a wave and is responsible
+ * of keeping track of the enemies that are about to spawn.
+ */
 public class Wave {
     private ArrayList<EntityType> enemies;
     private long delay;

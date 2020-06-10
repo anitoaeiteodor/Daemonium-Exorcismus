@@ -4,6 +4,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import java.util.HashSet;
 
+/**
+ * This class handles all the inputs from the keyboard. It extends the KeyAdapter class from Java.
+ */
 public class KeyboardManager extends KeyAdapter {
 
     public static HashSet<Integer> keysPressed = new HashSet<>();

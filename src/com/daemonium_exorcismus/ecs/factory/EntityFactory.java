@@ -13,6 +13,9 @@ import com.daemonium_exorcismus.engine.graphics.AssetManager;
 import com.daemonium_exorcismus.engine.graphics.Assets;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
+/**
+ * Factory class for different entity types.
+ */
 public class EntityFactory {
 
     public Entity getEntity(EntityType type, Vec2D position, boolean isVisible) {

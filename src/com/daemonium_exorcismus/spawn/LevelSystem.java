@@ -11,6 +11,10 @@ import com.daemonium_exorcismus.spawn.Wave;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This system is responsible for keeping track of the current level the player is in.
+ * It also handles the spawner logic.
+ */
 public class LevelSystem extends SystemBase {
 
     private HashMap<Integer, ArrayList<Wave>> levels;

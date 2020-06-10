@@ -1,5 +1,8 @@
 package com.daemonium_exorcismus.ecs;
 
+/**
+ * Enum containing all entity types
+ */
 public enum EntityType {
     PLAYER, MAP, WALL,
     SKULL, CRATE, COLUMN,
@@ -7,6 +10,4 @@ public enum EntityType {
     REGULAR_ENEMY,
     MEDIUM_ENEMY,
     HEAVY_ENEMY,
-    HEALTH_BAR,
-    SCORE
 }

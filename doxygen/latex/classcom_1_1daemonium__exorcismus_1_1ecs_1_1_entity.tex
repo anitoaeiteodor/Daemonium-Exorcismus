@@ -1,0 +1,72 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+ecs.\+Entity Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}\index{com.daemonium\_exorcismus.ecs.Entity@{com.daemonium\_exorcismus.ecs.Entity}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a4fd381c894ac11a57789ed21bce7d7d3}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a4fd381c894ac11a57789ed21bce7d7d3}} 
+{\bfseries Entity} (\mbox{\hyperlink{enumcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_type}{Entity\+Type}} type)
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_ad80cddaa97be0c8dc94c0a8df592b839}{add\+Component}} (\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1components_1_1_component}{Component}} component)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a71f7474254b75a1a4328db1dfa06b271}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a71f7474254b75a1a4328db1dfa06b271}} 
+void {\bfseries remove\+Component} (\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1components_1_1_component}{Component}} component)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_abf73e11e9c92f2be31bc764ca1203aea}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_abf73e11e9c92f2be31bc764ca1203aea}} 
+boolean {\bfseries has\+Component} (String name)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a76ab8faf6750637aa6a53ad14703d3b9}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a76ab8faf6750637aa6a53ad14703d3b9}} 
+String {\bfseries get\+Id} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_abcb44a3568c67fd31d3ce23c0240f944}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_abcb44a3568c67fd31d3ce23c0240f944}} 
+\mbox{\hyperlink{enumcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_type}{Entity\+Type}} {\bfseries get\+Type} ()
+\item 
+\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1components_1_1_component}{Component}} \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a88199893a4221d1ee23af2f480fa3864}{get\+Component}} (String name)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_ae6d06903eb661622286a5c8e647b194c}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_ae6d06903eb661622286a5c8e647b194c}} 
+String {\bfseries id}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a430cb8c9024423828c0f548d76b53ca5}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a430cb8c9024423828c0f548d76b53ca5}} 
+\mbox{\hyperlink{enumcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_type}{Entity\+Type}} {\bfseries type}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a4b9323c10881f055673299a675c40909}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a4b9323c10881f055673299a675c40909}} 
+Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1components_1_1_component}{Component}} $>$ {\bfseries components} = new Hash\+Map$<$$>$()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for all entities in the game. By itself it has no functionality. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_ad80cddaa97be0c8dc94c0a8df592b839}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_ad80cddaa97be0c8dc94c0a8df592b839}} 
+\index{com.daemonium\_exorcismus.ecs.Entity@{com.daemonium\_exorcismus.ecs.Entity}!addComponent@{addComponent}}
+\index{addComponent@{addComponent}!com.daemonium\_exorcismus.ecs.Entity@{com.daemonium\_exorcismus.ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{addComponent()}{addComponent()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+ecs.\+Entity.\+add\+Component (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1components_1_1_component}{Component}}}]{component }\end{DoxyParamCaption})}
+
+Method used to add components to the entity. 
+\begin{DoxyParams}{Parameters}
+{\em component} & component to add \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a88199893a4221d1ee23af2f480fa3864}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity_a88199893a4221d1ee23af2f480fa3864}} 
+\index{com.daemonium\_exorcismus.ecs.Entity@{com.daemonium\_exorcismus.ecs.Entity}!getComponent@{getComponent}}
+\index{getComponent@{getComponent}!com.daemonium\_exorcismus.ecs.Entity@{com.daemonium\_exorcismus.ecs.Entity}}
+\doxysubsubsection{\texorpdfstring{getComponent()}{getComponent()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1components_1_1_component}{Component}} com.\+daemonium\+\_\+exorcismus.\+ecs.\+Entity.\+get\+Component (\begin{DoxyParamCaption}\item[{String}]{name }\end{DoxyParamCaption})}
+
+Return the component if the entity has it. 
+\begin{DoxyParams}{Parameters}
+{\em name} & name of the component \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+component if present, else null 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/ecs/Entity.\+java\end{DoxyCompactItemize}

@@ -2,6 +2,9 @@ package com.daemonium_exorcismus.ecs.components;
 
 import java.awt.image.BufferedImage;
 
+/**
+ * Component used by most entities. Only an entity that has a RenderComponent attached can be seen.
+ */
 public class RenderComponent extends Component {
 
     private boolean isVisible;

@@ -14,6 +14,9 @@ import javafx.geometry.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * This is where we handle collisions, applying damage, sliding etc.
+ */
 public class PhysicsSystem extends SystemBase {
 
     public PhysicsSystem(long oldTime) {
@@ -148,21 +151,24 @@ public class PhysicsSystem extends SystemBase {
 
     }
 
+    /**
+     * Simple method that checks if the entity is an enemy.
+     * @param entity entity to be checked
+     * @return true if enemy else false
+     */
     private boolean isEnemy(Entity entity) {
         return (entity.getType() == EntityType.REGULAR_ENEMY
                 || entity.getType() == EntityType.MEDIUM_ENEMY
                 || entity.getType() == EntityType.HEAVY_ENEMY);
     }
 
-    private boolean insideQueue(ArrayList<Entity> list, Entity entity) {
-        for (Entity e : list) {
-            if (e.getId().equals(entity.getId())) {
-                return true;
-            }
-        }
-        return false;
-    }
-
+    /**
+     * Method used to enable sliding.
+     * @param entity entity to be checked
+     * @param other other entity
+     * @param dir collision axis
+     * @return true if collision on axis else false
+     */
     private boolean isCollidingOnAxis(Entity entity, Entity other, Vec2D dir) {
         // entity is implementing kinematic body component
         revertVelocity(entity);
@@ -196,6 +202,12 @@ public class PhysicsSystem extends SystemBase {
         comp.setPos(comp.getPos().add(comp.getVelocity()));
     }
 
+    /**
+     * Simple check for collision
+     * @param entity entity to be checked
+     * @param other other entity
+     * @return true if collided else false
+     */
     private boolean checkCollision(Entity entity, Entity other) {
         Rectangle2D entityRect = getRigidBodyRectangle(entity);
         Rectangle2D otherRect = getRigidBodyRectangle(other);

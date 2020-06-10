@@ -7,6 +7,9 @@ import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.Queue;
 
+/**
+ * This class handles all the inputs from the mouse. It extends the MouseListener class from Java.
+ */
 public class MouseManager implements MouseListener {
 
     public static Vec2D mousePos = new Vec2D(-1, -1);

@@ -20,6 +20,10 @@ import javafx.geometry.Rectangle2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Special system that keeps track of both the entities present as well as the systems. It does not extend the
+ * SystemBase class but it provides the same functionality.
+ */
 public class Map {
     private HashMap<String, Entity> entities;
     private ArrayList<SystemBase> systems;
@@ -102,6 +106,10 @@ public class Map {
 
     }
 
+    /**
+     * Update method similar to the one in SystemBase. No entity parameter because it is a part of the class.
+     * @param newTime used to calculate elapsed time
+     */
     public void update(long newTime) {
 //        System.out.println(loadNextArea + " " + LevelSystem.canLoadNextArea + " " + killedAllEnemies());
         if (!(loadNextArea && LevelSystem.canLoadNextArea && killedAllEnemies())) {

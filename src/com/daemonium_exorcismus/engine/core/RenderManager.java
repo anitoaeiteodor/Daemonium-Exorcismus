@@ -16,6 +16,9 @@ import java.awt.event.KeyEvent;
 import java.awt.image.BufferStrategy;
 import java.util.ArrayList;
 
+/**
+ * Class responsible for drawing to the canvas.
+ */
 public class RenderManager {
     private GameWindow wnd;
     private static RenderManager instance;
@@ -40,29 +43,6 @@ public class RenderManager {
         }
     }
 
-    public void drawHUD(Vec2D healthPos, int healthValue, Vec2D scorePos, int scoreValue) {
-        BufferStrategy bs = wnd.getCanvas().getBufferStrategy();
-
-        if(bs == null)
-        {
-            try
-            {
-                wnd.getCanvas().createBufferStrategy(3);
-                return;
-            }
-            catch (Exception e)
-            {
-                e.printStackTrace();
-            }
-        }
-
-        assert bs != null;
-        Graphics g = bs.getDrawGraphics();
-
-
-        bs.show();
-        g.dispose();
-    }
 
     public void drawTutorial() {
         BufferStrategy bs = wnd.getCanvas().getBufferStrategy();

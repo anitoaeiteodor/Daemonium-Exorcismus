@@ -1,5 +1,8 @@
 package com.daemonium_exorcismus.ecs.components;
 
+/**
+ * Contains all the component names.
+ */
 public class ComponentNames {
     public static final String RENDER = "render";
     public static final String RIGID_BODY = "rigid_body";

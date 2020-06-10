@@ -14,6 +14,10 @@ import com.daemonium_exorcismus.menu.GameState;
 import java.awt.event.KeyEvent;
 import java.util.HashMap;
 
+/**
+ * System that keeps track of player health and time.
+ * It also handles the pause mechanic logic.
+ */
 public class HUDSystem extends SystemBase {
 
     public static Vec2D HealthPosition = new Vec2D(50, 25);

@@ -1,0 +1,63 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Player\+Input\+System Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system}\index{com.daemonium\_exorcismus.ecs.systems.PlayerInputSystem@{com.daemonium\_exorcismus.ecs.systems.PlayerInputSystem}}
+Inheritance diagram for com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Player\+Input\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a107d940b5169f90bd4b0dfa4dc9305b5}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a107d940b5169f90bd4b0dfa4dc9305b5}} 
+{\bfseries Player\+Input\+System} (long old\+Time)
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a9d4ce1910f06d7234765476252b67992}{update\+System}} (Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$ entity\+List, long new\+Time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_aee5beb7b4e3ced86ddba07c96db3d478}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_aee5beb7b4e3ced86ddba07c96db3d478}} 
+long {\bfseries last\+Reload\+Time} = 0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a6a05f92cf998ab9dffdebddca0be879e}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a6a05f92cf998ab9dffdebddca0be879e}} 
+static final int {\bfseries S\+P\+E\+ED} = Entity\+Properties.\+Player.\+S\+P\+E\+ED
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_ab1082fde934633bd736d84ea2c398fd2}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_ab1082fde934633bd736d84ea2c398fd2}} 
+static final int {\bfseries P\+R\+O\+J\+\_\+\+S\+P\+E\+ED} = Constants.\+P\+L\+A\+Y\+E\+R\+\_\+\+P\+R\+O\+J\+\_\+\+S\+P\+E\+ED
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a872ced919990b3ac6b392296f55a924f}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a872ced919990b3ac6b392296f55a924f}} 
+static final double {\bfseries R\+E\+L\+O\+A\+D\+\_\+\+S\+P\+E\+ED} = Entity\+Properties.\+Player.\+R\+E\+L\+O\+A\+D\+\_\+\+T\+I\+ME $\ast$ Game.\+time\+Frame
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+System responsible for all the logic of the player. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a9d4ce1910f06d7234765476252b67992}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a9d4ce1910f06d7234765476252b67992}} 
+\index{com.daemonium\_exorcismus.ecs.systems.PlayerInputSystem@{com.daemonium\_exorcismus.ecs.systems.PlayerInputSystem}!updateSystem@{updateSystem}}
+\index{updateSystem@{updateSystem}!com.daemonium\_exorcismus.ecs.systems.PlayerInputSystem@{com.daemonium\_exorcismus.ecs.systems.PlayerInputSystem}}
+\doxysubsubsection{\texorpdfstring{updateSystem()}{updateSystem()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Player\+Input\+System.\+update\+System (\begin{DoxyParamCaption}\item[{Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$}]{entity\+List,  }\item[{long}]{new\+Time }\end{DoxyParamCaption})}
+
+This method updates the system. 
+\begin{DoxyParams}{Parameters}
+{\em entity\+List} & hashmap of all the entities currently in the game \\
+\hline
+{\em new\+Time} & used to calculate elapsed time \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_afb309e673e6bf88d97dcd118d94fbfe8}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+System\+Base}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/ecs/systems/Player\+Input\+System.\+java\end{DoxyCompactItemize}

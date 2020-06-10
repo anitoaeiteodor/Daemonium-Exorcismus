@@ -1,5 +1,9 @@
 package com.daemonium_exorcismus.engine.utils;
 
+/**
+ * Helper structure used all throughout the game. It contains methods for
+ * adding, subtracting, scaling and multiplying 2D vectors.
+ */
 public class Vec2D {
     private double posX;
     private double posY;

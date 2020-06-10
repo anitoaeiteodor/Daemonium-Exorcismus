@@ -1,5 +1,8 @@
 package com.daemonium_exorcismus.engine.graphics;
 
+/**
+ * Enum with all the assets in the game.
+ */
 public enum Assets {
     PLAYER,
     CRATE,

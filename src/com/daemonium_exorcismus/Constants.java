@@ -2,6 +2,9 @@ package com.daemonium_exorcismus;
 
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
+/**
+ * Class which contains all constants of the game.
+ */
 public class Constants {
 
     public static int TEXTURE_SIZE;

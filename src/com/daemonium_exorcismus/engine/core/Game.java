@@ -20,8 +20,10 @@ import com.daemonium_exorcismus.menu.GameState;
 import com.daemonium_exorcismus.spawn.LevelInfo;
 import com.daemonium_exorcismus.spawn.LevelSystem;
 
-import javax.xml.crypto.Data;
-
+/**
+ * The main class of the program. Here is the starting point of the game, it is responsible for all the logic,
+ * entities and systems.
+ */
 public class Game implements Runnable
 {
     private GameWindow      wnd;
@@ -56,6 +58,9 @@ public class Game implements Runnable
         initGame();
     }
 
+    /**
+     * Called right after the constructor. It initializes the game window, as well as other things such as assets.
+     */
     private void initGame()
     {
         wnd = new GameWindow(title, width, height);
@@ -65,6 +70,9 @@ public class Game implements Runnable
         RenderManager.InitRenderManager(wnd);
     }
 
+    /**
+     * The main game loop.
+     */
     public void run()
     {
         long currentTime;
@@ -78,6 +86,9 @@ public class Game implements Runnable
 
     }
 
+    /**
+     * This method is called from main. It launches the main menu.
+     */
     public void launch() {
         Assets[] options = {Assets.MENU_PLAY, Assets.MENU_LOAD, Assets.MENU_TUT, Assets.MENU_EXIT};
         GameState[] states = {GameState.GS_PLAY, GameState.GS_LOAD, GameState.GS_TUT, GameState.GS_EXIT};
@@ -213,6 +224,9 @@ public class Game implements Runnable
         }
     }
 
+    /**
+     * Start the game.
+     */
     public synchronized void startGame()
     {
         entities.clear();
@@ -274,6 +288,10 @@ public class Game implements Runnable
         }
     }
 
+    /**
+     * This is where all the logic of the game happens.
+     * @param newTime used to calculate time elapsed
+     */
     private void update(long newTime)
     {
 

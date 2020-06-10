@@ -1,0 +1,78 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Render\+System Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system}\index{com.daemonium\_exorcismus.ecs.systems.RenderSystem@{com.daemonium\_exorcismus.ecs.systems.RenderSystem}}
+Inheritance diagram for com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Render\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+class {\bfseries Sort\+By\+Layer}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a4e5379b1c16a5625c9320104859ae373}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a4e5379b1c16a5625c9320104859ae373}} 
+{\bfseries Render\+System} (long old\+Time)
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a0a9c3815c9c1677dd298e8332bef08ff}{update\+System}} (Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$ entity\+List, long new\+Time)
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a84ae4381e0168b786aed00bbb07d0544}{set\+Fading}} (boolean fading)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a23be50d21ab43bd8a78e8257588a04d6}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a23be50d21ab43bd8a78e8257588a04d6}} 
+boolean {\bfseries is\+Fading}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a639158c0ccb70e39377f9de0acc0cabf}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a639158c0ccb70e39377f9de0acc0cabf}} 
+Hash\+Map$<$ String, Long $>$ {\bfseries flashing} = new Hash\+Map$<$$>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_af3b5c39270af90ebd8adf94d0c89e1f5}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_af3b5c39270af90ebd8adf94d0c89e1f5}} 
+static final int {\bfseries F\+L\+A\+S\+H\+\_\+\+F\+R\+A\+M\+E\+\_\+\+C\+O\+U\+NT} = 4
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+System responsible for rendering the entities. It uses the Render\+Manager. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a84ae4381e0168b786aed00bbb07d0544}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a84ae4381e0168b786aed00bbb07d0544}} 
+\index{com.daemonium\_exorcismus.ecs.systems.RenderSystem@{com.daemonium\_exorcismus.ecs.systems.RenderSystem}!setFading@{setFading}}
+\index{setFading@{setFading}!com.daemonium\_exorcismus.ecs.systems.RenderSystem@{com.daemonium\_exorcismus.ecs.systems.RenderSystem}}
+\doxysubsubsection{\texorpdfstring{setFading()}{setFading()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Render\+System.\+set\+Fading (\begin{DoxyParamCaption}\item[{boolean}]{fading }\end{DoxyParamCaption})}
+
+Used for the fading efect. 
+\begin{DoxyParams}{Parameters}
+{\em fading} & sets fading \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a0a9c3815c9c1677dd298e8332bef08ff}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a0a9c3815c9c1677dd298e8332bef08ff}} 
+\index{com.daemonium\_exorcismus.ecs.systems.RenderSystem@{com.daemonium\_exorcismus.ecs.systems.RenderSystem}!updateSystem@{updateSystem}}
+\index{updateSystem@{updateSystem}!com.daemonium\_exorcismus.ecs.systems.RenderSystem@{com.daemonium\_exorcismus.ecs.systems.RenderSystem}}
+\doxysubsubsection{\texorpdfstring{updateSystem()}{updateSystem()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Render\+System.\+update\+System (\begin{DoxyParamCaption}\item[{Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$}]{entity\+List,  }\item[{long}]{new\+Time }\end{DoxyParamCaption})}
+
+This method updates the system. 
+\begin{DoxyParams}{Parameters}
+{\em entity\+List} & hashmap of all the entities currently in the game \\
+\hline
+{\em new\+Time} & used to calculate elapsed time \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_afb309e673e6bf88d97dcd118d94fbfe8}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+System\+Base}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/ecs/systems/Render\+System.\+java\end{DoxyCompactItemize}

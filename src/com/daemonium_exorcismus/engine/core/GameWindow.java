@@ -5,27 +5,23 @@ import java.awt.*;
 import java.awt.event.KeyAdapter;
 import java.awt.event.MouseListener;
 
-/*! \class GameWindow
-    \brief Implementeaza notiunea de fereastra a jocului.
-
-    Membrul wndFrame este un obiect de tip JFrame care va avea utilitatea unei
-    ferestre grafice si totodata si cea a unui container (toate elementele
-    grafice vor fi continute de fereastra).
+/**
+ * This is the game's window. Everything is happening here.
  */
 public class GameWindow
 {
-    private JFrame  wndFrame;       /*!< fereastra principala a jocului*/
-    private String  wndTitle;       /*!< titlul ferestrei*/
-    private int     wndWidth;       /*!< latimea ferestrei in pixeli*/
-    private int     wndHeight;      /*!< inaltimea ferestrei in pixeli*/
+    private JFrame  wndFrame;
+    private String  wndTitle;
+    private int     wndWidth;
+    private int     wndHeight;
 
-    private Canvas  canvas;         /*!< "panza/tablou" in care se poate desena*/
+    private Canvas  canvas;
 
     public GameWindow(String title, int width, int height){
-        wndTitle    = title;    /*!< Retine titlul ferestrei.*/
-        wndWidth    = width;    /*!< Retine latimea ferestrei.*/
-        wndHeight   = height;   /*!< Retine inaltimea ferestrei.*/
-        wndFrame    = null;     /*!< Fereastra nu este construita.*/
+        wndTitle    = title;
+        wndWidth    = width;
+        wndHeight   = height;
+        wndFrame    = null;
     }
 
     public void buildGameWindow()
@@ -58,25 +54,16 @@ public class GameWindow
         canvas.requestFocus();
     }
 
-    /*! \fn public int GetWndWidth()
-        \brief Returneaza latimea ferestrei.
-     */
     public int getWndWidth()
     {
         return wndWidth;
     }
 
-    /*! \fn public int GetWndWidth()
-        \brief Returneaza inaltimea ferestrei.
-     */
     public int getWndHeight()
     {
         return wndHeight;
     }
 
-    /*! \fn public int GetCanvas()
-        \brief Returneaza referinta catre canvas-ul din fereastra pe care se poate desena.
-     */
     public Canvas getCanvas() {
         return canvas;
     }

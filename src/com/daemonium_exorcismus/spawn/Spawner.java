@@ -9,6 +9,9 @@ import com.daemonium_exorcismus.engine.utils.Vec2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Spawner class, spawn enemies that come in waves.
+ */
 public class Spawner {
     private Vec2D position;
     private long delayTimer;
@@ -19,6 +22,11 @@ public class Spawner {
         this.position = position;
     }
 
+    /**
+     * Updates the spawner status
+     * @param entities hashmap of all the entities present currently in the game
+     * @param newTime new system time used to update the logic
+     */
     public void update(HashMap<String, Entity> entities, long newTime) {
         if (wave == null) {
             return;

@@ -12,6 +12,9 @@ import com.daemonium_exorcismus.ecs.components.physics.RigidBodyComponent;
 import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.engine.core.RenderManager;
 
+/**
+ * System responsible for rendering the entities. It uses the RenderManager.
+ */
 public class RenderSystem extends SystemBase {
 
     public RenderSystem(long oldTime) {
@@ -61,10 +64,18 @@ public class RenderSystem extends SystemBase {
         RenderManager.GetInstance().draw(toRender);
     }
 
+    /**
+     * Used for the fading efect.
+     * @param fading sets fading
+     */
     public void setFading(boolean fading) {
         isFading = fading;
     }
 
+    /**
+     * Sorting criteria for the entities based on their y level.
+     * Prevents entities that are in from of other appear behind.
+     */
     static class SortByLayer implements Comparator<Entity> {
 
         @Override

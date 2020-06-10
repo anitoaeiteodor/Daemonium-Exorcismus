@@ -1,0 +1,111 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Physics\+System Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system}\index{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}}
+Inheritance diagram for com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Physics\+System\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a61ed2c0be10dbf5b31f527749b1e97f5}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a61ed2c0be10dbf5b31f527749b1e97f5}} 
+{\bfseries Physics\+System} (long old\+Time)
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_aedb79ca2ca8a358e547cd9bba2eb4aff}{update\+System}} (Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$ entity\+List, long new\+Time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+boolean \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_ac47f05e78f8adaa9257af8e9df4bfaf7}{is\+Enemy}} (\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} entity)
+\item 
+boolean \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a1e953125a6605c140d86c64a545522cc}{is\+Colliding\+On\+Axis}} (\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} entity, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} other, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1utils_1_1_vec2_d}{Vec2D}} dir)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_ad93031ce73f29c348f880a419002e893}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_ad93031ce73f29c348f880a419002e893}} 
+void {\bfseries revert\+Velocity} (\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} entity)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a7d8ad9fd0399b17667454cf1218b971c}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a7d8ad9fd0399b17667454cf1218b971c}} 
+void {\bfseries apply\+Velocity} (\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} entity)
+\item 
+boolean \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a6a3640671125546779a0e39009dfdd8d}{check\+Collision}} (\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} entity, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} other)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_aeb5113e37f8512fb88e3fb26290c5740}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_aeb5113e37f8512fb88e3fb26290c5740}} 
+Rectangle2D {\bfseries get\+Rigid\+Body\+Rectangle} (\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} entity)
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+\doxysubsection{Detailed Description}
+This is where we handle collisions, applying damage, sliding etc. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a6a3640671125546779a0e39009dfdd8d}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a6a3640671125546779a0e39009dfdd8d}} 
+\index{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}!checkCollision@{checkCollision}}
+\index{checkCollision@{checkCollision}!com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}}
+\doxysubsubsection{\texorpdfstring{checkCollision()}{checkCollision()}}
+{\footnotesize\ttfamily boolean com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Physics\+System.\+check\+Collision (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}}}]{entity,  }\item[{\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}}}]{other }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Simple check for collision 
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity to be checked \\
+\hline
+{\em other} & other entity \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if collided else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a1e953125a6605c140d86c64a545522cc}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_a1e953125a6605c140d86c64a545522cc}} 
+\index{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}!isCollidingOnAxis@{isCollidingOnAxis}}
+\index{isCollidingOnAxis@{isCollidingOnAxis}!com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}}
+\doxysubsubsection{\texorpdfstring{isCollidingOnAxis()}{isCollidingOnAxis()}}
+{\footnotesize\ttfamily boolean com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Physics\+System.\+is\+Colliding\+On\+Axis (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}}}]{entity,  }\item[{\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}}}]{other,  }\item[{\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1utils_1_1_vec2_d}{Vec2D}}}]{dir }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Method used to enable sliding. 
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity to be checked \\
+\hline
+{\em other} & other entity \\
+\hline
+{\em dir} & collision axis \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if collision on axis else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_ac47f05e78f8adaa9257af8e9df4bfaf7}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_ac47f05e78f8adaa9257af8e9df4bfaf7}} 
+\index{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}!isEnemy@{isEnemy}}
+\index{isEnemy@{isEnemy}!com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}}
+\doxysubsubsection{\texorpdfstring{isEnemy()}{isEnemy()}}
+{\footnotesize\ttfamily boolean com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Physics\+System.\+is\+Enemy (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}}}]{entity }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Simple method that checks if the entity is an enemy. 
+\begin{DoxyParams}{Parameters}
+{\em entity} & entity to be checked \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if enemy else false 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_aedb79ca2ca8a358e547cd9bba2eb4aff}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_aedb79ca2ca8a358e547cd9bba2eb4aff}} 
+\index{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}!updateSystem@{updateSystem}}
+\index{updateSystem@{updateSystem}!com.daemonium\_exorcismus.ecs.systems.PhysicsSystem@{com.daemonium\_exorcismus.ecs.systems.PhysicsSystem}}
+\doxysubsubsection{\texorpdfstring{updateSystem()}{updateSystem()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Physics\+System.\+update\+System (\begin{DoxyParamCaption}\item[{Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$}]{entity\+List,  }\item[{long}]{new\+Time }\end{DoxyParamCaption})}
+
+This method updates the system. 
+\begin{DoxyParams}{Parameters}
+{\em entity\+List} & hashmap of all the entities currently in the game \\
+\hline
+{\em new\+Time} & used to calculate elapsed time \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented from \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_afb309e673e6bf88d97dcd118d94fbfe8}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+System\+Base}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/ecs/systems/Physics\+System.\+java\end{DoxyCompactItemize}

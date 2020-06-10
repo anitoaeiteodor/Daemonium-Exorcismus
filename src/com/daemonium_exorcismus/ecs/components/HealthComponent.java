@@ -1,5 +1,8 @@
 package com.daemonium_exorcismus.ecs.components;
 
+/**
+ * It stores the entities health. It also provides methods for taking damage.
+ */
 public class HealthComponent extends Component {
     private int health;
 

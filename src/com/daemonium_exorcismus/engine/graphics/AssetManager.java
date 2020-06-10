@@ -6,6 +6,9 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.HashMap;
 
+/**
+ * Class that is responsible for loading and providing assets.
+ */
 public class AssetManager {
     public static final HashMap<Assets, BufferedImage> assets = new HashMap<>();
     private static SpriteSheet resources = new SpriteSheet(LoadImage("assets/0x72_16x16DungeonTileset.v4.png"),

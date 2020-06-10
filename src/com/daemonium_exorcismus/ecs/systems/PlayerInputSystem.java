@@ -18,6 +18,9 @@ import java.awt.event.KeyEvent;
 import java.util.HashMap;
 import java.util.HashSet;
 
+/**
+ * System responsible for all the logic of the player.
+ */
 public class PlayerInputSystem extends SystemBase {
 
     private static final int SPEED = EntityProperties.Player.SPEED;

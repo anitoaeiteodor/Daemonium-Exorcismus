@@ -1,0 +1,107 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Map Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map}\index{com.daemonium\_exorcismus.engine.core.Map@{com.daemonium\_exorcismus.engine.core.Map}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a187d6f23cd9fbc55292c382ceaa804e9}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a187d6f23cd9fbc55292c382ceaa804e9}} 
+{\bfseries Map} (Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$ entities, Array\+List$<$ \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base}{System\+Base}} $>$ systems, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_window}{Game\+Window}} wnd, long old\+Time)
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ad027d256e20c898e86ef25313929c859}{update}} (long new\+Time)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a5f8463d546c370c857f77eeca15b16f8}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a5f8463d546c370c857f77eeca15b16f8}} 
+void {\bfseries set\+Load\+Next\+Area} (boolean load\+Next\+Area)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ab73c33b5e2bc40212e65685e487c16d7}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ab73c33b5e2bc40212e65685e487c16d7}} 
+boolean {\bfseries is\+Load\+Next\+Area} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a9800dc0646f47be51eaae568f0f99b44}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a9800dc0646f47be51eaae568f0f99b44}} 
+void {\bfseries add\+Random\+Objects} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_abbf33070867e799dfaa4b0d9ea8efc92}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_abbf33070867e799dfaa4b0d9ea8efc92}} 
+boolean {\bfseries killed\+All\+Enemies} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a6699bbabf1dc54b8372b37e8b5c5b4e0}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a6699bbabf1dc54b8372b37e8b5c5b4e0}} 
+boolean {\bfseries occupied} (Rectangle2D rect, Array\+List$<$ Rectangle2D $>$ arr)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a0a628d084e7e5f542eb36c4426665f05}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a0a628d084e7e5f542eb36c4426665f05}} 
+Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$ {\bfseries entities}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a69eb29be68b2c1be7f99755fdf01ba29}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a69eb29be68b2c1be7f99755fdf01ba29}} 
+Array\+List$<$ \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base}{System\+Base}} $>$ {\bfseries systems}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a4851ee8804a7707093c9a015424f97d7}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a4851ee8804a7707093c9a015424f97d7}} 
+\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_window}{Game\+Window}} {\bfseries wnd}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ae67ef1f1758034b9193a98163f1a6fc2}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ae67ef1f1758034b9193a98163f1a6fc2}} 
+boolean {\bfseries load\+Next\+Area} = true
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a9f984e08a879906f056a159681b0c2d5}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a9f984e08a879906f056a159681b0c2d5}} 
+long {\bfseries old\+Time}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a83cf98563884159b3206f59ab05f0312}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a83cf98563884159b3206f59ab05f0312}} 
+double {\bfseries U\+P\+P\+E\+R\+\_\+\+B\+O\+U\+ND}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a0ce14c0a38e0a7cc16054f90a787bfa4}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a0ce14c0a38e0a7cc16054f90a787bfa4}} 
+double {\bfseries L\+O\+W\+E\+R\+\_\+\+B\+O\+U\+ND}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ae44ae88c1d3c78e1943c3b4ae5c1ee4a}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ae44ae88c1d3c78e1943c3b4ae5c1ee4a}} 
+double {\bfseries L\+E\+F\+T\+\_\+\+B\+O\+U\+ND}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_aa8afd378d09566384be3d0ad64dd0ac1}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_aa8afd378d09566384be3d0ad64dd0ac1}} 
+double {\bfseries R\+I\+G\+H\+T\+\_\+\+B\+O\+U\+ND}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ad32b0ad584d663a0e203f4a2876250f7}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ad32b0ad584d663a0e203f4a2876250f7}} 
+\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1utils_1_1_vec2_d}{Vec2D}}\mbox{[}$\,$\mbox{]} {\bfseries spawn\+Points} = new \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1utils_1_1_vec2_d}{Vec2D}}\mbox{[}4\mbox{]}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a692fa046df5ce8fa6f2ac4bc18c56078}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a692fa046df5ce8fa6f2ac4bc18c56078}} 
+Array\+List$<$ Rectangle2D $>$ {\bfseries rects} = new Array\+List$<$$>$()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a319966271e3557dc46fb9e3cc792829b}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a319966271e3557dc46fb9e3cc792829b}} 
+static final int {\bfseries S\+K\+U\+L\+L\+\_\+\+S\+I\+Z\+E\+\_\+X} = 64
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a02f0a56c1dc86c0026b3b2634d8a04bb}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a02f0a56c1dc86c0026b3b2634d8a04bb}} 
+static final int {\bfseries S\+K\+U\+L\+L\+\_\+\+S\+I\+Z\+E\+\_\+Y} = 64
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ab4844c0a9222d72158a29f44b884133c}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ab4844c0a9222d72158a29f44b884133c}} 
+static final int {\bfseries C\+R\+A\+T\+E\+\_\+\+S\+I\+Z\+E\+\_\+X} = 64
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_af0058169cb847eb89f453f8a3b7bf8fd}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_af0058169cb847eb89f453f8a3b7bf8fd}} 
+static final int {\bfseries C\+R\+A\+T\+E\+\_\+\+S\+I\+Z\+E\+\_\+Y} = 128
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a09bb6975f3d2b49b53b4e94802c9ca8a}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a09bb6975f3d2b49b53b4e94802c9ca8a}} 
+static final int {\bfseries C\+O\+L\+U\+M\+N\+\_\+\+S\+I\+Z\+E\+\_\+X} = 64
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a92332332befae3f7b4daa275bb1e1184}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_a92332332befae3f7b4daa275bb1e1184}} 
+static final int {\bfseries C\+O\+L\+U\+M\+N\+\_\+\+S\+I\+Z\+E\+\_\+Y} = 192
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Special system that keeps track of both the entities present as well as the systems. It does not extend the System\+Base class but it provides the same functionality. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ad027d256e20c898e86ef25313929c859}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map_ad027d256e20c898e86ef25313929c859}} 
+\index{com.daemonium\_exorcismus.engine.core.Map@{com.daemonium\_exorcismus.engine.core.Map}!update@{update}}
+\index{update@{update}!com.daemonium\_exorcismus.engine.core.Map@{com.daemonium\_exorcismus.engine.core.Map}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Map.\+update (\begin{DoxyParamCaption}\item[{long}]{new\+Time }\end{DoxyParamCaption})}
+
+Update method similar to the one in System\+Base. No entity parameter because it is a part of the class. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Time} & used to calculate elapsed time \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/engine/core/Map.\+java\end{DoxyCompactItemize}

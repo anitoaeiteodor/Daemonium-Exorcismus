@@ -1,0 +1,56 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+System\+Base Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base}\index{com.daemonium\_exorcismus.ecs.systems.SystemBase@{com.daemonium\_exorcismus.ecs.systems.SystemBase}}
+Inheritance diagram for com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+System\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=0.518519cm]{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_ac4c08622182d24d166912f8846c65386}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_ac4c08622182d24d166912f8846c65386}} 
+{\bfseries System\+Base} (long old\+Time)
+\item 
+abstract void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_afb309e673e6bf88d97dcd118d94fbfe8}{update\+System}} (Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$ entity\+List, long new\+Time)
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_a5256fd37c644ef2c1539ef265ecb155d}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_a5256fd37c644ef2c1539ef265ecb155d}} 
+String {\bfseries get\+Name} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_aab367e0157173c07f216e4aeba69d3cf}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_aab367e0157173c07f216e4aeba69d3cf}} 
+String {\bfseries name}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_ae0d913c1eef56707b16c15c6fc1649d0}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_ae0d913c1eef56707b16c15c6fc1649d0}} 
+long {\bfseries old\+Time}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Base class for the system. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_afb309e673e6bf88d97dcd118d94fbfe8}\label{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base_afb309e673e6bf88d97dcd118d94fbfe8}} 
+\index{com.daemonium\_exorcismus.ecs.systems.SystemBase@{com.daemonium\_exorcismus.ecs.systems.SystemBase}!updateSystem@{updateSystem}}
+\index{updateSystem@{updateSystem}!com.daemonium\_exorcismus.ecs.systems.SystemBase@{com.daemonium\_exorcismus.ecs.systems.SystemBase}}
+\doxysubsubsection{\texorpdfstring{updateSystem()}{updateSystem()}}
+{\footnotesize\ttfamily abstract void com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+System\+Base.\+update\+System (\begin{DoxyParamCaption}\item[{Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$}]{entity\+List,  }\item[{long}]{new\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [abstract]}}
+
+This method updates the system. 
+\begin{DoxyParams}{Parameters}
+{\em entity\+List} & hashmap of all the entities currently in the game \\
+\hline
+{\em new\+Time} & used to calculate elapsed time \\
+\hline
+\end{DoxyParams}
+
+
+Reimplemented in \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1spawn_1_1_level_system_a93240ec2bd43e2cbee6565d4d27ce3c2}{com.\+daemonium\+\_\+exorcismus.\+spawn.\+Level\+System}}, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_player_input_system_a9d4ce1910f06d7234765476252b67992}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Player\+Input\+System}}, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_h_u_d_system_a9381c822b2e612abced500474ff28a2b}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+H\+U\+D\+System}}, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_enemy_system_ae8715bfd20c687367a8628ec28b04a31}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Enemy\+System}}, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_render_system_a0a9c3815c9c1677dd298e8332bef08ff}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Render\+System}}, and \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_physics_system_aedb79ca2ca8a358e547cd9bba2eb4aff}{com.\+daemonium\+\_\+exorcismus.\+ecs.\+systems.\+Physics\+System}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/ecs/systems/System\+Base.\+java\end{DoxyCompactItemize}

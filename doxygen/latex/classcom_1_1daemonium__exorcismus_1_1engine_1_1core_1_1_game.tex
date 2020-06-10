@@ -1,0 +1,130 @@
+\hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game}{}\doxysection{com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Game Class Reference}
+\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game}\index{com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}}
+Inheritance diagram for com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Game\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a1ab8f654125b07b8a87f0d736e6c6ec3}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a1ab8f654125b07b8a87f0d736e6c6ec3}} 
+{\bfseries Game} (String title, int width, int height)
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a2603ef45db52c47cf8ccf2aaa6c95a1f}{run}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a15d1daf9c65696f1d590a9c0c164d959}{launch}} ()
+\item 
+synchronized void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a8075ca3ce515a4c458bc1df74efb1551}{start\+Game}} ()
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a14480e7d8d05d0642f98f78c904a7026}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a14480e7d8d05d0642f98f78c904a7026}} 
+synchronized void {\bfseries stop\+Game} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a0872e2bd638b3c151338512b22177f02}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a0872e2bd638b3c151338512b22177f02}} 
+static int {\bfseries highscore} = 0
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aa5ec5d8d9fdfd4ef50bdad464684b554}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aa5ec5d8d9fdfd4ef50bdad464684b554}} 
+static boolean {\bfseries stop\+Game\+Signal} = false
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a805581aef8a9eead5615eb3a755769a5}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a805581aef8a9eead5615eb3a755769a5}} 
+static boolean {\bfseries game\+Over\+Signal} = false
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a7d1db76e3e9910e27e4af1f066853e57}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a7d1db76e3e9910e27e4af1f066853e57}} 
+static final int {\bfseries ticks\+Per\+Second} = 60
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a053f0fca508a4d8a6edc040eabd2ceaa}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a053f0fca508a4d8a6edc040eabd2ceaa}} 
+static final double {\bfseries time\+Frame} = 1000000000.\+0 / ticks\+Per\+Second
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_ab206f0a050176222434b74ed751f07a6}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_ab206f0a050176222434b74ed751f07a6}} 
+static \mbox{\hyperlink{enumcom_1_1daemonium__exorcismus_1_1menu_1_1_game_state}{Game\+State}} {\bfseries game\+State} = Game\+State.\+G\+S\+\_\+\+M\+E\+NU
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_afcfa095640d5514f3b9c977295f20563}{init\+Game}} ()
+\item 
+void \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aa9bd9cc5b80a3dba259afcea6c346545}{update}} (long new\+Time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_ab459d393bd347dd957c3e2064700f477}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_ab459d393bd347dd957c3e2064700f477}} 
+\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_window}{Game\+Window}} {\bfseries wnd}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a314ed10e6b0f44b874b3aec6c3c0212d}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a314ed10e6b0f44b874b3aec6c3c0212d}} 
+boolean {\bfseries run\+State}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_acbefd7824c67c2c7faee9439cdcc27fa}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_acbefd7824c67c2c7faee9439cdcc27fa}} 
+Thread {\bfseries game\+Thread}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a40f93f91052a44e4953f7b5b65710edc}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a40f93f91052a44e4953f7b5b65710edc}} 
+String {\bfseries title}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a60d8f52787b9a06c7078084e2cff749b}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a60d8f52787b9a06c7078084e2cff749b}} 
+int {\bfseries width}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a3ba70796f09872bfdd903e1f5f828cbd}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a3ba70796f09872bfdd903e1f5f828cbd}} 
+int {\bfseries height}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a6c7b8ed2531771ab30e3f1bae9e73dba}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a6c7b8ed2531771ab30e3f1bae9e73dba}} 
+Hash\+Map$<$ String, \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1_entity}{Entity}} $>$ {\bfseries entities} = new Hash\+Map$<$$>$()
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_abdab7c5291418ca1147c7c0024982a40}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_abdab7c5291418ca1147c7c0024982a40}} 
+Array\+List$<$ \mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1ecs_1_1systems_1_1_system_base}{System\+Base}} $>$ {\bfseries systems} = new Array\+List$<$$>$()
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aabec92ac553623ece6b0fdf626db840a}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aabec92ac553623ece6b0fdf626db840a}} 
+\mbox{\hyperlink{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_map}{Map}} {\bfseries map}
+\item 
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aa54bbd292f346e08a9e5d5f5314a6d62}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aa54bbd292f346e08a9e5d5f5314a6d62}} 
+boolean {\bfseries load\+Game\+Signal} = false
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+The main class of the program. Here is the starting point of the game, it is responsible for all the logic, entities and systems. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_afcfa095640d5514f3b9c977295f20563}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_afcfa095640d5514f3b9c977295f20563}} 
+\index{com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}!initGame@{initGame}}
+\index{initGame@{initGame}!com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}}
+\doxysubsubsection{\texorpdfstring{initGame()}{initGame()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Game.\+init\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+Called right after the constructor. It initializes the game window, as well as other things such as assets. \mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a15d1daf9c65696f1d590a9c0c164d959}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a15d1daf9c65696f1d590a9c0c164d959}} 
+\index{com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}!launch@{launch}}
+\index{launch@{launch}!com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}}
+\doxysubsubsection{\texorpdfstring{launch()}{launch()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Game.\+launch (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+This method is called from main. It launches the main menu. \mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a2603ef45db52c47cf8ccf2aaa6c95a1f}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a2603ef45db52c47cf8ccf2aaa6c95a1f}} 
+\index{com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}!run@{run}}
+\index{run@{run}!com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Game.\+run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The main game loop. \mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a8075ca3ce515a4c458bc1df74efb1551}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_a8075ca3ce515a4c458bc1df74efb1551}} 
+\index{com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}!startGame@{startGame}}
+\index{startGame@{startGame}!com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}}
+\doxysubsubsection{\texorpdfstring{startGame()}{startGame()}}
+{\footnotesize\ttfamily synchronized void com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Game.\+start\+Game (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+Start the game. \mbox{\Hypertarget{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aa9bd9cc5b80a3dba259afcea6c346545}\label{classcom_1_1daemonium__exorcismus_1_1engine_1_1core_1_1_game_aa9bd9cc5b80a3dba259afcea6c346545}} 
+\index{com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}!update@{update}}
+\index{update@{update}!com.daemonium\_exorcismus.engine.core.Game@{com.daemonium\_exorcismus.engine.core.Game}}
+\doxysubsubsection{\texorpdfstring{update()}{update()}}
+{\footnotesize\ttfamily void com.\+daemonium\+\_\+exorcismus.\+engine.\+core.\+Game.\+update (\begin{DoxyParamCaption}\item[{long}]{new\+Time }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+This is where all the logic of the game happens. 
+\begin{DoxyParams}{Parameters}
+{\em new\+Time} & used to calculate time elapsed \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+D\+:/dev/\+Daemonium-\/\+Exorcismus/src/com/daemonium\+\_\+exorcismus/engine/core/Game.\+java\end{DoxyCompactItemize}

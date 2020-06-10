@@ -14,6 +14,9 @@ import com.daemonium_exorcismus.engine.utils.Vec2D;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * System responsible for enemy AI and behaviour.
+ */
 public class EnemySystem extends SystemBase {
 
     public static final int PROJ_SPEED = Constants.ENEMY_PROJ_SPEED;
@@ -64,6 +67,12 @@ public class EnemySystem extends SystemBase {
         }
     }
 
+    /**
+     * Makes an enemy shoot
+     * @param enemy enemy entity
+     * @param player player
+     * @param entityList hash map of all entities
+     */
     void shoot(Entity enemy, Entity player, HashMap<String, Entity> entityList) {
         KinematicBodyComponent playerKB = (KinematicBodyComponent) player.getComponent(ComponentNames.KINEMATIC_BODY);
         KinematicBodyComponent enemyKB = (KinematicBodyComponent) enemy.getComponent(ComponentNames.KINEMATIC_BODY);
