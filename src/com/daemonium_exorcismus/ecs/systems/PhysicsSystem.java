@@ -3,14 +3,16 @@ package com.daemonium_exorcismus.ecs.systems;
 import com.daemonium_exorcismus.Constants;
 import com.daemonium_exorcismus.ecs.Entity;
 import com.daemonium_exorcismus.ecs.EntityType;
-import com.daemonium_exorcismus.ecs.components.*;
+import com.daemonium_exorcismus.ecs.components.ComponentNames;
+import com.daemonium_exorcismus.ecs.components.HealthComponent;
+import com.daemonium_exorcismus.ecs.components.RenderComponent;
 import com.daemonium_exorcismus.ecs.components.physics.ColliderComponent;
 import com.daemonium_exorcismus.ecs.components.physics.KinematicBodyComponent;
 import com.daemonium_exorcismus.ecs.components.physics.RigidBodyComponent;
 import com.daemonium_exorcismus.engine.core.Game;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
-import javafx.geometry.Rectangle2D;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -209,13 +211,13 @@ public class PhysicsSystem extends SystemBase {
      * @return true if collided else false
      */
     private boolean checkCollision(Entity entity, Entity other) {
-        Rectangle2D entityRect = getRigidBodyRectangle(entity);
-        Rectangle2D otherRect = getRigidBodyRectangle(other);
+        Rectangle entityRect = getRigidBodyRectangle(entity);
+        Rectangle otherRect = getRigidBodyRectangle(other);
 
         return entityRect.intersects(otherRect);
     }
 
-    private Rectangle2D getRigidBodyRectangle(Entity entity) {
+    private Rectangle getRigidBodyRectangle(Entity entity) {
         RigidBodyComponent entityComponent = (RigidBodyComponent) entity.getComponent(ComponentNames.KINEMATIC_BODY);
         if (entityComponent == null) {
             entityComponent = (RigidBodyComponent) entity.getComponent(ComponentNames.RIGID_BODY);
@@ -224,7 +226,7 @@ public class PhysicsSystem extends SystemBase {
         ColliderComponent collisionComponent = (ColliderComponent) entity.getComponent(ComponentNames.COLLIDER);
         if (collisionComponent == null) {
             System.err.println("[ERROR]: A physics entity does not have implement the collider component!");
-            return Rectangle2D.EMPTY;
+            return new Rectangle();
         }
 
         int sizeX = (int)entityComponent.getSize().getPosX();
@@ -232,12 +234,12 @@ public class PhysicsSystem extends SystemBase {
         int posX  = (int)entityComponent.getPos().getPosX();
         int posY  = (int)entityComponent.getPos().getPosY();
 
-        return new Rectangle2D(posX + collisionComponent.getOffsetFirst().getPosX() * sizeX,
-                               posY + collisionComponent.getOffsetFirst().getPosY() * sizeY,
-                            sizeX - collisionComponent.getOffsetSecond().getPosX() * sizeX
-                                        - collisionComponent.getOffsetFirst().getPosX() * sizeX,
-                            sizeY - collisionComponent.getOffsetSecond().getPosY() * sizeY
-                                        - collisionComponent.getOffsetFirst().getPosY() * sizeY);
+        return new Rectangle((int) (posX + collisionComponent.getOffsetFirst().getPosX() * sizeX),
+                (int) (posY + collisionComponent.getOffsetFirst().getPosY() * sizeY),
+                (int) (sizeX - collisionComponent.getOffsetSecond().getPosX() * sizeX
+                                        - collisionComponent.getOffsetFirst().getPosX() * sizeX),
+                (int) (sizeY - collisionComponent.getOffsetSecond().getPosY() * sizeY
+                                        - collisionComponent.getOffsetFirst().getPosY() * sizeY));
 
     }
 }

@@ -16,7 +16,8 @@ import com.daemonium_exorcismus.engine.graphics.Assets;
 import com.daemonium_exorcismus.engine.utils.Vec2D;
 
 import com.daemonium_exorcismus.spawn.LevelSystem;
-import javafx.geometry.Rectangle2D;
+
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -47,7 +48,7 @@ public class Map {
     private final static int COLUMN_SIZE_Y = 192;
 
     private Vec2D[] spawnPoints = new Vec2D[4];
-    private ArrayList<Rectangle2D> rects = new ArrayList<>();
+    private ArrayList<Rectangle> rects = new ArrayList<>();
 
 
     public Map(HashMap<String, Entity> entities, ArrayList<SystemBase> systems, GameWindow wnd, long oldTime) {
@@ -175,10 +176,11 @@ public class Map {
 
         int bound = Constants.TEXTURE_SIZE * 4;
         for (Vec2D spawnPoint : spawnPoints) {
-            rects.add(new Rectangle2D(spawnPoint.getPosX() - bound / 2.,
-                    spawnPoint.getPosY() - bound / 2., bound, bound));
+            rects.add(new Rectangle((int) (spawnPoint.getPosX() - bound / 2.),
+                    (int)(spawnPoint.getPosY() - bound / 2.), bound, bound));
         }
-        rects.add(new Rectangle2D(wnd.getWndWidth() / 2. - bound, wnd.getWndHeight() / 2. - bound,
+        rects.add(new Rectangle((int)(wnd.getWndWidth() / 2. - bound),
+                (int)(wnd.getWndHeight() / 2. - bound),
                 bound * 2, bound * 2));
 
         int tries = 1000;
@@ -186,16 +188,16 @@ public class Map {
         while (nColumns != 0) {
             int posX;
             int posY;
-            Rectangle2D rect;
+            Rectangle rect;
 
             posX = (int)Math.min(RIGHT_BOUND, Math.random() * RIGHT_BOUND + LEFT_BOUND);
             posY = (int)Math.min(LOWER_BOUND, Math.random() * LOWER_BOUND + UPPER_BOUND);
-            rect = new Rectangle2D(posX, posY, SKULL_SIZE_X,  SKULL_SIZE_Y);
+            rect = new Rectangle(posX, posY, SKULL_SIZE_X,  SKULL_SIZE_Y);
 
             while (occupied(rect, rects) && tries > 0) {
                 posX = (int)Math.min(RIGHT_BOUND, Math.random() * RIGHT_BOUND + LEFT_BOUND);
                 posY = (int)Math.min(LOWER_BOUND, Math.random() * LOWER_BOUND + UPPER_BOUND);
-                rect = new Rectangle2D(posX, posY,
+                rect = new Rectangle(posX, posY,
                         COLUMN_SIZE_X, COLUMN_SIZE_Y);
                 tries--;
             }
@@ -213,16 +215,16 @@ public class Map {
         while (nCrates != 0) {
             double posX;
             double posY;
-            Rectangle2D rect;
+            Rectangle rect;
 
             posX = Math.min(RIGHT_BOUND, Math.random() * RIGHT_BOUND + LEFT_BOUND);
             posY = Math.min(LOWER_BOUND, Math.random() * LOWER_BOUND + UPPER_BOUND);
-            rect = new Rectangle2D((int)posX, (int)posY, SKULL_SIZE_X,  SKULL_SIZE_Y);
+            rect = new Rectangle((int)posX, (int)posY, SKULL_SIZE_X,  SKULL_SIZE_Y);
 
             while (occupied(rect, rects) && tries > 0) {
                 posX = Math.min(RIGHT_BOUND, Math.random() * RIGHT_BOUND + LEFT_BOUND);
                 posY = Math.min(LOWER_BOUND, Math.random() * LOWER_BOUND + UPPER_BOUND);
-                rect = new Rectangle2D((int)posX, (int)posY,
+                rect = new Rectangle((int)posX, (int)posY,
                         CRATE_SIZE_X, CRATE_SIZE_Y);
                 tries--;
             }
@@ -240,16 +242,16 @@ public class Map {
         while (nSkulls != 0) {
             double posX;
             double posY;
-            Rectangle2D rect;
+            Rectangle rect;
 
             posX = Math.min(RIGHT_BOUND, Math.random() * RIGHT_BOUND + LEFT_BOUND);
             posY = Math.min(LOWER_BOUND, Math.random() * LOWER_BOUND + UPPER_BOUND);
-            rect = new Rectangle2D((int)posX, (int)posY, SKULL_SIZE_X,  SKULL_SIZE_Y);
+            rect = new Rectangle((int)posX, (int)posY, SKULL_SIZE_X,  SKULL_SIZE_Y);
 
             while (occupied(rect, rects) && tries > 0) {
                 posX = Math.min(RIGHT_BOUND, Math.random() * RIGHT_BOUND + LEFT_BOUND);
                 posY = Math.min(LOWER_BOUND, Math.random() * LOWER_BOUND + UPPER_BOUND);
-                rect = new Rectangle2D((int)posX, (int)posY,
+                rect = new Rectangle((int)posX, (int)posY,
                         SKULL_SIZE_X, SKULL_SIZE_Y);
                 tries--;
             }
@@ -277,8 +279,8 @@ public class Map {
         return true;
     }
 
-    private boolean occupied(Rectangle2D rect, ArrayList<Rectangle2D> arr) {
-        for (Rectangle2D other : arr) {
+    private boolean occupied(Rectangle rect, ArrayList<Rectangle> arr) {
+        for (Rectangle other : arr) {
             if (other.intersects(rect)) {
                 return true;
             }
